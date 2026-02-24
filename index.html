@@ -108,6 +108,16 @@
         .view { display: none; }
         .view.active { display: block; }
 
+        /* Toast message */
+        #form-status {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease-out;
+        }
+
         .logo {
             height: 80px;
         }
@@ -118,6 +128,12 @@
     </style>
 </head>
 <body class="antialiased">
+
+    <!-- STATUS NOTIFICATION -->
+    <div id="form-status" class="bg-green-600 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3">
+        <i class="fas fa-check-circle text-xl"></i>
+        <span id="status-text">Mensaje preparado para enviar</span>
+    </div>
 
     <!-- NAVIGATION -->
     <header>
@@ -419,7 +435,8 @@
                         </div>
 
                         <div class="md:w-7/12 p-10">
-                            <form class="space-y-6" onsubmit="event.preventDefault();">
+                            <!-- FORM UPDATED TO HANDLE SUBMISSION -->
+                            <form id="contact-form" class="space-y-6" onsubmit="handleFormSubmit(event)">
                                 <div class="grid grid-cols-2 gap-6">
                                     <div class="col-span-2 sm:col-span-1">
                                         <label for="name" class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="form_name">Nombre</label>
@@ -561,7 +578,9 @@
                 legal_title: "Aviso Legal",
                 legal_content: "<p>En cumplimiento con la Ley 34/2002 de servicios de la sociedad de la información, le informamos que este sitio es propiedad de Kinvia S.L., con domicilio en Costa Blanca, España.</p><p>El acceso a este sitio web implica la aceptación de las condiciones de uso aquí descritas. Los contenidos, marcas y logotipos son propiedad de Kinvia.</p>",
                 privacy_title: "Política de Privacidad",
-                privacy_content: "<p>Kinvia se compromete a proteger la privacidad de sus usuarios. Sus datos personales serán tratados conforme al Reglamento General de Protección de Datos (RGPD).</p><p>Utilizamos tecnologías no invasivas (radares mmWave) que no capturan imágenes ni audio. Los datos de salud y comportamiento se procesan localmente para garantizar su máxima seguridad.</p>"
+                privacy_content: "<p>Kinvia se compromete a proteger la privacidad de sus usuarios. Sus datos personales serán tratados conforme al Reglamento General de Protección de Datos (RGPD).</p><p>Utilizamos tecnologías no invasivas (radares mmWave) que no capturan imágenes ni audio. Los datos de salud y comportamiento se procesan localmente para garantizar su máxima seguridad.</p>",
+                status_ready: "Mensaje preparado para enviar",
+                status_ready_en: "Message ready to send"
             },
             en: {
                 nav_about: "About Us", nav_why: "Why Kinvia", nav_showroom: "Showroom", nav_packs: "Packages", nav_contact: "Contact",
@@ -615,11 +634,48 @@
                 legal_title: "Legal Notice",
                 legal_content: "<p>In compliance with international and Spanish digital information laws, this site is owned by Kinvia S.L., located in Costa Blanca, Spain.</p><p>Access to this website implies acceptance of the terms of use. All content is protected property of Kinvia.</p>",
                 privacy_title: "Privacy Policy",
-                privacy_content: "<p>Kinvia is committed to protecting user privacy. Your personal data is treated in accordance with GDPR regulations.</p><p>We use non-invasive technology (mmWave radar) that does not capture audio or visual images. All processing is local to ensure data safety.</p>"
+                privacy_content: "<p>Kinvia is committed to protecting user privacy. Your personal data is treated in accordance with GDPR regulations.</p><p>We use non-invasive technology (mmWave radar) that does not capture audio or visual images. All processing is local to ensure data safety.</p>",
+                status_ready: "Message ready to send",
+                status_ready_en: "Message ready to send"
             }
         };
 
         let currentLang = 'es';
+
+        // --- FORM SUBMISSION LOGIC ---
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const query = document.getElementById('query').value;
+
+            // Construct Email Components
+            const mailTo = "info@kinvia.es";
+            const subject = encodeURIComponent(`Consulta Web Kinvia: ${name}`);
+            const body = encodeURIComponent(
+                `Nombre: ${name}\n` +
+                `Teléfono: ${phone || 'No facilitado'}\n` +
+                `Email: ${email}\n` +
+                `Consulta:\n${query}`
+            );
+
+            // Show Toast Notification
+            const toast = document.getElementById('form-status');
+            const toastText = document.getElementById('status-text');
+            toastText.innerText = translations[currentLang].status_ready;
+            toast.style.display = 'flex';
+
+            // Hide Toast after 4 seconds
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 4000);
+
+            // Trigger Mail Client
+            window.location.href = `mailto:${mailTo}?subject=${subject}&body=${body}`;
+        }
 
         function navigateTo(viewId) {
             // Hide all views
