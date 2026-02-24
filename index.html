@@ -8,11 +8,11 @@
     <title>Kinvia | Vida Independiente Asistida y Seguridad Familiar en el Levante</title>
     <meta name="description" content="Kinvia ofrece soluciones de Vida Independiente Asistida en el Levante, Costa Cálida y Andalucía. Tecnología invisible para la autonomía de mayores y la tranquilidad de sus familias sin cámaras.">
     <meta name="keywords" content="vida independiente asistida, cuidado de mayores costa blanca, tecnología invisible hogar, domótica para ancianos, seguridad familiar remota, alicante, murcia, málaga">
-    <link rel="canonical" href="https://kinvia.com/">
+    <link rel="canonical" href="https://kinvia.es/">
     
     <!-- OPEN GRAPH (Facebook/LinkedIn) -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kinvia.com/">
+    <meta property="og:url" content="https://kinvia.es/">
     <meta property="og:title" content="Kinvia | Independencia para ellos, paz para ti">
     <meta property="og:description" content="Protegemos a tus seres queridos con tecnología invisible. Sin cámaras, respetando su privacidad en el Levante y Andalucía.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&q=80&w=1200">
@@ -30,9 +30,10 @@
       "@type": "LocalBusiness",
       "name": "Kinvia",
       "image": "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&q=80&w=600",
-      "@id": "https://kinvia.com",
-      "url": "https://kinvia.com",
+      "@id": "https://kinvia.es",
+      "url": "https://kinvia.es",
       "telephone": "",
+      "email": "info@kinvia.es",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Costa Blanca",
@@ -410,7 +411,7 @@
                                         <i class="fas fa-envelope mt-1 mr-4 text-sky-400 text-xl" aria-hidden="true"></i>
                                         <div>
                                             <h4 class="font-bold">Email</h4>
-                                            <p class="text-sky-200 text-sm">info@kinvia.com</p>
+                                            <p class="text-sky-200 text-sm">info@kinvia.es</p>
                                         </div>
                                     </div>
                                 </div>
@@ -434,12 +435,8 @@
                                     <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:ring-sky-500 transition" required>
                                 </div>
                                 <div>
-                                    <label for="region-select" class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="form_region">Región de la vivienda</label>
-                                    <select id="region-select" name="region" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:ring-sky-500 transition">
-                                        <option>Levante (Alicante / Valencia)</option>
-                                        <option>Costa Cálida (Murcia)</option>
-                                        <option>Andalucía (Málaga / Marbella)</option>
-                                    </select>
+                                    <label for="query" class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="form_query">¿En qué podemos ayudarte?</label>
+                                    <textarea id="query" name="query" rows="4" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:ring-sky-500 transition"></textarea>
                                 </div>
                                 <button type="submit" class="w-full bg-sky-900 text-white font-bold py-4 rounded-xl hover:bg-sky-800 transition shadow-lg" data-i18n="form_submit">Solicitar Estudio Personalizado</button>
                             </form>
@@ -558,7 +555,7 @@
                 packs_disclaimer: "* Todos los packs requieren suscripción mensual (monitorización y mantenimiento).",
                 contact_title: "Tu tranquilidad empieza hoy", contact_desc: "Nuestro equipo de ingeniería en Alicante está listo para asesorarte de forma bilingüe.",
                 contact_info_1: "Sede Central", contact_info_1_sub: "Costa Blanca, Levante español",
-                form_name: "Nombre Completo", form_phone: "Teléfono de contacto", form_region: "Región de la vivienda", form_submit: "Solicitar Estudio Personalizado",
+                form_name: "Nombre Completo", form_phone: "Teléfono de contacto", form_query: "¿En qué podemos ayudarte?", form_submit: "Solicitar Estudio Personalizado",
                 footer_desc: "Vida Independiente Asistida. Soluciones de tecnología invisible para la protección de mayores en el hogar en el arco mediterráneo.",
                 footer_links: "Menú", footer_legal: "Legal",
                 legal_title: "Aviso Legal",
@@ -612,7 +609,7 @@
                 packs_disclaimer: "* All packs require a monthly subscription (monitoring & maintenance).",
                 contact_title: "Peace of mind starts today", contact_desc: "Our engineering team in Alicante is ready to advise you in your own language.",
                 contact_info_1: "Headquarters", contact_info_1_sub: "Costa Blanca, Spanish Levante",
-                form_name: "Full Name", form_phone: "Contact Phone", form_region: "Home location", form_submit: "Request Personal Study",
+                form_name: "Full Name", form_phone: "Contact Phone", form_query: "How can we help you?", form_submit: "Request Personal Study",
                 footer_desc: "Assisted Independent Living. Invisible technology solutions for home elderly protection in the Mediterranean.",
                 footer_links: "Menu", footer_legal: "Legal",
                 legal_title: "Legal Notice",
@@ -662,19 +659,6 @@
             if(activeRoomBtn) {
                 const roomId = activeRoomBtn.id.replace('btn-', '');
                 showRoomDetails(roomId);
-            }
-            
-            const regionSelect = document.getElementById('region-select');
-            if (regionSelect) {
-                if (lang === 'en') {
-                    regionSelect.options[0].text = "Levante (Valencia / Alicante)";
-                    regionSelect.options[1].text = "Costa Calida (Murcia)";
-                    regionSelect.options[2].text = "Andalusia (Malaga / Marbella)";
-                } else {
-                    regionSelect.options[0].text = "Levante (Alicante / Valencia)";
-                    regionSelect.options[1].text = "Costa Cálida (Murcia)";
-                    regionSelect.options[2].text = "Andalucía (Málaga / Marbella)";
-                }
             }
         }
 
