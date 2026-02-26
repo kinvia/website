@@ -750,6 +750,7 @@
 
         function setLanguage(lang) {
             currentLang = lang;
+            document.documentElement.lang = lang; // Actualiza el atributo lang del HTML para SEO y accesibilidad
             document.getElementById('current-lang-desktop').innerText = lang.toUpperCase();
             document.getElementById('current-lang-mobile').innerText = lang.toUpperCase();
             document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -803,7 +804,16 @@
                 </div>`;
         }
 
-        document.addEventListener('DOMContentLoaded', () => { setLanguage('es'); showRoomDetails('dormitorio'); });
+        document.addEventListener('DOMContentLoaded', () => { 
+            // Detectar el idioma del navegador
+            const browserLang = (navigator.language || navigator.userLanguage || 'es').split('-')[0].toLowerCase();
+            
+            // Si el idioma del navegador está en nuestras traducciones, lo usamos. Si no, español por defecto.
+            const initialLang = translations[browserLang] ? browserLang : 'es';
+            
+            setLanguage(initialLang); 
+            showRoomDetails('dormitorio'); 
+        });
     </script>
 </body>
 </html>
