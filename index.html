@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- FAVICONS & MANIFEST -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230c4a6e'/><text x='50%25' y='54%25' dominant-baseline='central' text-anchor='middle' font-family='Arial, sans-serif' font-weight='bold' font-size='55' fill='white'>K</text></svg>">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -126,10 +127,12 @@
 
         .logo {
             height: 80px;
+            width: auto;
         }
 
         .logo-bn {
             height: 50px;
+            width: auto;
         }
     </style>
 </head>
@@ -148,7 +151,7 @@
                 <div class="flex justify-between h-20 items-center">
                     <!-- Logo -->
                     <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="navigateTo('inicio')">
-                        <img src="images/logo.png" alt="kinvia logo" class="logo" />
+                        <img src="images/logo.png" alt="Kinvia Logo" class="logo" />
                     </div>
                     
                     <!-- Desktop Menu -->
@@ -441,7 +444,6 @@
                         </div>
 
                         <div class="md:w-7/12 p-10">
-                            <!-- FORM UPDATED TO HANDLE SUBMISSION -->
                             <form id="contact-form" class="space-y-6" onsubmit="handleFormSubmit(event)">
                                 <div class="grid grid-cols-2 gap-6">
                                     <div class="col-span-2 sm:col-span-1">
@@ -505,7 +507,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
             <div class="md:col-span-2">
                 <div class="flex items-center gap-2 mb-4">
-                    <img src="images/logo-white.png" class="logo-bn" alt="kinvia logo hite">
+                    <img src="images/logo-white.png" class="logo-bn" alt="Kinvia Logo White">
                 </div>
                 <p class="text-sm max-w-sm mb-6" data-i18n="footer_desc">Vida Independiente Asistida. Soluciones de tecnología invisible para la protección de mayores en el hogar en el arco mediterráneo.</p>
             </div>
@@ -586,7 +588,9 @@
                 privacy_title: "Política de Privacidad",
                 privacy_content: "<p>Kinvia se compromete a proteger la privacidad de sus usuarios. Sus datos personales serán tratados conforme al Reglamento General de Protección de Datos (RGPD).</p><p>Utilizamos tecnologías no invasivas (radares mmWave) que no capturan imágenes ni audio. Los datos de salud y comportamiento se procesan localmente para garantizar su máxima seguridad.</p>",
                 status_ready: "Mensaje preparado para enviar",
-                status_ready_en: "Message ready to send"
+                status_success: "Mensaje enviado correctamente",
+                status_error: "Hubo un error al enviar. Por favor, inténtalo de nuevo.",
+                btn_sending: "Enviando..."
             },
             en: {
                 nav_about: "About Us", nav_why: "Why Kinvia", nav_showroom: "Showroom", nav_packs: "Packages", nav_contact: "Contact",
@@ -630,7 +634,7 @@
                 pack2_title: "Autonomy Plus", pack2_desc: "The balance between freedom and supervision.",
                 pack2_f1: "Basic Pack Included", pack2_f4: "Remote smart lock.", pack2_f5: "Voice control for home.",
                 pack3_title: "Premium Living", pack3_desc: "Maximum biometric and medical protection.",
-                pack3_f1: "Plus Pack Included", pack3_f2: "Radar de caídas mmWave.", pack3_f3: "Contactless bed biometrics.",
+                pack3_f1: "Plus Pack Included", pack3_f2: "mmWave fall detection radar.", pack3_f3: "Contactless bed biometrics.",
                 packs_disclaimer: "* All packs require a monthly subscription (monitoring & maintenance).",
                 contact_title: "Peace of mind starts today", contact_desc: "Our engineering team in Alicante is ready to advise you in your own language.",
                 contact_info_1: "Headquarters", contact_info_1_sub: "Costa Blanca, Spanish Levante",
@@ -642,62 +646,105 @@
                 privacy_title: "Privacy Policy",
                 privacy_content: "<p>Kinvia is committed to protecting user privacy. Your personal data is treated in accordance with GDPR regulations.</p><p>We use non-invasive technology (mmWave radar) that does not capture audio or visual images. All processing is local to ensure data safety.</p>",
                 status_ready: "Message ready to send",
-                status_ready_en: "Message ready to send"
+                status_success: "Message sent successfully",
+                status_error: "Error sending message. Please try again.",
+                btn_sending: "Sending..."
             }
         };
 
         let currentLang = 'es';
 
-        // --- FORM SUBMISSION LOGIC ---
-        function handleFormSubmit(event) {
+        async function handleFormSubmit(event) {
             event.preventDefault();
-            
-            // Get form values
+            const form = event.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
             const query = document.getElementById('query').value;
 
-            // Construct Email Components
-            const mailTo = "info@kinvia.es";
-            const subject = encodeURIComponent(`Consulta Web Kinvia: ${name}`);
-            const body = encodeURIComponent(
-                `Nombre: ${name}\n` +
-                `Teléfono: ${phone || 'No facilitado'}\n` +
-                `Email: ${email}\n` +
-                `Consulta:\n${query}`
-            );
+            // 1. Estado de carga visual
+            submitBtn.innerText = translations[currentLang].btn_sending;
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
 
-            // Show Toast Notification
-            const toast = document.getElementById('form-status');
-            const toastText = document.getElementById('status-text');
-            toastText.innerText = translations[currentLang].status_ready;
-            toast.style.display = 'flex';
+            try {
+                // 2. Llamada fetch a la función de Netlify Emails
+                // Importante: asegúrate de que tu plantilla se llame "contact" 
+                // o sustituye "contact" por el nombre de tu plantilla.
+                const response = await fetch("/.netlify/functions/emails/contact", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "netlify-emails-secret": '30ab8b8f-21b6-441d-91d5-e27e765f6d1a'
+                    },
+                    body: JSON.stringify({
+                        from: email,
+                        to: 'info@kinvia.es',
+                        subject: `Consulta Web Kinvia: ${name}`,
+                        parameters: {
+                            name: name,
+                            phone: phone || 'No facilitado',
+                            email: email,
+                            query: query
+                        }
+                    })
+                });
 
-            // Hide Toast after 4 seconds
-            setTimeout(() => {
-                toast.style.display = 'none';
-            }, 4000);
+                const toast = document.getElementById('form-status');
+                const toastText = document.getElementById('status-text');
+                const icon = toast.querySelector('i');
 
-            // Trigger Mail Client
-            window.location.href = `mailto:${mailTo}?subject=${subject}&body=${body}`;
+                // 3. Manejo de respuesta exitosa
+                if (response.ok) {
+                    toast.classList.remove('bg-red-600');
+                    toast.classList.add('bg-green-600');
+                    icon.className = 'fas fa-check-circle text-xl';
+                    toastText.innerText = translations[currentLang].status_success;
+                    form.reset();
+                } else {
+                    throw new Error("Error en la respuesta de Netlify");
+                }
+
+                toast.style.display = 'flex';
+                setTimeout(() => { toast.style.display = 'none'; }, 5000);
+
+            } catch (error) {
+                // 4. Manejo de errores
+                console.error("Error al enviar email:", error);
+                const toast = document.getElementById('form-status');
+                const toastText = document.getElementById('status-text');
+                const icon = toast.querySelector('i');
+                
+                toast.classList.remove('bg-green-600');
+                toast.classList.add('bg-red-600');
+                icon.className = 'fas fa-exclamation-triangle text-xl';
+                toastText.innerText = translations[currentLang].status_error;
+                toast.style.display = 'flex';
+                
+                setTimeout(() => { 
+                    toast.style.display = 'none'; 
+                    // Restaurar el color base por si se vuelve a usar sin recargar
+                    toast.classList.remove('bg-red-600');
+                    toast.classList.add('bg-green-600');
+                    icon.className = 'fas fa-check-circle text-xl';
+                }, 5000);
+            } finally {
+                // 5. Restaurar el botón a su estado original
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            }
         }
 
         function navigateTo(viewId) {
-            // Hide all views
             document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-            // Show target
             document.getElementById('view-' + viewId).classList.add('active');
-            
-            // Toggle visibility of navigation links if in legal pages
             const navLinks = document.getElementById('nav-desktop-links');
-            if (viewId === 'inicio') {
-                navLinks.classList.remove('lg:invisible');
-            } else {
-                navLinks.classList.add('lg:invisible');
-            }
-
-            // Scroll to top
+            if (viewId === 'inicio') { navLinks.classList.remove('lg:invisible'); } 
+            else { navLinks.classList.add('lg:invisible'); }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -705,43 +752,27 @@
             currentLang = lang;
             document.getElementById('current-lang-desktop').innerText = lang.toUpperCase();
             document.getElementById('current-lang-mobile').innerText = lang.toUpperCase();
-            
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    el.innerText = translations[lang][key];
-                }
+                if (translations[lang][key]) { el.innerText = translations[lang][key]; }
             });
-
-            // Update Legal Contents
             document.getElementById('legal-content-target').innerHTML = translations[lang].legal_content;
             document.getElementById('privacy-content-target').innerHTML = translations[lang].privacy_content;
-
             const activeRoomBtn = document.querySelector('.room-btn.active');
-            if(activeRoomBtn) {
-                const roomId = activeRoomBtn.id.replace('btn-', '');
-                showRoomDetails(roomId);
-            }
+            if(activeRoomBtn) { showRoomDetails(activeRoomBtn.id.replace('btn-', '')); }
         }
 
-        function toggleLanguage() {
-            setLanguage(currentLang === 'es' ? 'en' : 'es');
-        }
+        function toggleLanguage() { setLanguage(currentLang === 'es' ? 'en' : 'es'); }
 
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
         btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
-        mobileLinks.forEach(link => { link.addEventListener('click', () => { menu.classList.add('hidden'); }); });
+        document.querySelectorAll('.mobile-link').forEach(link => { link.addEventListener('click', () => { menu.classList.add('hidden'); }); });
 
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 20) {
-                nav.classList.add('shadow-md'); nav.classList.remove('py-2');
-            } else {
-                nav.classList.remove('shadow-md'); nav.classList.add('py-2');
-            }
+            if (window.scrollY > 20) { nav.classList.add('shadow-md'); } 
+            else { nav.classList.remove('shadow-md'); }
         });
 
         const roomDataKeys = {
@@ -762,32 +793,17 @@
 
             const keys = roomDataKeys[roomId];
             const dict = translations[currentLang];
-            const panel = document.getElementById('room-info-panel');
-            
-            panel.innerHTML = `
+            document.getElementById('room-info-panel').innerHTML = `
                 <div class="animate-fade-in">
-                    <div class="w-16 h-16 bg-sky-900 text-white rounded-full flex items-center justify-center text-2xl mb-6 shadow-md">
-                        <i class="fas ${keys.icon}" aria-hidden="true"></i>
-                    </div>
+                    <div class="w-16 h-16 bg-sky-900 text-white rounded-full flex items-center justify-center text-2xl mb-6 shadow-md"><i class="fas ${keys.icon}"></i></div>
                     <h3 class="text-2xl font-bold text-sky-900 mb-4">${dict[keys.t]}</h3>
                     <p class="text-gray-700 leading-relaxed mb-6">${dict[keys.d]}</p>
                     <h4 class="font-bold text-sky-800 mb-3 text-sm uppercase tracking-wide">${dict.sr_tech_title}</h4>
-                    <ul class="space-y-3">
-                        ${keys.f.map(fKey => `
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3" aria-hidden="true"></i>
-                                <span class="text-gray-700 text-sm">${dict[fKey]}</span>
-                            </li>
-                        `).join('')}
-                    </ul>
-                </div>
-            `;
+                    <ul class="space-y-3">${keys.f.map(fKey => `<li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><span class="text-gray-700 text-sm">${dict[fKey]}</span></li>`).join('')}</ul>
+                </div>`;
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            setLanguage('es');
-            showRoomDetails('dormitorio');
-        });
+        document.addEventListener('DOMContentLoaded', () => { setLanguage('es'); showRoomDetails('dormitorio'); });
     </script>
 </body>
 </html>
