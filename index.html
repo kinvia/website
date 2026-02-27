@@ -672,8 +672,6 @@
 
             try {
                 // 2. Llamada fetch a la función de Netlify Emails
-                // Importante: asegúrate de que tu plantilla se llame "contact" 
-                // o sustituye "contact" por el nombre de tu plantilla.
                 const response = await fetch("/.netlify/functions/emails/contact", {
                     method: "POST",
                     headers: {
@@ -682,7 +680,7 @@
                     },
                     body: JSON.stringify({
                         from: email,
-                        to: 'info@kinvia.es',
+                        to: "info@kinvia.es",
                         subject: `Consulta Web Kinvia: ${name}`,
                         parameters: {
                             name: name,
@@ -750,6 +748,10 @@
 
         function setLanguage(lang) {
             currentLang = lang;
+            
+            // GUARDAR PREFERENCIA EN LOCALSTORAGE
+            localStorage.setItem('kinvia_lang', lang);
+            
             document.documentElement.lang = lang; // Actualiza el atributo lang del HTML para SEO y accesibilidad
             document.getElementById('current-lang-desktop').innerText = lang.toUpperCase();
             document.getElementById('current-lang-mobile').innerText = lang.toUpperCase();
@@ -805,14 +807,25 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => { 
-            // Detectar el idioma del navegador
-            const browserLang = (navigator.language || navigator.userLanguage || 'es').split('-')[0].toLowerCase();
+            // 1. Comprobar si hay un idioma guardado en el LocalStorage
+            const savedLang = localStorage.getItem('kinvia_lang');
+            let initialLang = 'es'; // Idioma de respaldo por defecto
+
+            if (savedLang && translations[savedLang]) {
+                initialLang = savedLang;
+            } else {
+                // 2. Si no hay idioma guardado, detectamos el del navegador
+                const browserLang = (navigator.language || navigator.userLanguage || 'es').split('-')[0].toLowerCase();
+                initialLang = translations[browserLang] ? browserLang : 'es';
+            }
             
-            // Si el idioma del navegador está en nuestras traducciones, lo usamos. Si no, español por defecto.
-            const initialLang = translations[browserLang] ? browserLang : 'es';
-            
+            // 3. Aplicar el idioma seleccionado
             setLanguage(initialLang); 
-            showRoomDetails('dormitorio'); 
+            
+            // Renderizar los detalles del showroom inicial
+            if (document.getElementById('view-inicio').classList.contains('active')) {
+                showRoomDetails('dormitorio'); 
+            }
         });
     </script>
 </body>
