@@ -153,7 +153,14 @@
                     <video class="w-full h-full object-cover" muted loop playsinline poster="videos/poster-video1.png">
                         <source data-src="videos/video1.mp4" type="video/mp4">
                     </video>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
+                    <!-- Spinner de carga -->
+                    <div class="video-loader absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 bg-black/20">
+                        <svg class="animate-spin h-12 w-12 text-oroChampagne" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </div>
                 </div>
                 <div class="w-full md:w-1/2">
                     <h3 class="text-2xl font-bold mb-4" data-i18n="vid1_title">Acceso Biométrico y Bienvenida Inteligente</h3>
@@ -167,7 +174,14 @@
                     <video class="w-full h-full object-cover" muted loop playsinline poster="videos/poster-video2.png">
                         <source data-src="videos/video2.mp4" type="video/mp4">
                     </video>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
+                    <!-- Spinner de carga -->
+                    <div class="video-loader absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 bg-black/20">
+                        <svg class="animate-spin h-12 w-12 text-oroChampagne" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </div>
                 </div>
                 <div class="w-full md:w-1/2">
                     <h3 class="text-2xl font-bold mb-4" data-i18n="vid2_title">Acceso Vehicular sin Fricción</h3>
@@ -181,7 +195,14 @@
                     <video class="w-full h-full object-cover" muted loop playsinline poster="videos/poster-video3.png">
                         <source data-src="videos/video3.mp4" type="video/mp4">
                     </video>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
+                    <!-- Spinner de carga -->
+                    <div class="video-loader absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 bg-black/20">
+                        <svg class="animate-spin h-12 w-12 text-oroChampagne" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </div>
                 </div>
                 <div class="w-full md:w-1/2">
                     <h3 class="text-2xl font-bold mb-4" data-i18n="vid3_title">Respuesta Climática Autónoma</h3>
@@ -369,7 +390,7 @@
         }, scrollOptions);
         sections.forEach(section => { observer.observe(section); });
 
-        // 5. Lógica del Carrusel del Showroom (Rotación cada 10s y Lazy Load)
+        // 5. Lógica del Carrusel del Showroom y Spinner
         let currentSlide = 0;
         const totalSlides = 3;
         let slideInterval;
@@ -382,7 +403,6 @@
                     slide.classList.remove('opacity-0', 'z-0', 'pointer-events-none');
                     slide.classList.add('opacity-100', 'z-10');
                     
-                    // Carga diferida del vídeo
                     const source = video.querySelector('source');
                     if (!video.src && source.dataset.src) {
                         source.src = source.dataset.src;
@@ -396,7 +416,6 @@
                 }
             });
 
-            // Actualizar los puntos indicadores
             document.querySelectorAll('.slide-dot').forEach((dot, i) => {
                 dot.className = i === index 
                     ? 'w-3 h-3 rounded-full bg-oroChampagne transition slide-dot cursor-pointer' 
@@ -409,17 +428,14 @@
             goToSlide((currentSlide + 1) % totalSlides);
         }
 
-        // Observador específico para iniciar/pausar el carrusel cuando esté a la vista
         const showroomSection = document.getElementById('showroom');
         const showroomObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     isShowroomVisible = true;
-                    // Iniciar el intervalo y asegurar que el vídeo actual se reproduce
                     slideInterval = setInterval(nextSlide, 10000);
                     const currentVideo = document.querySelectorAll('.carousel-slide')[currentSlide].querySelector('video');
                     
-                    // Aseguramos que el primer video cargue si el usuario baja rápido
                     const source = currentVideo.querySelector('source');
                     if (!currentVideo.src && source.dataset.src) {
                         source.src = source.dataset.src;
@@ -429,7 +445,6 @@
                 } else {
                     isShowroomVisible = false;
                     clearInterval(slideInterval);
-                    // Pausar vídeos para no consumir recursos
                     const currentVideo = document.querySelectorAll('.carousel-slide')[currentSlide].querySelector('video');
                     currentVideo.pause();
                 }
@@ -438,7 +453,6 @@
         
         if (showroomSection) showroomObserver.observe(showroomSection);
 
-        // Control manual a través de los puntos
         document.querySelectorAll('.slide-dot').forEach(dot => {
             dot.addEventListener('click', (e) => {
                 const index = parseInt(e.target.getAttribute('data-target'));
@@ -447,6 +461,23 @@
                 if (isShowroomVisible) {
                     slideInterval = setInterval(nextSlide, 10000);
                 }
+            });
+        });
+
+        // Eventos del Spinner de carga para cada vídeo del carrusel
+        document.querySelectorAll('.carousel-slide video').forEach(video => {
+            const loader = video.parentElement.querySelector('.video-loader');
+            
+            video.addEventListener('playing', () => {
+                if (loader) loader.classList.add('opacity-0');
+            });
+            
+            video.addEventListener('waiting', () => {
+                if (loader) loader.classList.remove('opacity-0');
+            });
+            
+            video.addEventListener('loadstart', () => {
+                if (loader) loader.classList.remove('opacity-0');
             });
         });
     </script>
