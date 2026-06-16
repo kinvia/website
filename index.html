@@ -3,830 +3,335 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- FAVICONS & MANIFEST -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230c4a6e'/><text x='50%25' y='54%25' dominant-baseline='central' text-anchor='middle' font-family='Arial, sans-serif' font-weight='bold' font-size='55' fill='white'>K</text></svg>">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-
-    <!-- SEO BÁSICO -->
-    <title>Kinvia | Vida Independiente Asistida y Seguridad Familiar en el Levante</title>
-    <meta name="description" content="Kinvia ofrece soluciones de Vida Independiente Asistida en el Levante, Costa Cálida y Andalucía. Tecnología invisible para la autonomía de mayores y la tranquilidad de sus familias sin cámaras.">
-    <meta name="keywords" content="vida independiente asistida, cuidado de mayores costa blanca, tecnología invisible hogar, domótica para ancianos, seguridad familiar remota, alicante, murcia, málaga">
+    
+    <!-- SEO BÁSICO (Por defecto en Español) -->
+    <title>Kinvia | Inteligencia Residencial e IoT a Medida</title>
+    <meta name="description" content="Kinvia diseña e integra domótica de lujo y seguridad inteligente en Torrevieja. Ingeniería a medida sin alterar la estética de tu hogar. Privacidad 100%.">
+    <meta name="keywords" content="domótica Torrevieja, domótica de lujo Costa Blanca, casas inteligentes Alicante, seguridad inteligente sin cuotas, empresa domótica premium, instalación Home Assistant España, automatización de villas, sensores IoT a medida, alarmas privacidad local, domótica arquitectura integrada, Kinvia">
     <link rel="canonical" href="https://kinvia.es/">
     
-    <!-- OPEN GRAPH (Facebook/LinkedIn) -->
+    <!-- OPEN GRAPH (Facebook/LinkedIn/WhatsApp) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kinvia.es/">
-    <meta property="og:title" content="Kinvia | Independencia para ellos, paz para ti">
-    <meta property="og:description" content="Protegemos a tus seres queridos con tecnología invisible. Sin cámaras, respetando su privacidad en el Levante y Andalucía.">
+    <meta property="og:title" content="Kinvia | Inteligencia Residencial e IoT a Medida">
+    <meta property="og:description" content="Kinvia diseña e integra domótica de lujo y seguridad inteligente en Torrevieja. Ingeniería a medida sin alterar la estética de tu hogar. Privacidad 100%.">
     <meta property="og:image" content="https://kinvia.es/images/background.png">
 
     <!-- TWITTER CARDS -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Kinvia | Vida Independiente Asistida">
-    <meta name="twitter:description" content="Ecosistemas de cuidado para mayores y dependientes mediante sensores de radar mmWave.">
+    <meta name="twitter:title" content="Kinvia | Inteligencia Residencial e IoT a Medida">
+    <meta name="twitter:description" content="Kinvia diseña e integra domótica de lujo y seguridad inteligente en Torrevieja. Ingeniería a medida sin alterar la estética de tu hogar. Privacidad 100%.">
     <meta name="twitter:image" content="https://kinvia.es/images/background.png">
 
-    <!-- DATOS ESTRUCTURADOS (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Kinvia",
-      "image": "https://kinvia.es/images/background.png",
-      "@id": "https://kinvia.es",
-      "url": "https://kinvia.es",
-      "telephone": "",
-      "email": "info@kinvia.es",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Costa Blanca",
-        "addressLocality": "Alicante",
-        "addressRegion": "Comunidad Valenciana",
-        "addressCountry": "ES"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 38.3452,
-        "longitude": -0.4810
-      },
-      "areaServed": ["Comunidad Valenciana", "Región de Murcia", "Andalucía"],
-      "description": "Proveedor de soluciones de Vida Independiente Asistida mediante tecnología invisible y sensores de biometría."
-    }
-    </script>
-
-    <!-- Tailwind CSS -->
+    <!-- TAILWIND CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        azulMedianoche: '#0F2C59',
+                        oroChampagne: '#DAC0A3',
+                        grisGrafito: '#1E1E24',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #f8fafc;
-            color: #334155;
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-
-        .hero-bg {
-            background: linear-gradient(rgba(12, 74, 110, 0.7), rgba(12, 74, 110, 0.85)), 
-                        url('images/background.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .hover-card { transition: all 0.3s ease; }
-        .hover-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
-
-        .nav-link { position: relative; }
-        .nav-link::after {
-            content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
-            background-color: #16a34a; transition: width 0.3s ease;
-        }
-        .nav-link:hover::after { width: 100%; }
-
-        .room-btn { transition: all 0.3s ease; border: 2px solid transparent; }
-        .room-btn.active {
-            border-color: #0c4a6e; background-color: #f0f9ff; transform: scale(1.05);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 5px; }
-        ::-webkit-scrollbar-thumb:hover { background: #0c4a6e; }
-        
-        .lang-dropdown { display: none; }
-        .lang-wrapper:hover .lang-dropdown { display: block; }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
-        .animate-fade-in-up { animation: fadeIn 0.8s ease-out forwards; }
-
-        /* Navigation Views */
-        .view { display: none; }
-        .view.active { display: block; }
-
-        /* Toast message */
-        #form-status {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            animation: fadeIn 0.3s ease-out;
-        }
-
         .logo {
-            height: 80px;
-            width: auto;
-        }
-
-        .logo-bn {
-            height: 50px;
+            height: 40px;
             width: auto;
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="bg-black text-white font-sans antialiased">
 
-    <!-- STATUS NOTIFICATION -->
-    <div id="form-status" class="bg-green-600 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3">
-        <i class="fas fa-check-circle text-xl"></i>
-        <span id="status-text">Mensaje preparado para enviar</span>
-    </div>
+    <!-- NAVBAR FIXED -->
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10 px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-bold tracking-wider text-white">
+            <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                <img src="images/logo.png" alt="Kinvia Logo" class="logo" />
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-8">
+            <div class="space-x-6 text-sm tracking-widest uppercase text-gray-400 hidden md:block">
+                <a href="#filosofia" class="hover:text-oroChampagne transition" data-i18n="nav_synergy">Sinergia</a>
+                <a href="#ecosistema" class="hover:text-oroChampagne transition" data-i18n="nav_tech">Tecnología</a>
+                <a href="#showroom" class="hover:text-oroChampagne transition" data-i18n="nav_showroom">Showroom</a>
+                <a href="#contacto" class="border border-oroChampagne px-4 py-2 text-oroChampagne hover:bg-oroChampagne hover:text-black transition" data-i18n="nav_contact">Contacto</a>
+            </div>
+            <!-- Language Switcher -->
+            <div class="text-xs font-bold tracking-widest flex gap-2 border-l border-white/20 pl-6">
+                <button id="btn-es" onclick="setLanguage('es')" class="transition hover:text-white">ES</button>
+                <span class="text-gray-600">|</span>
+                <button id="btn-en" onclick="setLanguage('en')" class="transition hover:text-white">EN</button>
+            </div>
+        </div>
+    </nav>
 
-    <!-- NAVIGATION -->
-    <header>
-        <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300" id="navbar" aria-label="Navegación principal">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between h-20 items-center">
-                    <!-- Logo -->
-                    <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="navigateTo('inicio')">
-                        <img src="images/logo.png" alt="Kinvia Logo" class="logo" />
-                    </div>
-                    
-                    <!-- Desktop Menu -->
-                    <div class="hidden lg:flex space-x-8 items-center" id="nav-desktop-links">
-                        <a href="#quienes-somos" onclick="navigateTo('inicio')" class="nav-link text-gray-600 hover:text-sky-900 font-medium text-sm uppercase tracking-wide" data-i18n="nav_about">Quiénes Somos</a>
-                        <a href="#diferencial" onclick="navigateTo('inicio')" class="nav-link text-gray-600 hover:text-sky-900 font-medium text-sm uppercase tracking-wide" data-i18n="nav_why">Por qué Kinvia</a>
-                        <a href="#showroom" onclick="navigateTo('inicio')" class="nav-link text-gray-600 hover:text-sky-900 font-medium text-sm uppercase tracking-wide" data-i18n="nav_showroom">Showroom</a>
-                        <a href="#packs" onclick="navigateTo('inicio')" class="nav-link text-gray-600 hover:text-sky-900 font-medium text-sm uppercase tracking-wide" data-i18n="nav_packs">Packs</a>
-                        <a href="#contacto" onclick="navigateTo('inicio')" class="bg-green-600 text-white px-6 py-2.5 rounded-full hover:bg-green-700 transition shadow-md font-semibold text-sm" data-i18n="nav_contact">
-                            Contactar
-                        </a>
-                        
-                        <!-- Language Selector (Desktop) -->
-                        <div class="relative lang-wrapper py-2">
-                            <button class="flex items-center gap-1 text-gray-600 hover:text-sky-900 font-bold focus:outline-none" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-globe" aria-hidden="true"></i> <span id="current-lang-desktop">ES</span> <i class="fas fa-chevron-down text-xs ml-1" aria-hidden="true"></i>
-                            </button>
-                            <div class="lang-dropdown absolute right-0 mt-2 w-24 bg-white border border-gray-100 rounded-lg shadow-xl overflow-hidden">
-                                <button onclick="setLanguage('es')" class="w-full text-left px-4 py-2 hover:bg-sky-50 text-sm font-semibold text-gray-700">🇪🇸 ES</button>
-                                <button onclick="setLanguage('en')" class="w-full text-left px-4 py-2 hover:bg-sky-50 text-sm font-semibold text-gray-700">🇬🇧 EN</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Mobile Menu Buttons -->
-                    <div class="lg:hidden flex items-center gap-4">
-                        <button onclick="toggleLanguage()" class="flex items-center gap-1 text-sky-900 font-bold border border-sky-200 px-2 py-1 rounded-md bg-sky-50" aria-label="Cambiar idioma">
-                            <i class="fas fa-globe text-sm" aria-hidden="true"></i> <span id="current-lang-mobile">ES</span>
-                        </button>
-                        <button id="mobile-menu-btn" class="text-sky-900 focus:outline-none p-2" aria-label="Abrir menú">
-                            <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
-                        </button>
-                    </div>
+    <!-- SECTION 1: HERO -->
+    <section id="inicio" class="h-screen flex flex-col justify-center items-center text-center px-4 bg-gradient-to-b from-azulMedianoche/20 to-black">
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4" data-i18n="hero_title">
+            Inteligencia invisible.<br><span class="text-oroChampagne">Confort absoluto.</span>
+        </h1>
+        <p class="max-w-2xl text-gray-400 text-lg md:text-xl mb-8" data-i18n="hero_subtitle">
+            Diseñamos, programamos e integramos domótica de vanguardia sin alterar la estética de tu espacio. Código abierto, sin cuotas, a la medida de tu hogar en Torrevieja.
+        </p>
+        <a href="#filosofia" class="animate-bounce text-oroChampagne tracking-widest text-sm uppercase" data-i18n="hero_cta">
+            Explorar Kinvia ↓
+        </a>
+    </section>
+
+    <!-- SECTION 2: FILOSOFIA -->
+    <section id="filosofia" class="fade-in-section min-h-screen flex flex-col justify-center max-w-5xl mx-auto px-6 py-24">
+        <span class="text-oroChampagne tracking-widest uppercase text-xs mb-2" data-i18n="factor_tag">// El Factor Kinvia</span>
+        <h2 class="text-3xl md:text-5xl font-bold mb-6" data-i18n="factor_title">Ingeniería de software e integración arquitectónica en un mismo equipo.</h2>
+        <p class="text-gray-400 text-lg leading-relaxed max-w-3xl" data-i18n="factor_desc">
+            Instalar domótica convencional suele significar coordinar a un programador externo por un lado y a técnicos de instalación convencionales por otro. En <strong>Kinvia</strong> unimos ambos mundos. Nuestro equipo evalúa la estructura de tu vivienda, ejecuta la integración técnica de forma limpia y oculta, y programa sistemas robustos basados en hardware desarrollado a medida y plataformas Open Source. El resultado: tecnología impecable, estética intacta.
+        </p>
+    </section>
+
+    <!-- SECTION 3: ECOSISTEMA -->
+    <section id="ecosistema" class="fade-in-section min-h-screen bg-grisGrafito/30 py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <span class="text-oroChampagne tracking-widest uppercase text-xs mb-2" data-i18n="eco_tag">// Soluciones Avanzadas</span>
+            <h2 class="text-3xl md:text-5xl font-bold mb-12" data-i18n="eco_title">Tecnología sin ataduras corporativas.</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 border border-white/10 bg-black/40 hover:border-oroChampagne/50 transition duration-300">
+                    <div class="text-oroChampagne text-3xl mb-4">01</div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="card1_title">Domótica Invisible</h3>
+                    <p class="text-gray-400 text-sm" data-i18n="card1_desc">Control centralizado de iluminación, clima y persianas bajo Home Assistant. Tus datos no viajan a nubes externas; se quedan en tu propiedad.</p>
+                </div>
+                <div class="p-8 border border-white/10 bg-black/40 hover:border-oroChampagne/50 transition duration-300">
+                    <div class="text-oroChampagne text-3xl mb-4">02</div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="card2_title">Seguridad Contextual</h3>
+                    <p class="text-gray-400 text-sm" data-i18n="card2_desc">Sistemas perimetrales avanzados que detectan la presencia real de los miembros del hogar. Olvídate de los códigos engorrosos y las falsas alarmas.</p>
+                </div>
+                <div class="p-8 border border-white/10 bg-black/40 hover:border-oroChampagne/50 transition duration-300">
+                    <div class="text-oroChampagne text-3xl mb-4">03</div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="card3_title">Dispositivos a Medida</h3>
+                    <p class="text-gray-400 text-sm" data-i18n="card3_desc">Diseño y desarrollo de sensores propios utilizando microelectrónica avanzada. Resolvemos necesidades exclusivas arquitectónicas o de monitorización agrícola masiva.</p>
                 </div>
             </div>
-            
-            <!-- Mobile Dropdown -->
-            <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
-                <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
-                    <a href="#quienes-somos" onclick="navigateTo('inicio')" class="block px-3 py-3 text-gray-600 font-medium border-b border-gray-50 mobile-link" data-i18n="nav_about">Quiénes Somos</a>
-                    <a href="#diferencial" onclick="navigateTo('inicio')" class="block px-3 py-3 text-gray-600 font-medium border-b border-gray-50 mobile-link" data-i18n="nav_why">Por qué Kinvia</a>
-                    <a href="#showroom" onclick="navigateTo('inicio')" class="block px-3 py-3 text-gray-600 font-medium border-b border-gray-50 mobile-link" data-i18n="nav_showroom">Showroom Virtual</a>
-                    <a href="#packs" onclick="navigateTo('inicio')" class="block px-3 py-3 text-gray-600 font-medium border-b border-gray-50 mobile-link" data-i18n="nav_packs">Nuestros Packs</a>
-                    <a href="#contacto" onclick="navigateTo('inicio')" class="block px-3 py-3 text-green-600 font-bold mobile-link" data-i18n="nav_contact">Contacto Directo</a>
+        </div>
+    </section>
+
+    <!-- SECTION 4: SHOWROOM -->
+    <section id="showroom" class="fade-in-section min-h-screen py-24 px-6 max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+                <span class="text-oroChampagne tracking-widest uppercase text-xs mb-2" data-i18n="show_tag">// Showroom Virtual</span>
+                <h2 class="text-3xl md:text-5xl font-bold" data-i18n="show_title">El futuro automatizado, en acción.</h2>
+            </div>
+            <a href="/presentacion" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 border border-oroChampagne text-oroChampagne px-6 py-3 hover:bg-oroChampagne hover:text-black transition duration-300 uppercase tracking-widest text-xs font-bold whitespace-nowrap">
+                <span data-i18n="show_btn">Ver Presentación Corporativa</span> <span>&rarr;</span>
+            </a>
+        </div>
+        
+        <div class="space-y-24">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="w-full md:w-1/2 relative group overflow-hidden border border-white/10 rounded-sm bg-grisGrafito aspect-video">
+                    <video class="showroom-video w-full h-full object-cover opacity-0 transition-opacity duration-1000" muted loop playsinline poster="videos/poster-video1.png">
+                        <source data-src="videos/video1.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4" data-i18n="vid1_title">Sincronización Solar Térmica</h3>
+                    <p class="text-gray-400" data-i18n="vid1_desc">Las superficies acristaladas inteligentes se posicionan automáticamente calculando el ángulo del sol y la temperatura interior. Confort térmico pasivo sin intervención humana.</p>
                 </div>
             </div>
-        </nav>
-    </header>
-
-    <main>
-        <!-- MAIN LANDING VIEW -->
-        <div id="view-inicio" class="view active">
-            <!-- HERO SECTION -->
-            <section class="hero-bg min-h-screen flex items-center pt-20" aria-labelledby="hero-heading">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                    <div class="grid lg:grid-cols-2 gap-12 items-center">
-                        <div class="text-white space-y-8 animate-fade-in-up">
-                            <div class="inline-block bg-sky-800/50 backdrop-blur-sm border border-sky-400/30 text-sky-100 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide" data-i18n="hero_badge">
-                                Vida Independiente Asistida
-                            </div>
-                            <h1 id="hero-heading" class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight" data-i18n="hero_title">
-                                La independencia que ellos quieren, la paz que tú necesitas.
-                            </h1>
-                            <p class="text-lg md:text-xl text-sky-100 max-w-lg font-light leading-relaxed" data-i18n="hero_subtitle">
-                                Creamos entornos residenciales seguros mediante tecnología invisible. Protegemos a tus seres queridos sin invadir su privacidad en el Levante español.
-                            </p>
-                            <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                                <a href="#showroom" class="bg-green-600 text-white px-8 py-4 rounded-full font-bold text-center hover:bg-green-500 shadow-lg transition duration-300" data-i18n="hero_btn_explore">
-                                    Explorar Showroom
-                                </a>
-                                <a href="#contacto" class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full font-bold text-center hover:bg-white/20 transition duration-300" data-i18n="hero_btn_consult">
-                                    Asesoramiento Gratuito
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- QUIÉNES SOMOS & DÓNDE ESTAMOS -->
-            <section id="quienes-somos" class="py-24 bg-white relative">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center max-w-3xl mx-auto mb-16">
-                        <h2 class="text-3xl md:text-4xl font-bold text-sky-900 mb-6" data-i18n="about_title">Expertos en Vida Independiente Asistida</h2>
-                        <p class="text-lg text-gray-600 leading-relaxed" data-i18n="about_desc">
-                            Kinvia nace para resolver el desafío de la distancia familiar. Somos especialistas en adaptar hogares con tecnología invisible para garantizar la seguridad de padres y abuelos en toda la costa mediterránea.
-                        </p>
-                    </div>
-
-                    <div class="grid md:grid-cols-3 gap-8 mb-20">
-                        <article class="bg-slate-50 p-8 rounded-2xl text-center hover-card border border-slate-100">
-                            <div class="w-16 h-16 bg-sky-100 text-sky-600 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl" aria-hidden="true"><i class="fas fa-user-clock"></i></div>
-                            <h3 class="text-xl font-bold text-sky-900 mb-3" data-i18n="target_1_title">Seniors y Mayores</h3>
-                            <p class="text-gray-600 text-sm" data-i18n="target_1_desc">Envejecimiento digno en su propio hogar. Monitorización preventiva sin botones rojos intrusivos.</p>
-                        </article>
-                        <article class="bg-slate-50 p-8 rounded-2xl text-center hover-card border border-slate-100">
-                            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl" aria-hidden="true"><i class="fas fa-brain"></i></div>
-                            <h3 class="text-xl font-bold text-sky-900 mb-3" data-i18n="target_2_title">Neurodivergencia</h3>
-                            <p class="text-gray-600 text-sm" data-i18n="target_2_desc">Apoyo a la autonomía para perfiles TEA o Síndrome de Down, monitorizando riesgos críticos de forma discreta.</p>
-                        </article>
-                        <article class="bg-slate-50 p-8 rounded-2xl text-center hover-card border border-slate-100">
-                            <div class="w-16 h-16 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl" aria-hidden="true"><i class="fas fa-wheelchair"></i></div>
-                            <h3 class="text-xl font-bold text-sky-900 mb-3" data-i18n="target_3_title">Diversidad Funcional</h3>
-                            <p class="text-gray-600 text-sm" data-i18n="target_3_desc">Eliminación de barreras mediante domótica adaptativa, control por voz y accesos inteligentes.</p>
-                        </article>
-                    </div>
-
-                    <!-- Cobertura Geográfica -->
-                    <section class="bg-sky-900 rounded-3xl p-10 md:p-16 text-white shadow-xl overflow-hidden relative" aria-labelledby="coverage-heading">
-                        <i class="fas fa-map-marked-alt absolute -right-10 -bottom-10 text-9xl text-sky-800 opacity-50 transform -rotate-12" aria-hidden="true"></i>
-                        <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
-                            <div>
-                                <h2 id="coverage-heading" class="text-3xl font-bold mb-4" data-i18n="coverage_title">Cobertura en Levante, Costa Cálida y Andalucía</h2>
-                                <p class="text-sky-100 mb-8 text-lg" data-i18n="coverage_desc">
-                                    Instalamos nuestros ecosistemas de cuidado en las principales zonas residenciales del arco mediterráneo, asegurando soporte técnico presencial y bilingüe.
-                                </p>
-                                <ul class="space-y-4">
-                                    <li class="flex items-center text-lg"><i class="fas fa-check-circle text-green-400 mr-3" aria-hidden="true"></i> <strong data-i18n="region_1">Levante</strong> &nbsp;(Alicante, Valencia, Jávea, Altea)</li>
-                                    <li class="flex items-center text-lg"><i class="fas fa-check-circle text-green-400 mr-3" aria-hidden="true"></i> <strong data-i18n="region_2">Costa Cálida</strong> &nbsp;(Murcia, Cartagena)</li>
-                                    <li class="flex items-center text-lg"><i class="fas fa-check-circle text-green-400 mr-3" aria-hidden="true"></i> <strong data-i18n="region_3">Andalucía</strong> &nbsp;(Málaga, Costa del Sol)</li>
-                                </ul>
-                            </div>
-                            <div class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl text-center">
-                                <i class="fas fa-globe-europe text-5xl text-sky-300 mb-4" aria-hidden="true"></i>
-                                <h3 class="text-2xl font-bold mb-2" data-i18n="bilingual_title">Servicio 100% Bilingüe</h3>
-                                <div class="flex justify-center items-center gap-4 my-4 text-4xl drop-shadow-md">
-                                    <span title="Español" class="hover:scale-110 transition cursor-default">🇪🇸</span>
-                                    <span title="English" class="hover:scale-110 transition cursor-default">🇬🇧</span>
-                                </div>
-                                <p class="text-sky-100 text-sm leading-relaxed" data-i18n="bilingual_desc">Especialistas en atender a la comunidad internacional. Hablamos tu idioma para tu total tranquilidad.</p>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </section>
-
-            <!-- EL FACTOR DIFERENCIAL -->
-            <section id="diferencial" class="py-24 bg-slate-50" aria-labelledby="diff-heading">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-16">
-                        <h2 id="diff-heading" class="text-3xl md:text-4xl font-bold text-sky-900 mb-4" data-i18n="diff_title">Tecnología Invisible para un Cuidado Digno</h2>
-                        <p class="text-gray-600 max-w-2xl mx-auto" data-i18n="diff_desc">Nuestra ingeniería residencial se enfoca en la privacidad absoluta. Sin cámaras, sin grabaciones, solo protección inteligente.</p>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <article class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-sky-500 hover-card">
-                            <i class="fas fa-video-slash text-3xl text-sky-500 mb-4" aria-hidden="true"></i>
-                            <h3 class="font-bold text-lg text-gray-800 mb-2" data-i18n="feat_1_title">Privacidad Sin Cámaras</h3>
-                            <p class="text-sm text-gray-600" data-i18n="feat_1_desc">Sensores mmWave que detectan presencia y caídas sin invadir la intimidad visual de la persona.</p>
-                        </article>
-                        <article class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-green-500 hover-card">
-                            <i class="fas fa-server text-3xl text-green-500 mb-4" aria-hidden="true"></i>
-                            <h3 class="font-bold text-lg text-gray-800 mb-2" data-i18n="feat_2_title">Seguridad Local (Edge)</h3>
-                            <p class="text-sm text-gray-600" data-i18n="feat_2_desc">Los datos se procesan en la vivienda. Mayor rapidez y protección total contra hackeos en la nube.</p>
-                        </article>
-                        <article class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-orange-500 hover-card">
-                            <i class="fas fa-chart-line text-3xl text-orange-500 mb-4" aria-hidden="true"></i>
-                            <h3 class="font-bold text-lg text-gray-800 mb-2" data-i18n="feat_3_title">Detección Predictiva</h3>
-                            <p class="text-sm text-gray-600" data-i18n="feat_3_desc">Algoritmos que aprenden rutinas y alertan ante cambios sutiles antes de que ocurra una crisis.</p>
-                        </article>
-                        <article class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-purple-500 hover-card">
-                            <i class="fas fa-mobile-screen-button text-3xl text-purple-500 mb-4" aria-hidden="true"></i>
-                            <h3 class="font-bold text-lg text-gray-800 mb-2" data-i18n="feat_4_title">App Familiar Directa</h3>
-                            <p class="text-sm text-gray-600" data-i18n="feat_4_desc">Recibe notificaciones de bienestar diarias en tu móvil, vivas donde vivas.</p>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SHOWROOM INTERACTIVO -->
-            <section id="showroom" class="py-24 bg-sky-900 text-white relative overflow-hidden" aria-labelledby="showroom-heading">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                    <div class="text-center mb-12">
-                        <span class="bg-sky-800 text-sky-200 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 inline-block" data-i18n="sr_badge">Visita Virtual</span>
-                        <h2 id="showroom-heading" class="text-3xl md:text-4xl font-bold mb-4" data-i18n="sr_title">El Pack Premium en el Hogar</h2>
-                        <p class="text-sky-100 max-w-2xl mx-auto" data-i18n="sr_desc">
-                            Explora cómo nuestra tecnología protege de forma invisible cada estancia de la vivienda.
-                        </p>
-                    </div>
-
-                    <div class="bg-white rounded-3xl p-2 md:p-8 shadow-2xl text-gray-800 grid lg:grid-cols-12 gap-8">
-                        <div class="lg:col-span-7 bg-slate-100 rounded-2xl p-4 md:p-8">
-                            <nav class="grid grid-cols-2 gap-4 h-full" aria-label="Selector de estancias">
-                                <button onclick="showRoomDetails('dormitorio')" id="btn-dormitorio" class="room-btn active bg-white rounded-xl p-6 flex flex-col items-center justify-center gap-3 shadow-sm" aria-controls="room-info-panel">
-                                    <i class="fas fa-bed text-4xl text-sky-700" aria-hidden="true"></i>
-                                    <span class="font-bold text-sky-900" data-i18n="room_bed">Dormitorio</span>
-                                </button>
-                                <button onclick="showRoomDetails('bano')" id="btn-bano" class="room-btn bg-white rounded-xl p-6 flex flex-col items-center justify-center gap-3 shadow-sm" aria-controls="room-info-panel">
-                                    <i class="fas fa-bath text-4xl text-sky-700" aria-hidden="true"></i>
-                                    <span class="font-bold text-sky-900" data-i18n="room_bath">Baño</span>
-                                </button>
-                                <button onclick="showRoomDetails('cocina')" id="btn-cocina" class="room-btn bg-white rounded-xl p-6 flex flex-col items-center justify-center gap-3 shadow-sm" aria-controls="room-info-panel">
-                                    <i class="fas fa-utensils text-4xl text-sky-700" aria-hidden="true"></i>
-                                    <span class="font-bold text-sky-900" data-i18n="room_kitchen">Cocina</span>
-                                </button>
-                                <button onclick="showRoomDetails('salon')" id="btn-salon" class="room-btn bg-white rounded-xl p-6 flex flex-col items-center justify-center gap-3 shadow-sm" aria-controls="room-info-panel">
-                                    <i class="fas fa-couch text-4xl text-sky-700" aria-hidden="true"></i>
-                                    <span class="font-bold text-sky-900" data-i18n="room_living">Salón y Accesos</span>
-                                </button>
-                            </nav>
-                        </div>
-
-                        <div class="lg:col-span-5 flex flex-col justify-center">
-                            <div id="room-info-panel" class="bg-sky-50 p-8 rounded-2xl border border-sky-100 h-full" aria-live="polite">
-                                <!-- Injected by JS -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- PACKS DE SOLUCIONES -->
-            <section id="packs" class="py-24 bg-white" aria-labelledby="packs-heading">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-16">
-                        <h2 id="packs-heading" class="text-3xl md:text-4xl font-bold text-sky-900 mb-4" data-i18n="packs_title">Soluciones Adaptadas a cada Necesidad</h2>
-                        <p class="text-gray-600 max-w-2xl mx-auto" data-i18n="packs_desc">Nuestros packs ofrecen una arquitectura tecnológica escalable para la protección total del hogar.</p>
-                    </div>
-
-                    <div class="grid lg:grid-cols-3 gap-8">
-                        <!-- Básica -->
-                        <div class="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-shadow relative flex flex-col">
-                            <div class="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center text-2xl mb-6" aria-hidden="true"><i class="fas fa-shield-alt"></i></div>
-                            <h3 class="text-2xl font-bold text-gray-800 mb-2" data-i18n="pack1_title">Seguridad Básica</h3>
-                            <p class="text-gray-500 text-sm mb-6 h-10" data-i18n="pack1_desc">Ideal para personas con alta autonomía.</p>
-                            <ul class="space-y-4 mb-8 flex-grow">
-                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3" aria-hidden="true"></i> <span class="text-sm text-gray-600" data-i18n="pack1_f1">Sensores de movimiento y presencia.</span></li>
-                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3" aria-hidden="true"></i> <span class="text-sm text-gray-600" data-i18n="pack1_f2">Control de puertas y ventanas.</span></li>
-                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3" aria-hidden="true"></i> <span class="text-sm text-gray-600" data-i18n="pack1_f3">Iluminación nocturna automática.</span></li>
-                            </ul>
-                            <a href="#contacto" class="w-full block text-center border-2 border-sky-900 text-sky-900 font-bold py-3 rounded-xl hover:bg-sky-50 transition" data-i18n="btn_consult">Solicitar Presupuesto</a>
-                        </div>
-
-                        <!-- Plus -->
-                        <div class="bg-sky-900 rounded-3xl p-8 shadow-xl relative flex flex-col transform md:-translate-y-4">
-                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-orange-500 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest" data-i18n="pack2_badge">Recomendado</div>
-                            <div class="w-14 h-14 bg-sky-800 text-sky-300 rounded-2xl flex items-center justify-center text-2xl mb-6" aria-hidden="true"><i class="fas fa-universal-access"></i></div>
-                            <h3 class="text-2xl font-bold text-white mb-2" data-i18n="pack2_title">Autonomía Plus</h3>
-                            <p class="text-sky-200 text-sm mb-6 h-10" data-i18n="pack2_desc">El equilibrio entre libertad y supervisión.</p>
-                            <ul class="space-y-4 mb-8 flex-grow">
-                                <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3" aria-hidden="true"></i> <span class="text-sm text-sky-100 font-semibold" data-i18n="pack2_f1">Pack Básico Incluido</span></li>
-                                <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3" aria-hidden="true"></i> <span class="text-sm text-sky-100" data-i18n="pack2_f4">Cerradura inteligente remota.</span></li>
-                                <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3" aria-hidden="true"></i> <span class="text-sm text-sky-100" data-i18n="pack2_f5">Control por voz del hogar.</span></li>
-                            </ul>
-                            <a href="#contacto" class="w-full block text-center bg-green-600 text-white font-bold py-3 rounded-xl hover:bg-green-500 transition shadow-lg" data-i18n="btn_consult">Más información</a>
-                        </div>
-
-                        <!-- Premium -->
-                        <div class="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-shadow relative flex flex-col">
-                            <div class="w-14 h-14 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center text-2xl mb-6" aria-hidden="true"><i class="fas fa-heartbeat"></i></div>
-                            <h3 class="text-2xl font-bold text-gray-800 mb-2" data-i18n="pack3_title">Vida Premium</h3>
-                            <p class="text-gray-500 text-sm mb-6 h-10" data-i18n="pack3_desc">Máxima protección biométrica y médica.</p>
-                            <ul class="space-y-4 mb-8 flex-grow">
-                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3" aria-hidden="true"></i> <span class="text-sm text-gray-600 font-semibold" data-i18n="pack3_f1">Pack Plus Incluido</span></li>
-                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3" aria-hidden="true"></i> <span class="text-sm text-gray-600" data-i18n="pack3_f2">Radar de caídas mmWave.</span></li>
-                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3" aria-hidden="true"></i> <span class="text-sm text-gray-600" data-i18n="pack3_f3">Biometría sin contacto en cama.</span></li>
-                            </ul>
-                            <a href="#contacto" class="w-full block text-center border-2 border-sky-900 text-sky-900 font-bold py-3 rounded-xl hover:bg-sky-50 transition" data-i18n="btn_consult">Consultar disponibilidad</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CONTACTO -->
-            <section id="contacto" class="py-24 bg-slate-100" aria-labelledby="contact-heading">
-                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row">
-                        <div class="md:w-5/12 bg-sky-900 text-white p-10 flex flex-col justify-between">
-                            <div>
-                                <h2 id="contact-heading" class="text-3xl font-bold mb-4" data-i18n="contact_title">Tu tranquilidad empieza hoy</h2>
-                                <p class="text-sky-200 mb-8" data-i18n="contact_desc">Nuestro equipo de ingeniería en Alicante está listo para asesorarte de forma bilingüe.</p>
-                                
-                                <div class="space-y-6">
-                                    <div class="flex items-start">
-                                        <i class="fas fa-map-marker-alt mt-1 mr-4 text-sky-400 text-xl" aria-hidden="true"></i>
-                                        <div>
-                                            <h4 class="font-bold" data-i18n="contact_info_1">Sede Central</h4>
-                                            <p class="text-sky-200 text-sm" data-i18n="contact_info_1_sub">Costa Blanca, Levante español</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <i class="fas fa-envelope mt-1 mr-4 text-sky-400 text-xl" aria-hidden="true"></i>
-                                        <div>
-                                            <h4 class="font-bold">Email</h4>
-                                            <p class="text-sky-200 text-sm">info@kinvia.es</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="md:w-7/12 p-10">
-                            <form id="contact-form" class="space-y-6" onsubmit="handleFormSubmit(event)">
-                                <div class="grid grid-cols-2 gap-6">
-                                    <div class="col-span-2 sm:col-span-1">
-                                        <label for="name" class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="form_name">Nombre</label>
-                                        <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:ring-sky-500 transition" required>
-                                    </div>
-                                    <div class="col-span-2 sm:col-span-1">
-                                        <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="form_phone">Teléfono de contacto</label>
-                                        <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:ring-sky-500 transition">
-                                    </div>
-                                </div>
-                                <div>
-                                    <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
-                                    <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:ring-sky-500 transition" required>
-                                </div>
-                                <div>
-                                    <label for="query" class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="form_query">¿En qué podemos ayudarte?</label>
-                                    <textarea id="query" name="query" rows="4" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:ring-sky-500 transition" required></textarea>
-                                </div>
-                                <button type="submit" class="w-full bg-sky-900 text-white font-bold py-4 rounded-xl hover:bg-sky-800 transition shadow-lg" data-i18n="form_submit">Solicitar Estudio Personalizado</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </div>
+    </section>
 
-        <!-- LEGAL NOTICE VIEW -->
-        <div id="view-legal" class="view">
-            <section class="py-32 bg-white">
-                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <button onclick="navigateTo('inicio')" class="mb-10 flex items-center gap-2 text-sky-900 font-bold hover:text-green-600 transition">
-                        <i class="fas fa-arrow-left"></i> <span data-i18n="btn_back">Volver al Inicio</span>
-                    </button>
-                    <h1 class="text-3xl md:text-5xl font-bold text-sky-900 mb-8" data-i18n="legal_title">Aviso Legal</h1>
-                    <div class="prose prose-sky max-w-none text-gray-600 space-y-6" id="legal-content-target">
-                        <!-- Translatable content loaded by JS -->
-                    </div>
+    <!-- SECTION 5: CONTACTO -->
+    <section id="contacto" class="fade-in-section min-h-screen flex flex-col justify-center items-center px-6 py-24 bg-gradient-to-t from-azulMedianoche/10 to-black">
+        <div class="max-w-xl w-full border border-white/10 p-8 md:p-12 bg-grisGrafito/20 backdrop-blur-sm">
+            <h2 class="text-3xl font-bold mb-2 text-center" data-i18n="contact_title">Inicia tu proyecto con Kinvia</h2>
+            <p class="text-gray-400 text-sm text-center mb-8" data-i18n="contact_desc">Cuéntanos qué necesitas automatizar o proteger en la zona de Torrevieja y alrededores.</p>
+            <form class="space-y-6">
+                <div>
+                    <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2" data-i18n="contact_lbl_name">Nombre o Empresa</label>
+                    <input type="text" class="w-full bg-black/60 border border-white/20 p-3 text-white focus:outline-none focus:border-oroChampagne">
                 </div>
-            </section>
-        </div>
-
-        <!-- PRIVACY POLICY VIEW -->
-        <div id="view-privacy" class="view">
-            <section class="py-32 bg-white">
-                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <button onclick="navigateTo('inicio')" class="mb-10 flex items-center gap-2 text-sky-900 font-bold hover:text-green-600 transition">
-                        <i class="fas fa-arrow-left"></i> <span data-i18n="btn_back">Volver al Inicio</span>
-                    </button>
-                    <h1 class="text-3xl md:text-5xl font-bold text-sky-900 mb-8" data-i18n="privacy_title">Política de Privacidad</h1>
-                    <div class="prose prose-sky max-w-none text-gray-600 space-y-6" id="privacy-content-target">
-                        <!-- Translatable content loaded by JS -->
-                    </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2" data-i18n="contact_lbl_type">Tipo de Propiedad</label>
+                    <select class="w-full bg-black/60 border border-white/20 p-3 text-white focus:outline-none focus:border-oroChampagne">
+                        <option data-i18n="contact_opt_1">Vivienda Residencial de Lujo</option>
+                        <option data-i18n="contact_opt_2">Explotación Agrícola / Sensores Especiales</option>
+                        <option data-i18n="contact_opt_3">Local u Oficina Comercial</option>
+                    </select>
                 </div>
-            </section>
+                <button type="submit" class="w-full bg-oroChampagne text-black font-bold uppercase tracking-widest p-4 hover:bg-white transition duration-300" data-i18n="contact_btn">
+                    Solicitar Auditoría Técnica
+                </button>
+            </form>
         </div>
-    </main>
+    </section>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-900 text-slate-400 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
-            <div class="md:col-span-2">
-                <div class="flex items-center gap-2 mb-4">
-                    <img src="images/logo-white.png" class="logo-bn" alt="Kinvia Logo White">
-                </div>
-                <p class="text-sm max-w-sm mb-6" data-i18n="footer_desc">Vida Independiente Asistida. Soluciones de tecnología invisible para la protección de mayores en el hogar en el arco mediterráneo.</p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-4" data-i18n="footer_links">Menú</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="#quienes-somos" onclick="navigateTo('inicio')" class="hover:text-white transition" data-i18n="nav_about">Quiénes Somos</a></li>
-                    <li><a href="#diferencial" onclick="navigateTo('inicio')" class="hover:text-white transition" data-i18n="nav_why">Por qué Kinvia</a></li>
-                    <li><a href="#packs" onclick="navigateTo('inicio')" class="hover:text-white transition" data-i18n="nav_packs">Packs de Servicio</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-4" data-i18n="footer_legal">Legal</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><button onclick="navigateTo('legal')" class="hover:text-white transition text-left" data-i18n="nav_legal">Aviso Legal</button></li>
-                    <li><button onclick="navigateTo('privacy')" class="hover:text-white transition text-left" data-i18n="nav_privacy">Privacidad</button></li>
-                </ul>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800 mt-12 pt-8 text-sm text-center">
-            &copy; 2026 Kinvia. Expertos en Cuidado Residencial Tecnológico.
-        </div>
+    <footer class="border-t border-white/10 py-8 text-center text-xs text-gray-600 tracking-wider" data-i18n="footer_text">
+        &copy; 2026 KINVIA. Todos los derechos reservados. Torrevieja, España.
     </footer>
 
+    <!-- SCRIPTS CORE -->
     <script>
-        const translations = {
+        // 1. Diccionario de Traducciones y Metadatos (i18n)
+        const i18n = {
             es: {
-                nav_about: "Quiénes Somos", nav_why: "Por qué Kinvia", nav_showroom: "Showroom", nav_packs: "Packs", nav_contact: "Contactar",
-                nav_legal: "Aviso Legal", nav_privacy: "Privacidad", btn_back: "Volver al Inicio",
-                hero_badge: "Vida Independiente Asistida",
-                hero_title: "La independencia que ellos quieren, la paz que tú necesitas.",
-                hero_subtitle: "Creamos entornos residenciales seguros mediante tecnología invisible. Protegemos a tus seres queridos sin invadir su privacidad en el Levante español.",
-                hero_btn_explore: "Explorar Showroom", hero_btn_consult: "Asesoramiento Gratuito",
-                about_title: "Expertos en Vida Independiente Asistida",
-                about_desc: "Kinvia nace para resolver el desafío de la distancia familiar. Somos especialistas en adaptar hogares con tecnología invisible para garantizar la seguridad de padres y abuelos en toda la costa mediterránea.",
-                target_1_title: "Seniors y Mayores", target_1_desc: "Envejecimiento digno en su propio hogar. Monitorización preventiva sin botones rojos intrusivos.",
-                target_2_title: "Neurodivergencia", target_2_desc: "Apoyo a la autonomía para perfiles TEA o Síndrome de Down, monitorizando riesgos críticos de forma discreta.",
-                target_3_title: "Diversidad Funcional", target_3_desc: "Eliminación de barreras mediante domótica adaptativa, control por voz y accesos inteligentes.",
-                coverage_title: "Cobertura en Levante, Costa Cálida y Andalucía",
-                coverage_desc: "Instalamos nuestros ecosistemas de cuidado en las principales zonas residenciales del arco mediterráneo, asegurando soporte técnico presencial y bilingüe.",
-                region_1: "Levante", region_2: "Costa Cálida", region_3: "Andalucía",
-                bilingual_title: "Servicio 100% Bilingüe",
-                bilingual_desc: "Especialistas en atender a la comunidad internacional. Hablamos tu idioma para tu total tranquilidad.",
-                diff_title: "Tecnología Invisible para un Cuidado Digno",
-                diff_desc: "Nuestra ingeniería residencial se enfoca en la privacidad absoluta. Sin cámaras, sin grabaciones, solo protección inteligente.",
-                feat_1_title: "Privacidad Sin Cámaras", feat_1_desc: "Sensores mmWave que detectan presencia y caídas sin invadir la intimidad visual de la persona.",
-                feat_2_title: "Seguridad Local (Edge)", feat_2_desc: "Los datos se procesan en la vivienda. Mayor rapidez y protección total contra hackeos en la nube.",
-                feat_3_title: "Detección Predictiva", feat_3_desc: "Algoritmos que aprenden rutinas y alertan ante cambios sutiles antes de que ocurra una crisis.",
-                feat_4_title: "App Familiar Directa", feat_4_desc: "Recibe notificaciones de bienestar diarias en tu móvil, vivas donde vivas.",
-                sr_badge: "Visita Virtual", sr_title: "El Pack Premium en el Hogar",
-                sr_desc: "Explora cómo nuestra tecnología protege de forma invisible cada estancia de la vivienda.",
-                room_bed: "Dormitorio", room_bath: "Baño", room_kitchen: "Cocina", room_living: "Salón y Accesos",
-                sr_t_bed: "Dormitorio: Biometría 360º", sr_d_bed: "Monitorización constante de respiración y ritmo cardíaco sin contacto.",
-                sr_f1_bed: "Radar mmWave de alta precisión", sr_f2_bed: "Luces de paso automáticas", sr_f3_bed: "Detección de caídas perimetral",
-                sr_t_bath: "Baño: Seguridad Contra Caídas", sr_d_bath: "Sensores inmunes al vapor que alertan de caídas instantáneamente.",
-                sr_f1_bath: "Radar específico para baños", sr_f2_bath: "Aviso por inactividad", sr_f3_bath: "Protección de privacidad total",
-                sr_t_kit: "Cocina: Prevención de Riesgos", sr_d_kit: "Control de fuegos, humo y patrones de alimentación diarios.",
-                sr_f1_kit: "Sensor de consumo eléctrico", sr_f2_kit: "Detector de humo inteligente", sr_f3_kit: "Registro de actividad de nevera",
-                sr_t_liv: "Salón: Bienestar y Accesos", sr_d_liv: "El núcleo de la vida social, protegido y accesible para familiares.",
-                sr_f1_liv: "Robot de telepresencia para emergencias", sr_f2_liv: "Cerradura inteligente remota", sr_f3_liv: "Asistente de voz adaptativo",
-                sr_tech_title: "Ingeniería Aplicada:",
-                packs_title: "Soluciones Adaptadas a cada Necesidad", packs_desc: "Nuestros packs ofrecen una arquitectura tecnológica escalable para la protección total del hogar.",
-                pack1_title: "Seguridad Básica", pack1_desc: "Ideal para personas con alta autonomía.",
-                pack1_f1: "Sensores de movimiento y presencia.", pack1_f2: "Control de puertas y ventanas.", pack1_f3: "Iluminación nocturna automática.",
-                btn_consult: "Solicitar Presupuesto", pack2_badge: "Recomendado",
-                pack2_title: "Autonomía Plus", pack2_desc: "El equilibrio entre libertad y supervisión.",
-                pack2_f1: "Pack Básico Incluido", pack2_f4: "Cerradura inteligente remota.", pack2_f5: "Control por voz del hogar.",
-                pack3_title: "Vida Premium", pack3_desc: "Máxima protección biométrica y médica.",
-                pack3_f1: "Pack Plus Incluido", pack3_f2: "Radar de caídas mmWave.", pack3_f3: "Biometría sin contacto en cama.",
-                packs_disclaimer: "* Todos los packs requieren suscripción mensual (monitorización y mantenimiento).",
-                contact_title: "Tu tranquilidad empieza hoy", contact_desc: "Nuestro equipo de ingeniería en Alicante está listo para asesorarte de forma bilingüe.",
-                contact_info_1: "Sede Central", contact_info_1_sub: "Costa Blanca, Levante español",
-                form_name: "Nombre", form_phone: "Teléfono de contacto", form_query: "¿En qué podemos ayudarte?", form_submit: "Solicitar Estudio Personalizado",
-                footer_desc: "Vida Independiente Asistida. Soluciones de tecnología invisible para la protección de mayores en el hogar en el arco mediterráneo.",
-                footer_links: "Menú", footer_legal: "Legal",
-                legal_title: "Aviso Legal",
-                legal_content: "<p>En cumplimiento con la Ley 34/2002 de servicios de la sociedad de la información, le informamos que este sitio es propiedad de Kinvia S.L., con domicilio en Costa Blanca, España.</p><p>El acceso a este sitio web implica la aceptación de las condiciones de uso aquí descritas. Los contenidos, marcas y logotipos son propiedad de Kinvia.</p>",
-                privacy_title: "Política de Privacidad",
-                privacy_content: "<p>Kinvia se compromete a proteger la privacidad de sus usuarios. Sus datos personales serán tratados conforme al Reglamento General de Protección de Datos (RGPD).</p><p>Utilizamos tecnologías no invasivas (radares mmWave) que no capturan imágenes ni audio. Los datos de salud y comportamiento se procesan localmente para garantizar su máxima seguridad.</p>",
-                status_ready: "Mensaje preparado para enviar",
-                status_success: "Mensaje enviado correctamente",
-                status_error: "Hubo un error al enviar. Por favor, inténtalo de nuevo.",
-                btn_sending: "Enviando..."
+                page_title: "Kinvia | Inteligencia Residencial e IoT a Medida",
+                meta_desc: "Kinvia diseña e integra domótica de lujo y seguridad inteligente en Torrevieja. Ingeniería a medida sin alterar la estética de tu hogar. Privacidad 100%.",
+                nav_synergy: "Sinergia", nav_tech: "Tecnología", nav_showroom: "Showroom", nav_contact: "Contacto",
+                hero_title: "Inteligencia invisible.<br><span class='text-oroChampagne'>Confort absoluto.</span>",
+                hero_subtitle: "Diseñamos, programamos e integramos domótica de vanguardia sin alterar la estética de tu espacio. Código abierto, sin cuotas, a la medida de tu hogar en Torrevieja.",
+                hero_cta: "Explorar Kinvia ↓",
+                factor_tag: "// El Factor Kinvia",
+                factor_title: "Ingeniería de software e integración arquitectónica en un mismo equipo.",
+                factor_desc: "Instalar domótica convencional suele significar coordinar a un programador externo por un lado y a técnicos de instalación convencionales por otro. En <strong>Kinvia</strong> unimos ambos mundos. Nuestro equipo evalúa la estructura de tu vivienda, ejecuta la integración técnica de forma limpia y oculta, y programa sistemas robustos basados en hardware desarrollado a medida y plataformas Open Source. El resultado: tecnología impecable, estética intacta.",
+                eco_tag: "// Soluciones Avanzadas",
+                eco_title: "Tecnología sin ataduras corporativas.",
+                card1_title: "Domótica Invisible",
+                card1_desc: "Control centralizado de iluminación, clima y persianas bajo Home Assistant. Tus datos no viajan a nubes externas; se quedan en tu propiedad.",
+                card2_title: "Seguridad Contextual",
+                card2_desc: "Sistemas perimetrales avanzados que detectan la presencia real de los miembros del hogar. Olvídate de los códigos engorrosos y las falsas alarmas.",
+                card3_title: "Dispositivos a Medida",
+                card3_desc: "Diseño y desarrollo de sensores propios utilizando microelectrónica avanzada. Resolvemos necesidades exclusivas arquitectónicas o de monitorización agrícola masiva.",
+                show_tag: "// Showroom Virtual",
+                show_title: "El futuro automatizado, en acción.",
+                show_btn: "Ver Presentación Corporativa",
+                vid1_title: "Sincronización Solar Térmica",
+                vid1_desc: "Las superficies acristaladas inteligentes se posicionan automáticamente calculando el ángulo del sol y la temperatura interior. Confort térmico pasivo sin intervención humana.",
+                contact_title: "Inicia tu proyecto con Kinvia",
+                contact_desc: "Cuéntanos qué necesitas automatizar o proteger en la zona de Torrevieja y alrededores.",
+                contact_lbl_name: "Nombre o Empresa",
+                contact_lbl_type: "Tipo de Propiedad",
+                contact_opt_1: "Vivienda Residencial de Lujo",
+                contact_opt_2: "Explotación Agrícola / Sensores Especiales",
+                contact_opt_3: "Local u Oficina Comercial",
+                contact_btn: "Solicitar Auditoría Técnica",
+                footer_text: "&copy; 2026 KINVIA. Todos los derechos reservados. Torrevieja, España."
             },
             en: {
-                nav_about: "About Us", nav_why: "Why Kinvia", nav_showroom: "Showroom", nav_packs: "Packages", nav_contact: "Contact",
-                nav_legal: "Legal Notice", nav_privacy: "Privacy", btn_back: "Back Home",
-                hero_badge: "Assisted Independent Living",
-                hero_title: "The independence they want, the peace of mind you need.",
-                hero_subtitle: "We create safe residential environments through invisible technology. Protecting your loved ones without invading their privacy in Spain.",
-                hero_btn_explore: "Explore Showroom", hero_btn_consult: "Free Consultation",
-                about_title: "Experts in Assisted Independent Living",
-                about_desc: "Kinvia was born to solve the family distance challenge. We specialize in adapting homes with invisible tech to ensure safety for parents and grandparents.",
-                target_1_title: "Seniors & Elderly", target_1_desc: "Ageing in place with dignity. Preventive monitoring without intrusive emergency buttons.",
-                target_2_title: "Neurodivergence", target_2_desc: "Supporting autonomy for ASD or Down Syndrome profiles by discreetly monitoring critical risks.",
-                target_3_title: "Functional Diversity", target_3_desc: "Removing barriers through adaptive smart homes, voice control, and smart access.",
-                coverage_title: "Coverage in Levante, Costa Calida & Andalusia",
-                coverage_desc: "We install our care ecosystems in the main Mediterranean coastal areas, ensuring on-site and bilingual technical support.",
-                region_1: "Levante", region_2: "Costa Calida", region_3: "Andalusia",
-                bilingual_title: "100% Bilingual Service",
-                bilingual_desc: "Specialists in serving the international community. We speak your language for your total peace of mind.",
-                diff_title: "Invisible Technology for Dignified Care",
-                diff_desc: "Our residential engineering focuses on absolute privacy. No cameras, no recordings, just smart protection.",
-                feat_1_title: "Privacy Without Cameras", feat_1_desc: "mmWave sensors detecting presence and falls without invading visual privacy.",
-                feat_2_title: "Local Security (Edge)", feat_2_desc: "Data is processed within the home. Faster response and total protection against cloud hacks.",
-                feat_3_title: "Predictive Detection", feat_3_desc: "Algorithms that learn routines and alert to subtle changes before a crisis occurs.",
-                feat_4_title: "Direct Family App", feat_4_desc: "Receive daily well-being notifications on your phone, wherever you live.",
-                sr_badge: "Virtual Visit", sr_title: "The Premium Pack at Home",
-                sr_desc: "Explore how our technology invisibly protects every room in the home.",
-                room_bed: "Bedroom", room_bath: "Bathroom", room_kitchen: "Kitchen", room_living: "Living & Access",
-                sr_t_bed: "Bedroom: 360º Biometrics", sr_d_bed: "Constant non-contact monitoring of breathing and heart rate.",
-                sr_f1_bed: "High-precision mmWave radar", sr_f2_bed: "Automatic pathway lights", sr_f3_bed: "Perimeter fall detection",
-                sr_t_bath: "Bathroom: Fall Security", sr_d_bath: "Steam-immune sensors that alert to falls instantaneously.",
-                sr_f1_bath: "Specific bathroom radar", sr_f2_bath: "Inactivity alert", sr_f3_bath: "Total privacy protection",
-                sr_t_kit: "Kitchen: Risk Prevention", sr_d_kit: "Monitoring of hobs, smoke, and daily nutrition patterns.",
-                sr_f1_kit: "Electric consumption sensor", sr_f2_kit: "Smart smoke detector", sr_f3_kit: "Fridge activity log",
-                sr_t_liv: "Living: Wellbeing & Access", sr_d_liv: "The core of social life, protected and accessible for relatives.",
-                sr_f1_liv: "Emergency telepresence robot", sr_f2_liv: "Remote smart lock", sr_f3_liv: "Adaptive voice assistant",
-                sr_tech_title: "Applied Engineering:",
-                packs_title: "Solutions Adapted to Every Need", packs_desc: "Our packs offer a scalable tech architecture for total home protection.",
-                pack1_title: "Basic Security", pack1_desc: "Ideal for highly independent individuals.",
-                pack1_f1: "Movement and presence sensors.", pack1_f2: "Door and window control.", pack1_f3: "Automatic night lighting.",
-                btn_consult: "Request Quote", pack2_badge: "Recommended",
-                pack2_title: "Autonomy Plus", pack2_desc: "The balance between freedom and supervision.",
-                pack2_f1: "Basic Pack Included", pack2_f4: "Remote smart lock.", pack2_f5: "Voice control for home.",
-                pack3_title: "Premium Living", pack3_desc: "Maximum biometric and medical protection.",
-                pack3_f1: "Plus Pack Included", pack3_f2: "mmWave fall detection radar.", pack3_f3: "Contactless bed biometrics.",
-                packs_disclaimer: "* All packs require a monthly subscription (monitoring & maintenance).",
-                contact_title: "Peace of mind starts today", contact_desc: "Our engineering team in Alicante is ready to advise you in your own language.",
-                contact_info_1: "Headquarters", contact_info_1_sub: "Costa Blanca, Spanish Levante",
-                form_name: "Name", form_phone: "Contact Phone", form_query: "How can we help you?", form_submit: "Request Personal Study",
-                footer_desc: "Assisted Independent Living. Invisible technology solutions for home elderly protection in the Mediterranean.",
-                footer_links: "Menu", footer_legal: "Legal",
-                legal_title: "Legal Notice",
-                legal_content: "<p>In compliance with international and Spanish digital information laws, this site is owned by Kinvia S.L., located in Costa Blanca, Spain.</p><p>Access to this website implies acceptance of the terms of use. All content is protected property of Kinvia.</p>",
-                privacy_title: "Privacy Policy",
-                privacy_content: "<p>Kinvia is committed to protecting user privacy. Your personal data is treated in accordance with GDPR regulations.</p><p>We use non-invasive technology (mmWave radar) that does not capture audio or visual images. All processing is local to ensure data safety.</p>",
-                status_ready: "Message ready to send",
-                status_success: "Message sent successfully",
-                status_error: "Error sending message. Please try again.",
-                btn_sending: "Sending..."
+                page_title: "Kinvia | Custom Smart Home & IoT Intelligence",
+                meta_desc: "Kinvia designs high-end home automation and smart security in Torrevieja. Invisible architectural integration, 100% private, with no monthly fees.",
+                nav_synergy: "Synergy", nav_tech: "Technology", nav_showroom: "Showroom", nav_contact: "Contact",
+                hero_title: "Invisible intelligence.<br><span class='text-oroChampagne'>Absolute comfort.</span>",
+                hero_subtitle: "We design, program, and integrate cutting-edge home automation without altering the aesthetics of your space. Open source, no fees, tailored to your home in Torrevieja.",
+                hero_cta: "Explore Kinvia ↓",
+                factor_tag: "// The Kinvia Factor",
+                factor_title: "Software engineering and architectural integration in the same team.",
+                factor_desc: "Installing conventional home automation usually means coordinating an external programmer on one side and conventional installation technicians on the other. At <strong>Kinvia</strong> we unite both worlds. Our team evaluates your home's structure, executes the technical integration cleanly and hidden, and programs robust systems based on custom-developed hardware and Open Source platforms. The result: flawless technology, intact aesthetics.",
+                eco_tag: "// Advanced Solutions",
+                eco_title: "Technology without corporate ties.",
+                card1_title: "Invisible Automation",
+                card1_desc: "Centralized control of lighting, climate, and blinds under Home Assistant. Your data does not travel to external clouds; it stays on your property.",
+                card2_title: "Contextual Security",
+                card2_desc: "Advanced perimeter systems that detect the real presence of household members. Forget cumbersome codes and false alarms.",
+                card3_title: "Custom Devices",
+                card3_desc: "Design and development of proprietary sensors using advanced microelectronics. We solve exclusive architectural or massive agricultural monitoring needs.",
+                show_tag: "// Virtual Showroom",
+                show_title: "The automated future, in action.",
+                show_btn: "View Corporate Presentation",
+                vid1_title: "Thermal Solar Synchronization",
+                vid1_desc: "Smart glass surfaces position themselves automatically by calculating the sun's angle and interior temperature. Passive thermal comfort without human intervention.",
+                contact_title: "Start your project with Kinvia",
+                contact_desc: "Tell us what you need to automate or protect in the Torrevieja area and surroundings.",
+                contact_lbl_name: "Name or Company",
+                contact_lbl_type: "Property Type",
+                contact_opt_1: "Luxury Residential Home",
+                contact_opt_2: "Agricultural Operation / Special Sensors",
+                contact_opt_3: "Commercial Premise or Office",
+                contact_btn: "Request Technical Audit",
+                footer_text: "&copy; 2026 KINVIA. All rights reserved. Torrevieja, Spain."
             }
         };
 
-        let currentLang = 'es';
-
-        async function handleFormSubmit(event) {
-            event.preventDefault();
-            const form = event.target;
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerText;
-
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const query = document.getElementById('query').value;
-
-            // 1. Estado de carga visual
-            submitBtn.innerText = translations[currentLang].btn_sending;
-            submitBtn.disabled = true;
-            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
-
-            try {
-                // 2. Llamada fetch a la función de Netlify Emails
-                const response = await fetch("/.netlify/functions/emails/contact", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "netlify-emails-secret": '30ab8b8f-21b6-441d-91d5-e27e765f6d1a'
-                    },
-                    body: JSON.stringify({
-                        from: email,
-                        to: "info@kinvia.es",
-                        subject: `Consulta Web Kinvia: ${name}`,
-                        parameters: {
-                            name: name,
-                            phone: phone || 'No facilitado',
-                            email: email,
-                            query: query
-                        }
-                    })
-                });
-
-                const toast = document.getElementById('form-status');
-                const toastText = document.getElementById('status-text');
-                const icon = toast.querySelector('i');
-
-                // 3. Manejo de respuesta exitosa
-                if (response.ok) {
-                    toast.classList.remove('bg-red-600');
-                    toast.classList.add('bg-green-600');
-                    icon.className = 'fas fa-check-circle text-xl';
-                    toastText.innerText = translations[currentLang].status_success;
-                    form.reset();
-                } else {
-                    throw new Error("Error en la respuesta de Netlify");
-                }
-
-                toast.style.display = 'flex';
-                setTimeout(() => { toast.style.display = 'none'; }, 5000);
-
-            } catch (error) {
-                // 4. Manejo de errores
-                console.error("Error al enviar email:", error);
-                const toast = document.getElementById('form-status');
-                const toastText = document.getElementById('status-text');
-                const icon = toast.querySelector('i');
-                
-                toast.classList.remove('bg-green-600');
-                toast.classList.add('bg-red-600');
-                icon.className = 'fas fa-exclamation-triangle text-xl';
-                toastText.innerText = translations[currentLang].status_error;
-                toast.style.display = 'flex';
-                
-                setTimeout(() => { 
-                    toast.style.display = 'none'; 
-                    // Restaurar el color base por si se vuelve a usar sin recargar
-                    toast.classList.remove('bg-red-600');
-                    toast.classList.add('bg-green-600');
-                    icon.className = 'fas fa-check-circle text-xl';
-                }, 5000);
-            } finally {
-                // 5. Restaurar el botón a su estado original
-                submitBtn.innerText = originalBtnText;
-                submitBtn.disabled = false;
-                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
-            }
-        }
-
-        function navigateTo(viewId) {
-            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-            document.getElementById('view-' + viewId).classList.add('active');
-            const navLinks = document.getElementById('nav-desktop-links');
-            if (viewId === 'inicio') { navLinks.classList.remove('lg:invisible'); } 
-            else { navLinks.classList.add('lg:invisible'); }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
+        // 2. Lógica de Idioma y SEO Dinámico
         function setLanguage(lang) {
-            currentLang = lang;
-            
-            // GUARDAR PREFERENCIA EN LOCALSTORAGE
             localStorage.setItem('kinvia_lang', lang);
+            document.documentElement.lang = lang;
             
-            document.documentElement.lang = lang; // Actualiza el atributo lang del HTML para SEO y accesibilidad
-            document.getElementById('current-lang-desktop').innerText = lang.toUpperCase();
-            document.getElementById('current-lang-mobile').innerText = lang.toUpperCase();
+            // Actualizar apariencia de botones del menú
+            document.getElementById('btn-es').className = lang === 'es' ? 'text-oroChampagne transition' : 'text-gray-600 hover:text-white transition';
+            document.getElementById('btn-en').className = lang === 'en' ? 'text-oroChampagne transition' : 'text-gray-600 hover:text-white transition';
+
+            // Reemplazar textos de la web
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) { el.innerText = translations[lang][key]; }
+                if (i18n[lang][key]) {
+                    el.innerHTML = i18n[lang][key];
+                }
             });
-            document.getElementById('legal-content-target').innerHTML = translations[lang].legal_content;
-            document.getElementById('privacy-content-target').innerHTML = translations[lang].privacy_content;
-            const activeRoomBtn = document.querySelector('.room-btn.active');
-            if(activeRoomBtn) { showRoomDetails(activeRoomBtn.id.replace('btn-', '')); }
+
+            // Reemplazar etiquetas Meta y Title dinámicamente para rastreadores JS / Navegador
+            if (i18n[lang].page_title && i18n[lang].meta_desc) {
+                document.title = i18n[lang].page_title;
+                document.querySelector('meta[name="description"]')?.setAttribute("content", i18n[lang].meta_desc);
+                document.querySelector('meta[property="og:title"]')?.setAttribute("content", i18n[lang].page_title);
+                document.querySelector('meta[property="og:description"]')?.setAttribute("content", i18n[lang].meta_desc);
+                document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", i18n[lang].page_title);
+                document.querySelector('meta[name="twitter:description"]')?.setAttribute("content", i18n[lang].meta_desc);
+            }
         }
 
-        function toggleLanguage() { setLanguage(currentLang === 'es' ? 'en' : 'es'); }
-
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
-        document.querySelectorAll('.mobile-link').forEach(link => { link.addEventListener('click', () => { menu.classList.add('hidden'); }); });
-
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 20) { nav.classList.add('shadow-md'); } 
-            else { nav.classList.remove('shadow-md'); }
+        // 3. Inicialización al cargar la web
+        window.addEventListener('DOMContentLoaded', () => {
+            let savedLang = localStorage.getItem('kinvia_lang');
+            if (!savedLang) {
+                const browserLang = navigator.language || navigator.userLanguage;
+                savedLang = browserLang.startsWith('es') ? 'es' : 'en';
+            }
+            setLanguage(savedLang);
         });
 
-        const roomDataKeys = {
-            dormitorio: { t: "sr_t_bed", d: "sr_d_bed", f: ["sr_f1_bed", "sr_f2_bed", "sr_f3_bed"], icon: "fa-bed" },
-            bano: { t: "sr_t_bath", d: "sr_d_bath", f: ["sr_f1_bath", "sr_f2_bath", "sr_f3_bath"], icon: "fa-bath" },
-            cocina: { t: "sr_t_kit", d: "sr_d_kit", f: ["sr_f1_kit", "sr_f2_kit", "sr_f3_kit"], icon: "fa-utensils" },
-            salon: { t: "sr_t_liv", d: "sr_d_liv", f: ["sr_f1_liv", "sr_f2_liv", "sr_f3_liv"], icon: "fa-couch" }
-        };
-
-        function showRoomDetails(roomId) {
-            document.querySelectorAll('.room-btn').forEach(btn => {
-                btn.classList.remove('active', 'border-sky-900', 'bg-sky-50', 'scale-105');
-                btn.classList.add('bg-white');
+        // 4. Animaciones y Scroll
+        const sections = document.querySelectorAll('.fade-in-section');
+        const options = { threshold: 0.1 };
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
             });
-            const activeBtn = document.getElementById(`btn-${roomId}`);
-            activeBtn.classList.add('active', 'border-sky-900', 'bg-sky-50', 'scale-105');
-            activeBtn.classList.remove('bg-white');
+        }, options);
+        sections.forEach(section => { observer.observe(section); });
 
-            const keys = roomDataKeys[roomId];
-            const dict = translations[currentLang];
-            document.getElementById('room-info-panel').innerHTML = `
-                <div class="animate-fade-in">
-                    <div class="w-16 h-16 bg-sky-900 text-white rounded-full flex items-center justify-center text-2xl mb-6 shadow-md"><i class="fas ${keys.icon}"></i></div>
-                    <h3 class="text-2xl font-bold text-sky-900 mb-4">${dict[keys.t]}</h3>
-                    <p class="text-gray-700 leading-relaxed mb-6">${dict[keys.d]}</p>
-                    <h4 class="font-bold text-sky-800 mb-3 text-sm uppercase tracking-wide">${dict.sr_tech_title}</h4>
-                    <ul class="space-y-3">${keys.f.map(fKey => `<li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><span class="text-gray-700 text-sm">${dict[fKey]}</span></li>`).join('')}</ul>
-                </div>`;
-        }
-
-        document.addEventListener('DOMContentLoaded', () => { 
-            // 1. Comprobar si hay un idioma guardado en el LocalStorage
-            const savedLang = localStorage.getItem('kinvia_lang');
-            let initialLang = 'es'; // Idioma de respaldo por defecto
-
-            if (savedLang && translations[savedLang]) {
-                initialLang = savedLang;
-            } else {
-                // 2. Si no hay idioma guardado, detectamos el del navegador
-                const browserLang = (navigator.language || navigator.userLanguage || 'es').split('-')[0].toLowerCase();
-                initialLang = translations[browserLang] ? browserLang : 'es';
-            }
-            
-            // 3. Aplicar el idioma seleccionado
-            setLanguage(initialLang); 
-            
-            // Renderizar los detalles del showroom inicial
-            if (document.getElementById('view-inicio').classList.contains('active')) {
-                showRoomDetails('dormitorio'); 
-            }
-        });
+        // 5. Video Lazy Loading
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const video = entry.target;
+                    const source = video.querySelector('source');
+                    if (!video.src && source.dataset.src) {
+                        source.src = source.dataset.src;
+                        video.load();
+                        video.classList.remove('opacity-0');
+                    }
+                    video.play();
+                } else {
+                    entry.target.pause();
+                }
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.showroom-video').forEach(v => videoObserver.observe(v));
     </script>
 </body>
 </html>
