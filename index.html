@@ -17,7 +17,7 @@
     <meta name="description" content="Transformamos viviendas de lujo en hogares inteligentes con IA. Sistemas abiertos, sin obsolescencia y con privacidad total en Torrevieja y Alicante.">
     <meta name="keywords" content="inteligencia artificial hogar, domótica Torrevieja, casas inteligentes Alicante, alternativas KNX, domótica sin obras, seguridad privacidad local, automatización lujo, Kinvia">
     <link rel="canonical" href="https://kinvia.es/">
-      
+    
     <!-- OPEN GRAPH (Facebook/LinkedIn/WhatsApp) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kinvia.es/">
@@ -74,11 +74,11 @@
         
         <div class="flex items-center gap-8">
             <div class="space-x-6 text-sm tracking-widest uppercase text-gray-400 hidden md:block">
-                <a href="#inteligencia" class="hover:text-oroChampagne transition" data-i18n="nav_ai">Inteligencia</a>
-                <a href="#diferencia" class="hover:text-oroChampagne transition" data-i18n="nav_diff">Diferencia</a>
-                <a href="#servicios" class="hover:text-oroChampagne transition" data-i18n="nav_services">Servicios</a>
-                <a href="#showroom" class="hover:text-oroChampagne transition" data-i18n="nav_showroom">Showroom</a>
-                <a href="#contacto" class="border border-oroChampagne px-4 py-2 text-oroChampagne hover:bg-oroChampagne hover:text-black transition" data-i18n="nav_contact">Contacto</a>
+                <a href="#inteligencia" class="nav-menu-link hover:text-oroChampagne transition" data-i18n="nav_ai">Inteligencia</a>
+                <a href="#diferencia" class="nav-menu-link hover:text-oroChampagne transition" data-i18n="nav_diff">Diferencia</a>
+                <a href="#servicios" class="nav-menu-link hover:text-oroChampagne transition" data-i18n="nav_services">Servicios</a>
+                <a href="#showroom" class="nav-menu-link hover:text-oroChampagne transition" data-i18n="nav_showroom">Showroom</a>
+                <a href="#contacto" class="nav-menu-link border border-oroChampagne px-4 py-2 text-oroChampagne hover:bg-oroChampagne hover:text-black transition" data-i18n="nav_contact">Contacto</a>
             </div>
             <!-- Language Switcher -->
             <div class="text-xs font-bold tracking-widest flex gap-2 border-l border-white/20 pl-6">
@@ -231,7 +231,7 @@
                 </div>
                 <div class="w-full md:w-1/2">
                     <h3 class="text-2xl font-bold mb-4" data-i18n="vid3_title">Previsión Meteorológica Activa</h3>
-                    <p class="text-gray-400" data-i18n="vid3_desc">El ecosistema lee los datos meteorológicos en tiempo real: si detecta lluvia, pausa el riego automático de los jardines, retrae los toldos por seguridad y ajusta persianas preventivamente.</p>
+                    <p class="text-gray-400" data-i18n="vid3_desc">El ecosistema lee los datos meteorológicos en tiempo real: si detecta lluvia, pausa el riego automático, retrae los toldos por seguridad y ajusta persianas preventivamente.</p>
                 </div>
             </div>
         </div>
@@ -431,6 +431,36 @@
             });
         }, scrollOptions);
         sections.forEach(section => { observer.observe(section); });
+
+        // Scroll Spy Corrección (Texto Negro en Contacto)
+        const navLinks = document.querySelectorAll('.nav-menu-link');
+        const sectionsToSpy = document.querySelectorAll('section');
+        const spyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        const href = link.getAttribute('href');
+                        if (href === '#' + id) {
+                            if (href === '#contacto') {
+                                link.classList.add('bg-oroChampagne', 'text-black');
+                                link.classList.remove('text-oroChampagne');
+                            } else {
+                                link.classList.add('text-oroChampagne');
+                            }
+                        } else {
+                            if (href === '#contacto') {
+                                link.classList.remove('bg-oroChampagne', 'text-black');
+                                link.classList.add('text-oroChampagne');
+                            } else {
+                                link.classList.remove('text-oroChampagne');
+                            }
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-50% 0px -50% 0px' });
+        sectionsToSpy.forEach(sec => spyObserver.observe(sec));
 
         // Lógica del Carrusel del Showroom y Spinner
         let currentSlide = 0;
