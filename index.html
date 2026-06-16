@@ -134,7 +134,7 @@
         </div>
     </section>
 
-    <!-- SECTION 4: SHOWROOM -->
+    <!-- SECTION 4: SHOWROOM (CARRUSEL INTERACTIVO) -->
     <section id="showroom" class="fade-in-section min-h-screen py-24 px-6 max-w-6xl mx-auto">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
             <div>
@@ -146,11 +146,11 @@
             </a>
         </div>
         
-        <div class="space-y-24">
-            <!-- Caso 1: Actualizado con el concepto de Bienvenida Inteligente -->
-            <div class="flex flex-col md:flex-row items-center gap-12">
+        <div class="relative grid grid-cols-1 grid-rows-1 w-full">
+            <!-- Slide 1: Acceso Biométrico -->
+            <div class="carousel-slide col-start-1 row-start-1 transition-opacity duration-1000 opacity-100 z-10 flex flex-col md:flex-row items-center gap-12" data-index="0">
                 <div class="w-full md:w-1/2 relative group overflow-hidden border border-white/10 rounded-sm bg-grisGrafito aspect-video">
-                    <video class="showroom-video w-full h-full object-cover opacity-0 transition-opacity duration-1000" muted loop playsinline poster="videos/poster-video1.png">
+                    <video class="w-full h-full object-cover" muted loop playsinline poster="videos/poster-video1.png">
                         <source data-src="videos/video1.mp4" type="video/mp4">
                     </video>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
@@ -160,6 +160,41 @@
                     <p class="text-gray-400" data-i18n="vid1_desc">Abre con tu huella. Al entrar al jardín, la alarma se desactiva y las cámaras se apagan para garantizar tu privacidad, mientras las luces guían tu camino. Al cruzar la puerta, tu hogar te recibe: persianas elevándose, climatización ideal y tu música de jazz sonando de fondo.</p>
                 </div>
             </div>
+
+            <!-- Slide 2: Garaje / Android Auto -->
+            <div class="carousel-slide col-start-1 row-start-1 transition-opacity duration-1000 opacity-0 z-0 pointer-events-none flex flex-col md:flex-row items-center gap-12" data-index="1">
+                <div class="w-full md:w-1/2 relative group overflow-hidden border border-white/10 rounded-sm bg-grisGrafito aspect-video">
+                    <video class="w-full h-full object-cover" muted loop playsinline poster="videos/poster-video2.png">
+                        <source data-src="videos/video2.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4" data-i18n="vid2_title">Acceso Vehicular sin Fricción</h3>
+                    <p class="text-gray-400" data-i18n="vid2_desc">Abre la puerta del garaje automáticamente por proximidad al acercarte con tu coche, o mediante un simple toque desde la pantalla táctil de Apple CarPlay o Android Auto.</p>
+                </div>
+            </div>
+
+            <!-- Slide 3: Climatología y Riego -->
+            <div class="carousel-slide col-start-1 row-start-1 transition-opacity duration-1000 opacity-0 z-0 pointer-events-none flex flex-col md:flex-row items-center gap-12" data-index="2">
+                <div class="w-full md:w-1/2 relative group overflow-hidden border border-white/10 rounded-sm bg-grisGrafito aspect-video">
+                    <video class="w-full h-full object-cover" muted loop playsinline poster="videos/poster-video3.png">
+                        <source data-src="videos/video3.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4" data-i18n="vid3_title">Respuesta Climática Autónoma</h3>
+                    <p class="text-gray-400" data-i18n="vid3_desc">Tu hogar reacciona al clima en tiempo real: el riego se desactiva si empieza a llover, los toldos se recogen de forma preventiva y las persianas se cierran para evitar que los cristales se ensucien.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controles del Carrusel -->
+        <div class="flex justify-center gap-4 mt-12">
+            <button class="w-3 h-3 rounded-full bg-oroChampagne transition slide-dot cursor-pointer" data-target="0" aria-label="Slide 1"></button>
+            <button class="w-3 h-3 rounded-full bg-white/20 hover:bg-white/50 transition slide-dot cursor-pointer" data-target="1" aria-label="Slide 2"></button>
+            <button class="w-3 h-3 rounded-full bg-white/20 hover:bg-white/50 transition slide-dot cursor-pointer" data-target="2" aria-label="Slide 3"></button>
         </div>
     </section>
 
@@ -167,7 +202,18 @@
     <section id="contacto" class="fade-in-section min-h-screen flex flex-col justify-center items-center px-6 py-24 bg-gradient-to-t from-azulMedianoche/10 to-black">
         <div class="max-w-xl w-full border border-white/10 p-8 md:p-12 bg-grisGrafito/20 backdrop-blur-sm">
             <h2 class="text-3xl font-bold mb-2 text-center" data-i18n="contact_title">Inicia tu proyecto con Kinvia</h2>
-            <p class="text-gray-400 text-sm text-center mb-8" data-i18n="contact_desc">Cuéntanos qué necesitas automatizar o proteger en la zona de Torrevieja y alrededores.</p>
+            <p class="text-gray-400 text-sm text-center mb-6" data-i18n="contact_desc">Cuéntanos qué necesitas automatizar o proteger en la zona de Torrevieja y alrededores.</p>
+            
+            <!-- Botón de Llamada Directa -->
+            <div class="text-center mb-10">
+                <a href="tel:+34604490781" class="inline-flex items-center gap-3 text-oroChampagne text-2xl md:text-3xl font-bold hover:text-white transition">
+                    <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    </svg>
+                    +34 604 49 07 81
+                </a>
+            </div>
+
             <form class="space-y-6">
                 <div>
                     <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2" data-i18n="contact_lbl_name">Nombre o Empresa</label>
@@ -220,6 +266,10 @@
                 show_btn: "Ver Presentación Corporativa",
                 vid1_title: "Acceso Biométrico y Bienvenida Inteligente",
                 vid1_desc: "Abre con tu huella. Al entrar al jardín, la alarma se desactiva y las cámaras se apagan para garantizar tu privacidad, mientras las luces guían tu camino. Al cruzar la puerta, tu hogar te recibe: persianas elevándose, climatización ideal y tu música de jazz sonando de fondo.",
+                vid2_title: "Acceso Vehicular sin Fricción",
+                vid2_desc: "Abre la puerta del garaje automáticamente por proximidad al acercarte con tu coche, o mediante un simple toque desde la pantalla táctil de Apple CarPlay o Android Auto.",
+                vid3_title: "Respuesta Climática Autónoma",
+                vid3_desc: "Tu hogar reacciona al clima en tiempo real: el riego se desactiva si empieza a llover, los toldos se recogen de forma preventiva y las persianas se cierran para evitar que los cristales se ensucien.",
                 contact_title: "Inicia tu proyecto con Kinvia",
                 contact_desc: "Cuéntanos qué necesitas automatizar o proteger en la zona de Torrevieja y alrededores.",
                 contact_lbl_name: "Nombre o Empresa",
@@ -253,6 +303,10 @@
                 show_btn: "View Corporate Presentation",
                 vid1_title: "Biometric Access & Smart Welcome",
                 vid1_desc: "Unlock the gate with your fingerprint. As you enter, the alarm seamlessly deactivates, cameras turn off for your privacy, and a path of light guides you. Upon crossing the main door, your home comes alive: blinds rising, perfect climate control, and your favorite jazz music playing in the background.",
+                vid2_title: "Frictionless Vehicle Access",
+                vid2_desc: "Open the garage door automatically by proximity as you approach with your car, or with a simple tap from your Apple CarPlay or Android Auto touchscreen.",
+                vid3_title: "Autonomous Climate Response",
+                vid3_desc: "Your home reacts to the weather in real-time: irrigation stops if it starts raining, awnings retract preventively, and blinds close to keep the windows spotless.",
                 contact_title: "Start your project with Kinvia",
                 contact_desc: "Tell us what you need to automate or protect in the Torrevieja area and surroundings.",
                 contact_lbl_name: "Name or Company",
@@ -305,34 +359,96 @@
 
         // 4. Animaciones y Scroll
         const sections = document.querySelectorAll('.fade-in-section');
-        const options = { threshold: 0.1 };
+        const scrollOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
                 }
             });
-        }, options);
+        }, scrollOptions);
         sections.forEach(section => { observer.observe(section); });
 
-        // 5. Video Lazy Loading
-        const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const video = entry.target;
+        // 5. Lógica del Carrusel del Showroom (Rotación cada 10s y Lazy Load)
+        let currentSlide = 0;
+        const totalSlides = 3;
+        let slideInterval;
+        let isShowroomVisible = false;
+
+        function goToSlide(index) {
+            document.querySelectorAll('.carousel-slide').forEach((slide, i) => {
+                const video = slide.querySelector('video');
+                if (i === index) {
+                    slide.classList.remove('opacity-0', 'z-0', 'pointer-events-none');
+                    slide.classList.add('opacity-100', 'z-10');
+                    
+                    // Carga diferida del vídeo
                     const source = video.querySelector('source');
                     if (!video.src && source.dataset.src) {
                         source.src = source.dataset.src;
                         video.load();
-                        video.classList.remove('opacity-0');
                     }
-                    video.play();
+                    if(isShowroomVisible) video.play();
                 } else {
-                    entry.target.pause();
+                    slide.classList.remove('opacity-100', 'z-10');
+                    slide.classList.add('opacity-0', 'z-0', 'pointer-events-none');
+                    video.pause();
+                }
+            });
+
+            // Actualizar los puntos indicadores
+            document.querySelectorAll('.slide-dot').forEach((dot, i) => {
+                dot.className = i === index 
+                    ? 'w-3 h-3 rounded-full bg-oroChampagne transition slide-dot cursor-pointer' 
+                    : 'w-3 h-3 rounded-full bg-white/20 hover:bg-white/50 transition slide-dot cursor-pointer';
+            });
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            goToSlide((currentSlide + 1) % totalSlides);
+        }
+
+        // Observador específico para iniciar/pausar el carrusel cuando esté a la vista
+        const showroomSection = document.getElementById('showroom');
+        const showroomObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    isShowroomVisible = true;
+                    // Iniciar el intervalo y asegurar que el vídeo actual se reproduce
+                    slideInterval = setInterval(nextSlide, 10000);
+                    const currentVideo = document.querySelectorAll('.carousel-slide')[currentSlide].querySelector('video');
+                    
+                    // Aseguramos que el primer video cargue si el usuario baja rápido
+                    const source = currentVideo.querySelector('source');
+                    if (!currentVideo.src && source.dataset.src) {
+                        source.src = source.dataset.src;
+                        currentVideo.load();
+                    }
+                    currentVideo.play();
+                } else {
+                    isShowroomVisible = false;
+                    clearInterval(slideInterval);
+                    // Pausar vídeos para no consumir recursos
+                    const currentVideo = document.querySelectorAll('.carousel-slide')[currentSlide].querySelector('video');
+                    currentVideo.pause();
                 }
             });
         }, { threshold: 0.3 });
-        document.querySelectorAll('.showroom-video').forEach(v => videoObserver.observe(v));
+        
+        if (showroomSection) showroomObserver.observe(showroomSection);
+
+        // Control manual a través de los puntos
+        document.querySelectorAll('.slide-dot').forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                const index = parseInt(e.target.getAttribute('data-target'));
+                clearInterval(slideInterval);
+                goToSlide(index);
+                if (isShowroomVisible) {
+                    slideInterval = setInterval(nextSlide, 10000);
+                }
+            });
+        });
     </script>
 </body>
 </html>
