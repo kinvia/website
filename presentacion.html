@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kinvia - Tu Hogar Inteligente</title>
+    <title>Kinvia - Dossier Corporativo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -100,46 +100,6 @@
             width: 100%;
         }
 
-        /* CHARTS */
-        .chart-container {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        .bar {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .bar-label {
-            flex: 0 0 250px;
-            text-align: right;
-            font-weight: 600;
-        }
-
-        .bar-bg {
-            flex-grow: 1;
-            background: #222;
-            height: 35px;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #0F2C59, #DAC0A3);
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 15px;
-            font-weight: bold;
-            color: #000;
-        }
-
         /* TABLES */
         table {
             width: 100%;
@@ -151,49 +111,13 @@
             color: #DAC0A3;
             padding: 15px;
             text-align: left;
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
         }
 
         td {
             padding: 15px;
             border-bottom: 1px solid #333;
-        }
-
-        /* TIMELINE */
-        .timeline {
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            width: 100%;
-            padding-top: 40px;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            top: 60px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: #333;
-        }
-
-        .timeline-item {
-            text-align: center;
-            width: 23%;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            width: 20px;
-            height: 20px;
-            background: #DAC0A3;
-            border-radius: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
         }
 
         /* TILES */
@@ -210,6 +134,10 @@
             padding: 35px;
             border-radius: 8px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
         }
 
         .tile i {
@@ -240,6 +168,10 @@
 
         .bleed-text-side {
             padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
         }
 
         .bleed-image-side {
@@ -251,59 +183,69 @@
 </head>
 <body>
 
-<!-- SLIDE 1: PORTADA -->
 <div class="slide-container" id="slide1">
     <img src="images/logo.png" alt="Kinvia Logo" style="height: 120px; margin-bottom: 30px; object-fit: contain;">
-    
     <p style="font-size: 32px; letter-spacing: 5px; color: #DAC0A3; text-transform: uppercase;">Inteligencia Residencial</p>
     <div style="width: 80px; height: 3px; background: #0F2C59; margin: 30px 0;"></div>
-    <p style="font-size: 24px; font-weight: 300;">La tecnología que entiende tu estilo de vida.</p>
+    <p style="font-size: 24px; font-weight: 300;">Tu hogar, impulsado por Inteligencia Artificial.</p>
 </div>
 
-<!-- SLIDE 2: VISIÓN -->
 <div class="slide-container" id="slide2">
-    <div style="text-align: center;">
-        <h2 style="font-size: 64px;">Un nuevo estándar<br>de <span style="color:#fff;">confort invisible</span>.</h2>
-        <p style="margin-top: 20px; font-size: 24px; color: #DAC0A3;">Ingeniería avanzada aplicada al hogar.</p>
+    <div style="text-align: center; max-width: 900px;">
+        <h2 style="font-size: 64px; line-height: 1.2;">No es domótica.<br>Es un <span style="color:#fff;">hogar que piensa</span>.</h2>
+        <p style="margin-top: 30px; font-size: 24px; color: #DAC0A3;">La verdadera tecnología es aquella que no notas.</p>
+        <p style="margin-top: 20px; font-size: 20px;">Olvídate de abrir aplicaciones constantemente. Creamos ecosistemas vivos que aprenden de ti, se anticipan a tus rutinas y te protegen de forma invisible.</p>
     </div>
 </div>
 
-<!-- SLIDE 3: DIFERENCIACIÓN -->
 <div class="slide-container" id="slide3">
-    <h2 class="slide-title">¿Por qué Kinvia es diferente?</h2>
+    <h2 class="slide-title">El Estándar Kinvia</h2>
     <div class="content-area">
         <div class="tiled-content">
             <div class="tile">
-                <i class="fa-solid fa-microchip"></i>
-                <h3>Ingeniería Real</h3>
-                <p>No solo instalamos; desarrollamos hardware y software propio para que tu casa sea única.</p>
+                <i class="fa-solid fa-brain"></i>
+                <h3>IA Autónoma</h3>
+                <p style="margin-top: 15px;">Tu hogar toma decisiones en tiempo real basándose en el clima exterior, la hora y la presencia familiar.</p>
             </div>
             <div class="tile">
-                <i class="fa-solid fa-layer-group"></i>
-                <h3>Integración Total</h3>
-                <p>Nuestra experiencia técnica nos permite ocultar la tecnología en la estructura de tu hogar.</p>
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h3>Cero Obras</h3>
+                <p style="margin-top: 15px;">Nuestra ingeniería permite una integración no invasiva. Aprovechamos tu infraestructura para preservar la estética intacta.</p>
             </div>
             <div class="tile">
-                <i class="fa-solid fa-lock"></i>
-                <h3>Privacidad Local</h3>
-                <p>Tus datos no salen de tu casa. Sin servidores externos ni nubes corporativas.</p>
+                <i class="fa-solid fa-unlock-keyhole"></i>
+                <h3>Sistemas Abiertos</h3>
+                <p style="margin-top: 15px;">Frente a sistemas cerrados y obsoletos, garantizamos libertad tecnológica, compatibilidad universal y privacidad 100% local.</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- SLIDE 4: CLIMATIZACIÓN E ILUMINACIÓN -->
-<div class="slide-container" id="slide4">
-    <h2 class="slide-title">Confort sin Interrupciones</h2>
+<div class="slide-container bleed-image-layout" id="slide4">
+    <div class="bleed-text-side">
+        <h2 style="font-size: 42px; margin-bottom: 25px;">La Evolución Tecnológica</h2>
+        <p>Los sistemas tradicionales (como KNX) te atan a un ecosistema rígido, costoso de mantener y destinado a la obsolescencia.</p>
+        <p>Kinvia diseña sobre <strong>estándares universales y abiertos</strong>. ¿Qué significa esto para ti?</p>
+        <ul style="margin-top:20px;">
+            <li><strong>Libertad:</strong> No dependes de un solo fabricante.</li>
+            <li><strong>Agilidad:</strong> Actualizaciones invisibles sin reprogramaciones costosas.</li>
+            <li><strong>Soberanía:</strong> Tus datos de rutina no viajan a nubes de terceros.</li>
+        </ul>
+    </div>
+    <img class="bleed-image-side" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" alt="Tecnología Avanzada">
+</div>
+
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">Confort Autónomo y Reactivo</h2>
     <div class="content-area">
         <div class="two-column">
             <div>
-                <h3>Climatización e Iluminación Inteligente</h3>
-                <p style="margin-top:20px;">Tu casa se anticipa a tus necesidades:</p>
+                <h3>El ecosistema se adapta a ti</h3>
+                <p style="margin-top:20px;">Tu hogar reacciona sin que intervengas:</p>
                 <ul style="margin-top:20px;">
-                    <li><strong>Sincronización Solar:</strong> Persianas que se ajustan según la posición del sol.</li>
-                    <li><strong>Escenas Adaptativas:</strong> Iluminación que cambia según la hora del día.</li>
-                    <li><strong>Gestión Térmica:</strong> Control de temperatura por estancias de forma invisible.</li>
+                    <li><strong>Previsión Meteorológica:</strong> Si detecta lluvia, pausa el riego, recoge toldos y ajusta persianas preventivamente.</li>
+                    <li><strong>Bienvenida Inteligente:</strong> Al entrar, el hogar prepara tu clima ideal, iluminación suave y tu música favorita.</li>
+                    <li><strong>Eficiencia Pasiva:</strong> Las superficies acristaladas se ajustan según la incidencia del sol para mantener la temperatura perfecta.</li>
                 </ul>
             </div>
             <div class="image-wrapper">
@@ -313,160 +255,123 @@
     </div>
 </div>
 
-<!-- SLIDE 5: SEGURIDAD -->
-<div class="slide-container" id="slide5">
-    <h2 class="slide-title">Seguridad que te conoce</h2>
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">Seguridad que respeta tu Privacidad</h2>
     <div class="content-area">
         <div class="two-column">
              <div class="image-wrapper">
                 <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=800" alt="Interfaz de Seguridad Doméstica">
             </div>
             <div>
-                <h3>Mucho más que una alarma</h3>
-                <p style="margin-top:20px;">Sistemas que entienden el contexto de tu hogar:</p>
+                <h3>Un perímetro que te reconoce</h3>
+                <p style="margin-top:20px;">Protección absoluta sin sacrificar tu intimidad:</p>
                 <ul style="margin-top:20px;">
-                    <li><strong>Detección de Presencia:</strong> La alarma sabe quién está en casa, eliminando falsos positivos.</li>
-                    <li><strong>Simulación de Vida:</strong> Cuando estás fuera, la casa actúa como si estuvieras allí.</li>
-                    <li><strong>Control de Accesos:</strong> Entra en tu hogar sin llaves, solo con tu presencia autorizada.</li>
+                    <li><strong>Privacidad Activa:</strong> Las cámaras interiores se apagan automáticamente cuando el sistema detecta que estás en casa.</li>
+                    <li><strong>Accesos Fluidos:</strong> Entra con tu huella, por proximidad vehicular o desde la pantalla de tu coche.</li>
+                    <li><strong>Simulación Real:</strong> Cuando viajas, el hogar replica de forma realista tus rutinas de iluminación y sonido.</li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
 
-<!-- SLIDE 6: TECNOLOGÍA PROPIETARIA -->
-<div class="slide-container bleed-image-layout" id="slide6">
-    <div class="bleed-text-side">
-        <h2 style="font-size: 42px; margin-bottom: 25px;">Tecnología Propietaria</h2>
-        <p>No dependemos de marcas de terceros que quedan obsoletas.</p>
-        <p>Utilizamos <strong>microelectrónica avanzada</strong> y hardware diseñado por nosotros para resolver retos que otros no pueden.</p>
-        <p>Tu sistema es ampliable, actualizable y eterno.</p>
-    </div>
-    <img class="bleed-image-side" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" alt="Microelectrónica Avanzada">
-</div>
-
-<!-- SLIDE 7: VIVIENDA DE LUJO TORREVIEJA -->
 <div class="slide-container" id="slide7" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1920'); background-size: cover; background-position: center;">
     <div style="text-align: center; max-width: 800px;">
-        <h2 style="font-size: 50px;">Diseñado para el Lujo en Torrevieja</h2>
+        <h2 style="font-size: 50px;">Diseñado para la Costa Blanca</h2>
         <div style="width: 100px; height: 3px; background: #DAC0A3; margin: 30px auto;"></div>
-        <p style="font-size: 24px; color: #fff;">Entendemos la arquitectura de las villas de la Costa Blanca. Nuestra integración técnica respeta cada centímetro de tu diseño interior.</p>
+        <p style="font-size: 24px; color: #fff;">Entendemos la arquitectura y el estilo de vida mediterráneo. Diseñamos soluciones que potencian tu residencia sin importar si es de obra nueva o una vivienda ya existente.</p>
     </div>
 </div>
 
-<!-- SLIDE 8: EFICIENCIA ENERGÉTICA (GRÁFICA DE BARRAS) -->
 <div class="slide-container" id="slide8">
-    <h2 class="slide-title">Eficiencia Real: Menos Consumo, Más Confort</h2>
+    <h2 class="slide-title">Kinvia Care: Tu Conserje Digital</h2>
     <div class="content-area">
-        <div class="chart-container">
-            <div class="bar">
-                <div class="bar-label">Consumo Tradicional</div>
-                <div class="bar-bg"><div class="bar-fill" style="width: 100%;">100%</div></div>
+        <div class="tiled-content">
+            <div class="tile" style="justify-content: center; background: #0F2C59; border: none;">
+                <i class="fa-solid fa-satellite-dish" style="color: #DAC0A3;"></i>
+                <h3 style="color: #fff;">Monitorización 24/7</h3>
+                <p style="color: #ddd;">Supervisamos la salud del sistema en remoto. Detectamos pérdidas de conexión o baterías bajas antes de que lo notes.</p>
             </div>
-            <div class="bar">
-                <div class="bar-label">Iluminación Inteligente Kinvia</div>
-                <div class="bar-bg"><div class="bar-fill" style="width: 65%;">65%</div></div>
+            <div class="tile" style="justify-content: center; background: #0F2C59; border: none;">
+                <i class="fa-solid fa-shield-halved" style="color: #DAC0A3;"></i>
+                <h3 style="color: #fff;">Actualizaciones OTA</h3>
+                <p style="color: #ddd;">Tu hogar siempre seguro y a la vanguardia. Aplicamos parches de seguridad y mejoras de IA de forma completamente invisible.</p>
             </div>
-            <div class="bar">
-                <div class="bar-label">Climatización Optimizada</div>
-                <div class="bar-bg"><div class="bar-fill" style="width: 40%;">40%</div></div>
+            <div class="tile" style="justify-content: center; background: #0F2C59; border: none;">
+                <i class="fa-solid fa-headset" style="color: #DAC0A3;"></i>
+                <h3 style="color: #fff;">Soporte Preventivo</h3>
+                <p style="color: #ddd;">Asistencia técnica remota e inmediata. Solucionamos el 90% de las incidencias sin necesidad de visitas técnicas presenciales.</p>
             </div>
         </div>
-        <p style="text-align: center; margin-top: 40px; font-style: italic;">Ahorro energético proyectado de hasta un <strong>35% anual</strong> gracias a la gestión pasiva del sol y el clima.</p>
     </div>
 </div>
 
-<!-- SLIDE 9: LIBERTAD TOTAL -->
 <div class="slide-container" id="slide9">
-    <h2 class="slide-title">Libertad Total</h2>
-    <div class="content-area">
-        <div class="two-column">
-            <div style="text-align: center; border-right: 1px solid #333; display: flex; flex-direction: column; justify-content: center;">
-                <div style="font-size: 100px; font-weight: 700; color: #DAC0A3; line-height: 1;">0€</div>
-                <p style="font-size: 24px; text-transform: uppercase; letter-spacing: 2px;">Cuotas Mensuales</p>
-            </div>
-            <div>
-                <h3>Tú eres el dueño de tu casa</h3>
-                <p style="margin-top:20px;">A diferencia de las soluciones estándar, con Kinvia:</p>
-                <ul style="margin-top:20px;">
-                    <li>No hay pagos por "servicio" de alarma.</li>
-                    <li>No hay suscripciones para usar tu domótica.</li>
-                    <li>Soporte técnico opcional solo cuando lo necesitas.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 10: TABLA DE COMPARACIÓN -->
-<div class="slide-container" id="slide10">
     <h2 class="slide-title">Por qué elegir Kinvia</h2>
     <div class="content-area">
         <table>
             <thead>
                 <tr>
-                    <th>Funcionalidad</th>
-                    <th>Domótica Comercial</th>
-                    <th>Kinvia Inteligencia</th>
+                    <th>Característica</th>
+                    <th>Domótica Tradicional (ej. KNX)</th>
+                    <th>Kinvia (Inteligencia IA)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Privacidad de Datos</td>
-                    <td>Servidores Externos</td>
-                    <td><strong>Local y Privado</strong></td>
+                    <td><strong>Ecosistema</strong></td>
+                    <td>Cerrado, atado a licencias y marcas</td>
+                    <td><strong>Abierto, universal y escalable</strong></td>
                 </tr>
                 <tr>
-                    <td>Integración en Obra</td>
-                    <td>Superficial / Invasiva</td>
-                    <td><strong>Arquitectónica Invisible</strong></td>
+                    <td><strong>Instalación</strong></td>
+                    <td>Altamente Invasiva (requiere obras mayores)</td>
+                    <td><strong>No invasiva (se adapta a la vivienda)</strong></td>
                 </tr>
                 <tr>
-                    <td>Hardware</td>
-                    <td>Estándar Cerrado</td>
-                    <td><strong>Desarrollo a Medida</strong></td>
+                    <td><strong>Operativa</strong></td>
+                    <td>Manual (dependencia de paneles/apps)</td>
+                    <td><strong>Autónoma (la IA toma decisiones)</strong></td>
                 </tr>
                 <tr>
-                    <td>Dependencia de Internet</td>
-                    <td>Obligatoria</td>
-                    <td><strong>Funciona Offline</strong></td>
+                    <td><strong>Privacidad</strong></td>
+                    <td>Datos enviados a servidores externos</td>
+                    <td><strong>100% Local y Privado</strong></td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
 
-<!-- SLIDE 11: ROADMAP ACTUALIZADO -->
-<div class="slide-container" id="slide11">
-    <h2 class="slide-title">Nuestro Futuro: Roadmap 2026</h2>
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">El Proceso: Sencillo y Transparente</h2>
     <div class="content-area">
         <div class="timeline">
             <div class="timeline-item">
-                <h3>Q1 2026</h3>
-                <p>Consolidación en Torrevieja y lanzamiento del Showroom Virtual.</p>
+                <h3 style="margin-bottom: 15px;">1. Consultoría</h3>
+                <p>Análisis presencial de tus necesidades y del potencial arquitectónico de tu vivienda.</p>
             </div>
             <div class="timeline-item">
-                <h3>Q2 2026</h3>
-                <p>Nuevos sensores IoT específicos para arquitectura de exterior.</p>
+                <h3 style="margin-bottom: 15px;">2. Diseño Ad-Hoc</h3>
+                <p>Propuesta técnica y presupuesto cerrado, sin "packs" estandarizados ni sorpresas.</p>
             </div>
             <div class="timeline-item">
-                <h3>Q3 2026</h3>
-                <p>Expansión a monitorización tecnológica en agricultura local.</p>
+                <h3 style="margin-bottom: 15px;">3. Integración</h3>
+                <p>Despliegue del hardware de forma limpia, preservando la estética interior.</p>
             </div>
             <div class="timeline-item">
-                <h3>Q4 2026</h3>
-                <p>Apertura de centro de desarrollo tecnológico Costa Blanca.</p>
+                <h3 style="margin-bottom: 15px;">4. Disfrute</h3>
+                <p>Entrega llave en mano y activación del servicio de soporte remoto <em>Kinvia Care</em>.</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- SLIDE 12: CIERRE -->
-<div class="slide-container" id="slide12">
+<div class="slide-container" id="slide11">
     <div style="text-align: center;">
-        <h2 style="font-size: 80px; margin-bottom: 20px;">Hablemos.</h2>
+        <h2 style="font-size: 80px; margin-bottom: 20px;">Eleva el nivel de tu hogar.</h2>
         <p style="font-size: 24px; color: #DAC0A3;">info@kinvia.es | kinvia.es</p>
-        <p style="margin-top: 40px; font-weight: 300; letter-spacing: 5px;">TORREVIEJA · ESPAÑA</p>
+        <p style="margin-top: 40px; font-weight: 300; letter-spacing: 5px;">COSTA BLANCA · ESPAÑA</p>
         <div style="margin-top: 50px;">
             <i class="fa-solid fa-phone" style="margin-right: 15px;"></i>
             <i class="fa-brands fa-whatsapp" style="margin-right: 15px;"></i>
