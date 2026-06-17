@@ -18,20 +18,17 @@
     <meta name="keywords" content="inteligencia artificial hogar, domótica Torrevieja, casas inteligentes Alicante, alternativas KNX, domótica sin obras, seguridad privacidad local, automatización lujo, Kinvia">
     <link rel="canonical" href="https://kinvia.es/">
     
-    <!-- OPEN GRAPH (Facebook/LinkedIn/WhatsApp) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kinvia.es/">
     <meta property="og:title" content="Kinvia | Inteligencia Residencial">
     <meta property="og:description" content="El primer hogar con Inteligencia Artificial real. Instalación no invasiva, libertad tecnológica y seguridad inteligente en la Costa Blanca.">
     <meta property="og:image" content="https://kinvia.es/images/background.webp">
 
-    <!-- TWITTER CARDS -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Kinvia | Inteligencia Residencial">
     <meta name="twitter:description" content="El primer hogar con Inteligencia Artificial real. Instalación no invasiva, libertad tecnológica y seguridad inteligente en la Costa Blanca.">
     <meta name="twitter:image" content="https://kinvia.es/images/background.webp">
 
-    <!-- TAILWIND CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -64,7 +61,6 @@
 </head>
 <body class="bg-black text-white font-sans antialiased">
 
-    <!-- NAVBAR FIXED -->
     <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10 px-6 py-4 flex justify-between items-center">
         <div class="text-2xl font-bold tracking-wider text-white">
             <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
@@ -75,12 +71,11 @@
         <div class="flex items-center gap-8">
             <div class="space-x-6 text-sm tracking-widest uppercase text-gray-400 hidden md:block">
                 <a href="#inteligencia" class="nav-menu-link hover:text-oroChampagne transition" data-i18n="nav_ai">Inteligencia</a>
-                <a href="#diferencia" class="nav-menu-link hover:text-oroChampagne transition" data-i18n="nav_diff">Diferencia</a>
+                <a href="#valor" class="nav-menu-link hover:text-oroChampagne transition" data-i18n="nav_value">Valor Añadido</a>
                 <a href="#servicios" class="nav-menu-link hover:text-oroChampagne transition" data-i18n="nav_services">Servicios</a>
                 <a href="#showroom" class="nav-menu-link hover:text-oroChampagne transition" data-i18n="nav_showroom">Showroom</a>
                 <a href="#contacto" class="nav-menu-link border border-oroChampagne px-4 py-2 text-oroChampagne hover:bg-oroChampagne hover:text-black transition" data-i18n="nav_contact">Contacto</a>
             </div>
-            <!-- Language Switcher -->
             <div class="text-xs font-bold tracking-widest flex gap-2 border-l border-white/20 pl-6">
                 <button id="btn-es" onclick="setLanguage('es')" class="transition hover:text-white">ES</button>
                 <span class="text-gray-600">|</span>
@@ -112,23 +107,51 @@
         </p>
     </section>
 
-    <section id="diferencia" class="fade-in-section min-h-screen bg-grisGrafito/30 flex flex-col justify-center py-24 px-6">
-        <div class="max-w-5xl mx-auto">
-            <span class="text-oroChampagne tracking-widest uppercase text-xs mb-2" data-i18n="diff_tag">// Evolución y Libertad</span>
-            <h2 class="text-3xl md:text-5xl font-bold mb-12" data-i18n="diff_title">Libertad tecnológica. Integración sin invasión.</h2>
+    <section id="valor" class="fade-in-section min-h-screen bg-grisGrafito/30 flex flex-col justify-center py-24 px-6">
+        <div class="max-w-6xl mx-auto w-full">
+            <span class="text-oroChampagne tracking-widest uppercase text-xs mb-2" data-i18n="val_tag">// Evolución y Eficiencia</span>
+            <h2 class="text-3xl md:text-5xl font-bold mb-12" data-i18n="val_title">La eficiencia de la independencia tecnológica.</h2>
             
-            <div class="grid md:grid-cols-2 gap-12">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h3 class="text-2xl font-bold mb-4 text-oroChampagne" data-i18n="diff_col1_title">El fin de los sistemas obsoletos</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="diff_col1_desc">
-                        Los sistemas tradicionales (como KNX o marcas propietarias) te atan a un ecosistema cerrado, costoso de mantener y destinado a la obsolescencia. Kinvia diseña sobre <strong>estándares universales y abiertos</strong>. Esto significa libertad total: tu sistema siempre será compatible con las nuevas tecnologías del futuro, sin licencias abusivas y garantizando que tus datos nunca salgan de tu propiedad.
+                    <p class="text-gray-400 leading-relaxed text-lg mb-6" data-i18n="val_desc1">
+                        Los sistemas tradicionales encarecen sus presupuestos con licencias de software privativas, certificaciones cerradas y sobrecostes de marca. Esto genera un ecosistema rígido y destinado a la obsolescencia.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed text-lg" data-i18n="val_desc2">
+                        En <strong>Kinvia</strong>, invertimos tu presupuesto únicamente en lo que importa: hardware de alta calidad y la ingeniería a medida de nuestro equipo. Al utilizar estándares <em>Open Source</em>, eliminamos los impuestos tecnológicos artificiales y las obras invasivas. ¿El resultado? Un sistema muy superior con un <strong>Coste Total de Propiedad (TCO) drásticamente inferior</strong>.
                     </p>
                 </div>
-                <div>
-                    <h3 class="text-2xl font-bold mb-4 text-oroChampagne" data-i18n="diff_col2_title">Respeto por la arquitectura</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="diff_col2_desc">
-                        Hacer tu casa inteligente no implica convertirla en una zona de obras interminable. Nuestra ingeniería permite una <strong>instalación limpia y no invasiva</strong>. Evaluamos tu vivienda y desplegamos la tecnología aprovechando la infraestructura existente, camuflando los componentes para preservar la pureza estética de tu diseño de interiores.
-                    </p>
+
+                <div class="bg-black/60 border border-white/10 p-8 rounded-sm shadow-xl">
+                    <h3 class="text-xl font-bold mb-8 text-oroChampagne" data-i18n="val_chart_title">Kinvia vs Domótica Tradicional</h3>
+                    
+                    <div class="mb-8">
+                        <div class="flex justify-between text-sm mb-3 font-bold text-gray-300">
+                            <span data-i18n="val_chart_trad">Domótica Tradicional (ej. KNX)</span>
+                            <span>100% Coste Base</span>
+                        </div>
+                        <div class="w-full bg-grisGrafito h-4 rounded-sm overflow-hidden flex">
+                            <div class="bg-gray-500 h-full w-[60%]"></div>
+                            <div class="bg-gray-700 h-full w-[40%]"></div>
+                        </div>
+                        <div class="flex flex-wrap gap-4 mt-3 text-xs text-gray-400">
+                            <div class="flex items-center gap-2"><span class="w-3 h-3 bg-gray-500 rounded-sm block"></span> <span data-i18n="val_chart_hw">Hardware e Instalación</span></div>
+                            <div class="flex items-center gap-2"><span class="w-3 h-3 bg-gray-700 rounded-sm block"></span> <span data-i18n="val_chart_lic">Licencias y Software Cerrado</span></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-sm mb-3 font-bold text-oroChampagne">
+                            <span data-i18n="val_chart_kinvia">Modelo Kinvia</span>
+                            <span data-i18n="val_chart_savings">~ 40% Ahorro Real</span>
+                        </div>
+                        <div class="w-full h-4 flex">
+                            <div class="w-[60%] bg-gradient-to-r from-azulMedianoche to-oroChampagne rounded-sm shadow-[0_0_15px_rgba(218,192,163,0.3)]"></div>
+                        </div>
+                        <div class="flex gap-4 mt-3 text-xs text-gray-400">
+                            <div class="flex items-center gap-2"><span class="w-3 h-3 bg-oroChampagne rounded-sm block"></span> <span data-i18n="val_chart_hw2">100% Inversión en Hardware e Ingeniería Real</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -283,12 +306,12 @@
     </footer>
 
     <script>
-        // Diccionario Bilingüe Actualizado (Enfoque Comercial y Ventas)
+        // Diccionario Bilingüe
         const i18n = {
             es: {
                 page_title: "Kinvia | Inteligencia Residencial en la Costa Blanca",
                 meta_desc: "Transformamos viviendas de lujo en hogares inteligentes con IA. Sistemas abiertos, sin obsolescencia y privacidad total en Torrevieja.",
-                nav_ai: "Inteligencia", nav_diff: "Diferencia", nav_services: "Servicios", nav_showroom: "Showroom", nav_contact: "Contacto",
+                nav_ai: "Inteligencia", nav_value: "Valor Añadido", nav_services: "Servicios", nav_showroom: "Showroom", nav_contact: "Contacto",
                 
                 hero_title: "Tu hogar, impulsado por <br><span class='text-oroChampagne'>Inteligencia Artificial.</span>",
                 hero_subtitle: "Creamos espacios en la Costa Blanca que aprenden de ti, se anticipan a tus necesidades y te protegen de forma invisible. Sin ataduras, sin complejidad.",
@@ -299,13 +322,18 @@
                 ai_desc1: "La verdadera tecnología es aquella que no notas. Olvídate de abrir aplicaciones constantemente para encender una luz o bajar una persiana. En Kinvia implementamos Inteligencia Artificial en el núcleo de tu vivienda para que esta entienda tus rutinas.",
                 ai_desc2: "Creamos un ecosistema vivo, capaz de tomar decisiones de forma autónoma basándose en el clima exterior, la hora del día y la presencia de tu familia, elevando tu calidad de vida a un nuevo estándar de confort absoluto.",
                 
-                diff_tag: "// Evolución y Libertad",
-                diff_title: "Libertad tecnológica. Integración sin invasión.",
-                diff_col1_title: "El fin de los sistemas obsoletos",
-                diff_col1_desc: "Los sistemas tradicionales (como KNX o marcas propietarias) te atan a un ecosistema cerrado, costoso de mantener y destinado a la obsolescencia. Kinvia diseña sobre <strong>estándares universales y abiertos</strong>. Esto significa libertad total: tu sistema siempre será compatible con las nuevas tecnologías del futuro, sin licencias abusivas y garantizando que tus datos nunca salgan de tu propiedad.",
-                diff_col2_title: "Respeto por la arquitectura",
-                diff_col2_desc: "Hacer tu casa inteligente no implica convertirla en una zona de obras interminable. Nuestra ingeniería permite una <strong>instalación limpia y no invasiva</strong>. Evaluamos tu vivienda y desplegamos la tecnología aprovechando la infraestructura existente, camuflando los componentes para preservar la pureza estética de tu diseño de interiores.",
-                
+                val_tag: "// Evolución y Eficiencia",
+                val_title: "La eficiencia de la independencia tecnológica.",
+                val_desc1: "Los sistemas tradicionales encarecen sus presupuestos con licencias de software privativas, certificaciones cerradas y sobrecostes de marca. Esto genera un ecosistema rígido y destinado a la obsolescencia.",
+                val_desc2: "En <strong>Kinvia</strong>, invertimos tu presupuesto únicamente en lo que importa: hardware de alta calidad y la ingeniería a medida de nuestro equipo. Al utilizar estándares <em>Open Source</em>, eliminamos los impuestos tecnológicos artificiales y las obras invasivas. ¿El resultado? Un sistema muy superior con un <strong>Coste Total de Propiedad (TCO) drásticamente inferior</strong>.",
+                val_chart_title: "Kinvia vs Domótica Tradicional",
+                val_chart_trad: "Domótica Tradicional (ej. KNX)",
+                val_chart_hw: "Hardware e Instalación",
+                val_chart_lic: "Licencias y Software Cerrado",
+                val_chart_kinvia: "Modelo Kinvia",
+                val_chart_savings: "~ 40% Ahorro Real",
+                val_chart_hw2: "100% Inversión en Hardware e Ingeniería Real",
+
                 srv_tag: "// Nuestro Portafolio",
                 srv_title: "Soluciones a la medida de tu estilo de vida.",
                 srv1_title: "Seguridad Contextual",
@@ -340,7 +368,7 @@
             en: {
                 page_title: "Kinvia | AI Residential Intelligence in Costa Blanca",
                 meta_desc: "We transform luxury villas into smart homes with AI. Open systems, zero obsolescence, and full privacy in Torrevieja and Alicante.",
-                nav_ai: "Intelligence", nav_diff: "Difference", nav_services: "Services", nav_showroom: "Showroom", nav_contact: "Contact",
+                nav_ai: "Intelligence", nav_value: "Added Value", nav_services: "Services", nav_showroom: "Showroom", nav_contact: "Contact",
                 
                 hero_title: "Your home, driven by <br><span class='text-oroChampagne'>Artificial Intelligence.</span>",
                 hero_subtitle: "We create spaces in the Costa Blanca that learn from you, anticipate your needs, and protect you invisibly. No lock-ins, no complexity.",
@@ -351,13 +379,18 @@
                 ai_desc1: "True technology is the one you don't notice. Forget about constantly opening apps to turn on a light or lower a blind. At Kinvia, we implement Artificial Intelligence at the core of your home so it understands your routines.",
                 ai_desc2: "We create a living ecosystem, capable of making autonomous decisions based on the outside weather, the time of day, and the presence of your family, elevating your quality of life to a new standard of absolute comfort.",
                 
-                diff_tag: "// Evolution & Freedom",
-                diff_title: "Technological freedom. Non-invasive integration.",
-                diff_col1_title: "The end of obsolete systems",
-                diff_col1_desc: "Traditional systems (like KNX or proprietary brands) tie you to a closed ecosystem, expensive to maintain and destined for obsolescence. Kinvia designs on <strong>universal and open standards</strong>. This means total freedom: your system will always be compatible with the technologies of the future, with no abusive licenses and ensuring your data never leaves your property.",
-                diff_col2_title: "Respect for your architecture",
-                diff_col2_desc: "Making your home smart doesn't mean turning it into an endless construction site. Our engineering allows for a <strong>clean and non-invasive installation</strong>. We evaluate your property and deploy the technology using existing infrastructure, camouflaging components to preserve the aesthetic purity of your interior design.",
-                
+                val_tag: "// Evolution & Efficiency",
+                val_title: "The efficiency of technological independence.",
+                val_desc1: "Traditional systems inflate their budgets with proprietary software licenses, closed certifications, and brand markups. This creates a rigid ecosystem destined for obsolescence.",
+                val_desc2: "At <strong>Kinvia</strong>, we invest your budget only in what matters: high-quality hardware and our team's custom engineering. By utilizing <em>Open Source</em> standards, we eliminate artificial tech taxes and invasive construction. The result? A far superior system with a <strong>drastically lower Total Cost of Ownership (TCO)</strong>.",
+                val_chart_title: "Kinvia vs Traditional",
+                val_chart_trad: "Traditional Automation (e.g., KNX)",
+                val_chart_hw: "Hardware & Installation",
+                val_chart_lic: "Licenses & Proprietary Software",
+                val_chart_kinvia: "Kinvia Model",
+                val_chart_savings: "~ 40% Real Savings",
+                val_chart_hw2: "100% Investment in Real Hardware & Engineering",
+
                 srv_tag: "// Our Portfolio",
                 srv_title: "Solutions tailored to your lifestyle.",
                 srv1_title: "Contextual Security",
@@ -538,7 +571,7 @@
             video.addEventListener('loadstart', () => { if (loader) loader.classList.remove('opacity-0'); });
         });
 
-        // Manejo del envío del formulario con Mailgun / API
+        // Manejo del envío del formulario
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -547,12 +580,11 @@
             const originalBtnText = btn.innerHTML;
             const isSpanish = document.documentElement.lang === 'es';
             
-            // Cambiar estado del botón
             btn.innerHTML = isSpanish ? 'ENVIANDO...' : 'SENDING...';
             btn.disabled = true;
             msg.classList.add('hidden');
             msg.classList.remove('text-green-400', 'text-red-400');
-
+            
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
