@@ -192,7 +192,8 @@
             </a>
         </div>
         
-        <div class="relative grid grid-cols-1 grid-rows-1 w-full">
+        <!-- ID 'showroom-carousel' añadido para el control táctil -->
+        <div id="showroom-carousel" class="relative grid grid-cols-1 grid-rows-1 w-full overflow-hidden select-none">
             <div class="carousel-slide col-start-1 row-start-1 transition-opacity duration-1000 opacity-100 z-10 flex flex-col md:flex-row items-center gap-12" data-index="0">
                 <div class="w-full md:w-1/2 relative group overflow-hidden border border-white/10 rounded-sm bg-grisGrafito aspect-video">
                     <video class="w-full h-full object-cover" muted loop playsinline poster="videos/poster-video1.webp">
@@ -261,7 +262,7 @@
     <section id="contacto" class="fade-in-section min-h-screen flex flex-col justify-center items-center px-6 py-24 bg-gradient-to-t from-azulMedianoche/10 to-black">
         <div class="max-w-xl w-full border border-white/10 p-8 md:p-12 bg-grisGrafito/20 backdrop-blur-sm">
             <h2 class="text-3xl font-bold mb-2 text-center" data-i18n="contact_title">Eleva el nivel de tu hogar</h2>
-            <p class="text-gray-400 text-sm text-center mb-6" data-i18n="contact_desc">Tanto si deseas transformar tu residencia privada, como si eres un profesional del sector buscando integrar Kinvia en sus proyectos.</p>
+            <p class="text-gray-400 text-sm text-center mb-6" data-i18n="contact_desc">Tanto si deseas transformar tu residencia privada, como si eres un profesional (estudio de arquitectura, promotora, agencia inmobiliaria o instalador) buscando integrar Kinvia en sus proyectos.</p>
             
             <div class="text-center mb-10">
                 <a href="tel:+34604490781" class="inline-flex items-center gap-3 text-oroChampagne text-2xl md:text-3xl font-bold hover:text-white transition">
@@ -531,6 +532,7 @@
         }
 
         function nextSlide() { goToSlide((currentSlide + 1) % totalSlides); }
+        function prevSlide() { goToSlide((currentSlide - 1 + totalSlides) % totalSlides); }
 
         const showroomSection = document.getElementById('showroom');
         const showroomObserver = new IntersectionObserver((entries) => {
@@ -562,6 +564,37 @@
                 if (isShowroomVisible) slideInterval = setInterval(nextSlide, 10000);
             });
         });
+
+        // GESTOS TÁCTILES (SWIPE EN MÓVILES)
+        const carouselElement = document.getElementById('showroom-carousel');
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        if (carouselElement) {
+            carouselElement.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            carouselElement.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipeGesture();
+            }, { passive: true });
+        }
+
+        function handleSwipeGesture() {
+            const minSwipeDistance = 50;
+            const swipeDistance = touchStartX - touchEndX;
+
+            if (Math.abs(swipeDistance) > minSwipeDistance) {
+                clearInterval(slideInterval);
+                if (swipeDistance > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+                if (isShowroomVisible) slideInterval = setInterval(nextSlide, 10000);
+            }
+        }
 
         // Eventos del Spinner
         document.querySelectorAll('.carousel-slide video').forEach(video => {
