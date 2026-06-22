@@ -118,7 +118,7 @@
                         Los sistemas tradicionales encarecen sus presupuestos con licencias de software privativas, certificaciones cerradas y sobrecostes de marca. Esto genera un ecosistema rígido y destinado a la obsolescencia.
                     </p>
                     <p class="text-gray-400 leading-relaxed text-lg" data-i18n="val_desc2">
-                        En <strong>Kinvia</strong>, invertimos tu presupuesto únicamente en lo que importa: hardware de alta calidad y la ingeniería a medida de nuestro equipo. Al utilizar estándares <em>Open Source</em>, eliminamos los impuestos tecnológicos artificiales y las obras invasivas. ¿El resultado? Un sistema muy superior con un <strong>Coste Total de Propiedad (TCO) drásticamente inferior</strong>.
+                        En <strong>Kinvia</strong>, invertimos tu presupuesto únicamente en hardware de alta calidad y en la ingeniería de nuestro equipo. Al utilizar estándares <em>Open Source</em>, eliminamos los impuestos tecnológicos artificiales. Trabajamos de forma directa con el propietario, o en absoluta sinergia con <strong>arquitectos, promotoras, inmobiliarias e instaladores profesionales</strong>. ¿El resultado? Un sistema superior con un <strong>Coste Total de Propiedad (TCO) drásticamente inferior</strong>.
                     </p>
                 </div>
 
@@ -261,7 +261,7 @@
     <section id="contacto" class="fade-in-section min-h-screen flex flex-col justify-center items-center px-6 py-24 bg-gradient-to-t from-azulMedianoche/10 to-black">
         <div class="max-w-xl w-full border border-white/10 p-8 md:p-12 bg-grisGrafito/20 backdrop-blur-sm">
             <h2 class="text-3xl font-bold mb-2 text-center" data-i18n="contact_title">Eleva el nivel de tu hogar</h2>
-            <p class="text-gray-400 text-sm text-center mb-6" data-i18n="contact_desc">Cuéntanos sobre tu propiedad en la Costa Blanca. Diseñaremos una solución inteligente adaptada exclusivamente a ti.</p>
+            <p class="text-gray-400 text-sm text-center mb-6" data-i18n="contact_desc">Tanto si deseas transformar tu residencia privada, como si eres un profesional del sector buscando integrar Kinvia en sus proyectos.</p>
             
             <div class="text-center mb-10">
                 <a href="tel:+34604490781" class="inline-flex items-center gap-3 text-oroChampagne text-2xl md:text-3xl font-bold hover:text-white transition">
@@ -288,9 +288,9 @@
                 <div>
                     <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2" data-i18n="contact_lbl_type">Perfil del Proyecto</label>
                     <select id="type" required class="w-full bg-black/60 border border-white/20 p-3 text-white focus:outline-none focus:border-oroChampagne">
-                        <option data-i18n="contact_opt_1">Residencia de Lujo (Existente / Obra Nueva)</option>
-                        <option data-i18n="contact_opt_2">Integración Especial / IoT Avanzado</option>
-                        <option data-i18n="contact_opt_3">Espacio Comercial / Arquitectura</option>
+                        <option value="propietario" data-i18n="contact_opt_1">Soy Propietario (Residencia Privada)</option>
+                        <option value="profesional" data-i18n="contact_opt_2">Soy Profesional (Arquitectura / Promotora / Inmobiliaria / Instalador)</option>
+                        <option value="especial" data-i18n="contact_opt_3">Proyecto Especial / Consultoría IoT</option>
                     </select>
                 </div>
                 <button type="submit" id="submitBtn" class="w-full bg-oroChampagne text-black font-bold uppercase tracking-widest p-4 hover:bg-white transition duration-300" data-i18n="contact_btn">
@@ -306,7 +306,7 @@
     </footer>
 
     <script>
-        // Diccionario Bilingüe
+        // Diccionario Bilingüe Actualizado
         const i18n = {
             es: {
                 page_title: "Kinvia | Inteligencia Residencial en la Costa Blanca",
@@ -325,7 +325,7 @@
                 val_tag: "// Evolución y Eficiencia",
                 val_title: "La eficiencia de la independencia tecnológica.",
                 val_desc1: "Los sistemas tradicionales encarecen sus presupuestos con licencias de software privativas, certificaciones cerradas y sobrecostes de marca. Esto genera un ecosistema rígido y destinado a la obsolescencia.",
-                val_desc2: "En <strong>Kinvia</strong>, invertimos tu presupuesto únicamente en lo que importa: hardware de alta calidad y la ingeniería a medida de nuestro equipo. Al utilizar estándares <em>Open Source</em>, eliminamos los impuestos tecnológicos artificiales y las obras invasivas. ¿El resultado? Un sistema muy superior con un <strong>Coste Total de Propiedad (TCO) drásticamente inferior</strong>.",
+                val_desc2: "En <strong>Kinvia</strong>, invertimos tu presupuesto únicamente en hardware de alta calidad y en la ingeniería de nuestro equipo. Al utilizar estándares <em>Open Source</em>, eliminamos los impuestos tecnológicos artificiales. Trabajamos de forma directa con el propietario, o en absoluta sinergia con <strong>arquitectos, promotoras, inmobiliarias e instaladores profesionales</strong>. ¿El resultado? Un sistema superior con un <strong>Coste Total de Propiedad (TCO) drásticamente inferior</strong>.",
                 val_chart_title: "Kinvia vs Domótica Tradicional",
                 val_chart_trad: "Domótica Tradicional (ej. KNX)",
                 val_chart_hw: "Hardware e Instalación",
@@ -354,14 +354,14 @@
                 vid3_desc: "El ecosistema lee los datos meteorológicos en tiempo real: si detecta lluvia, pausa el riego automático, retrae los toldos por seguridad y ajusta persianas preventivamente.",
                 
                 contact_title: "Eleva el nivel de tu hogar",
-                contact_desc: "Cuéntanos sobre tu propiedad en la Costa Blanca. Diseñaremos una solución inteligente adaptada exclusivamente a ti.",
+                contact_desc: "Tanto si deseas transformar tu residencia privada, como si eres un profesional (estudio de arquitectura, promotora, agencia inmobiliaria o instalador) buscando integrar Kinvia en sus proyectos.",
                 contact_lbl_name: "Nombre / Empresa",
                 contact_lbl_email: "Correo Electrónico",
                 contact_lbl_phone: "Teléfono",
                 contact_lbl_type: "Perfil del Proyecto",
-                contact_opt_1: "Residencia de Lujo (Existente / Obra Nueva)",
-                contact_opt_2: "Integración Especial / IoT Avanzado",
-                contact_opt_3: "Espacio Comercial / Arquitectura",
+                contact_opt_1: "Soy Propietario (Residencia Privada)",
+                contact_opt_2: "Soy Profesional (Arquitectura / Promotora / Inmobiliaria / Instalador)",
+                contact_opt_3: "Proyecto Especial / Consultoría IoT",
                 contact_btn: "Solicitar Consultoría Inicial",
                 footer_text: "&copy; 2026 KINVIA. Todos los derechos reservados. Costa Blanca, España."
             },
@@ -382,7 +382,7 @@
                 val_tag: "// Evolution & Efficiency",
                 val_title: "The efficiency of technological independence.",
                 val_desc1: "Traditional systems inflate their budgets with proprietary software licenses, closed certifications, and brand markups. This creates a rigid ecosystem destined for obsolescence.",
-                val_desc2: "At <strong>Kinvia</strong>, we invest your budget only in what matters: high-quality hardware and our team's custom engineering. By utilizing <em>Open Source</em> standards, we eliminate artificial tech taxes and invasive construction. The result? A far superior system with a <strong>drastically lower Total Cost of Ownership (TCO)</strong>.",
+                val_desc2: "At <strong>Kinvia</strong>, we invest your budget only in high-quality hardware and our team's custom engineering. By utilizing <em>Open Source</em> standards, we eliminate artificial tech taxes. We work directly with private owners, or in absolute synergy with <strong>architects, developers, real estate agencies, and professional installers</strong>. The result? A far superior system with a <strong>drastically lower Total Cost of Ownership (TCO)</strong>.",
                 val_chart_title: "Kinvia vs Traditional",
                 val_chart_trad: "Traditional Automation (e.g., KNX)",
                 val_chart_hw: "Hardware & Installation",
@@ -411,14 +411,14 @@
                 vid3_desc: "The ecosystem reads real-time weather data: if it detects rain, it pauses automatic irrigation, retracts awnings for safety, and preventively adjusts the blinds.",
                 
                 contact_title: "Elevate your home's standard",
-                contact_desc: "Tell us about your property in the Costa Blanca. We will design a smart solution tailored exclusively to you.",
+                contact_desc: "Whether you are looking to transform your private residence, or you are a professional (architect, developer, real estate agency, or installer) seeking to integrate Kinvia into your projects.",
                 contact_lbl_name: "Name / Company",
                 contact_lbl_email: "Email Address",
                 contact_lbl_phone: "Phone Number",
                 contact_lbl_type: "Project Profile",
-                contact_opt_1: "Luxury Residence (Existing / New Build)",
-                contact_opt_2: "Special Integration / Advanced IoT",
-                contact_opt_3: "Commercial Space / Architecture",
+                contact_opt_1: "Private Owner (Residential)",
+                contact_opt_2: "Professional (Architect / Developer / Real Estate / Installer)",
+                contact_opt_3: "Special Project / IoT Consulting",
                 contact_btn: "Request Initial Consulting",
                 footer_text: "&copy; 2026 KINVIA. All rights reserved. Costa Blanca, Spain."
             }
