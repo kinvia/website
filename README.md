@@ -1,6 +1,6 @@
 # Kinvia Website
 
-Este es el sitio web estático de Kinvia para la Costa Blanca.
+Este es el sitio web estático de Kinvia.
 
 ## Desarrollo Local
 
