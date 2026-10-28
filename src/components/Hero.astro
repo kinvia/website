@@ -11,27 +11,29 @@ const h = dict.hero;
 ---
 
 <section id="hero" class="hero-plane" tabindex="-1" aria-labelledby="hero-heading">
-  <div class="container hero-inner">
-    <div class="hero-brand-mark">
-      <img
-        src="/images/logo-w.webp"
-        alt="Kinvia"
-        width="240"
-        height="79"
-        fetchpriority="high"
-        loading="eager"
-        decoding="async"
-        class="hero-logo"
-      />
-      <span class="section-eyebrow">{h.eyebrow}</span>
-    </div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-brand-mark">
+        <img
+          src="/images/logo-w.webp"
+          alt="Kinvia"
+          width="240"
+          height="79"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
+          class="hero-logo"
+        />
+        <span class="section-eyebrow">{h.eyebrow}</span>
+      </div>
 
-    <h1 id="hero-heading" class="hero-claim">{h.claim}</h1>
-    <p class="hero-subtitle">{h.subtitle}</p>
-    <p class="hero-lead">{h.lead}</p>
+      <h1 id="hero-heading" class="hero-claim">{h.claim}</h1>
+      <p class="hero-subtitle">{h.subtitle}</p>
+      <p class="hero-lead">{h.lead}</p>
 
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">{h.cta}</a>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">{h.cta}</a>
+      </div>
     </div>
   </div>
 </section>
@@ -51,7 +53,6 @@ const h = dict.hero;
 
   .hero-inner {
     max-width: 900px;
-    margin: 0 auto 0 0;
     animation: heroEntrance var(--transition-med) both;
   }
 
@@ -111,4 +112,3 @@ const h = dict.hero;
     }
   }
 </style>
-
