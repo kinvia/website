@@ -1,0 +1,199 @@
+{
+  "meta": {
+    "title": "Kinvia — Socio Tecnológico Integral: Cloud, Software e IoT",
+    "description": "Rentabilidad y Optimización. Integración y cercanía. Ingeniería de software, arquitectura Cloud, IT In-House y espacios inteligentes con criterio senior y foco en tu ROI."
+  },
+  "nav": {
+    "skipLink": "Saltar al contenido principal",
+    "hero": "Inicio",
+    "axes": "Divisiones",
+    "services": "Servicios",
+    "model": "Modelo",
+    "contact": "Contacto",
+    "langSwitchLabel": "Cambiar idioma a inglés",
+    "langCode": "EN"
+  },
+  "hero": {
+    "eyebrow": "Kinvia · Socio Tecnológico",
+    "claim": "«Rentabilidad y Optimización. Integración y cercanía.»",
+    "subtitle": "Socio Tecnológico Integral: Ingeniería de Software, Arquitectura Cloud y Externalización IT.",
+    "lead": "No somos proveedores distantes: somos el departamento técnico de tu negocio. Tecnología que multiplica tu rendimiento, no tus costes.",
+    "cta": "Hablemos"
+  },
+  "axes": {
+    "eyebrow": "01 · Del Cloud al Mundo Físico",
+    "title": "Dos unidades de negocio, un mismo rigor de ingeniería",
+    "subtitle": "Traducimos más de 20 años construyendo sistemas críticos en resultados medibles para tu cuenta de resultados, sin ataduras a ninguna marca.",
+    "cloud": {
+      "badge": "División Digital & Corporativa",
+      "title": "Cloud & Software",
+      "tagline": "Boutique de ingeniería de alto rendimiento. El cerebro de un gigante tecnológico, con la agilidad y cercanía de un socio local.",
+      "description": "Desde asumir todo tu departamento de sistemas (IT In-House) con la estabilidad de una gran corporación adaptada a tu cuota, hasta diseñar software a medida, arquitecturas Cloud Native e Inteligencia Artificial soberana sin burocracia ni costes inflados.",
+      "outcomes": [
+        "Tranquilidad, seguridad y copias de seguridad inmutables para mediana empresa.",
+        "Arquitecturas escalables sobre Linux y contenedores sin bloqueos de proveedor (cero vendor lock-in).",
+        "Reducción directa de tu factura Cloud y licencias mediante auditoría FinOps."
+      ]
+    },
+    "iot": {
+      "badge": "División Física & Edge",
+      "title": "IoT & Espacios Inteligentes",
+      "tagline": "Tecnología invisible, independencia real, tranquilidad total.",
+      "description": "Transformamos viviendas de lujo, promociones urbanísticas y explotaciones agrícolas (AgTech) mediante domótica cognitiva y Edge Computing 100% local sobre hardware abierto. Tu instalación aprende de tus rutinas, anticipa el clima y sigue funcionando al 100% aunque caiga internet.",
+      "outcomes": [
+        "Procesamiento 100% local (offline-first) sin nubes obligatorias ni sistemas cerrados.",
+        "Privacidad espacial por diseño mediante radares mmWave, sin cámaras intrusivas en interiores.",
+        "Mantenimiento preventivo remoto con Watchdog autónomo y actualizaciones OTA sin visitas invasivas."
+      ]
+    }
+  },
+  "services": {
+    "eyebrow": "02 · Catálogo de Soluciones",
+    "title": "Ingeniería a la medida de tu problema, no de nuestro catálogo",
+    "subtitle": "Cada decisión técnica se respalda con su impacto económico y operativo en tu empresa.",
+    "items": [
+      {
+        "id": "it-in-house",
+        "title": "IT In-House (Departamento Técnico Externo)",
+        "summary": "Tu equipo de ingeniería fuera de tu nómina pero dentro de tu negocio: redes, servidores Linux, ciberseguridad preventiva, backups inmutables y automatización de oficinas con soporte directo."
+      },
+      {
+        "id": "custom-software",
+        "title": "Desarrollo de Software a Medida",
+        "summary": "Aplicaciones web modernas, plataformas SaaS, APIs de baja latencia, automatización de procesos (BPM) e integración de ERPs y CRMs con código limpio y libre de ataduras."
+      },
+      {
+        "id": "ai-cloud",
+        "title": "Consultoría en Inteligencia Artificial y Cloud",
+        "summary": "Agentes de IA, RAG corporativo y automatización documental con soberanía del dato garantizada, junto con infraestructuras sobre Linux y contenedores de alta disponibilidad."
+      },
+      {
+        "id": "finops",
+        "title": "Optimización de Recursos y ROI (FinOps)",
+        "summary": "Auditoría de facturas Cloud, licencias y bases de datos para eliminar el desperdicio tecnológico, redimensionar recursos y migrar cargas a alternativas Open Source rentables."
+      },
+      {
+        "id": "iot-agtech",
+        "title": "IoT, Domótica Cognitiva y AgTech",
+        "summary": "Viviendas de lujo, promociones y explotaciones agrícolas con control predictivo de energía y riego sobre Edge local, telemetría de largo alcance y operación garantizada sin internet."
+      }
+    ]
+  },
+  "model": {
+    "eyebrow": "03 · Modelo Operativo y Comercial",
+    "title": "Cero cajas negras. Cero sorpresas en tu factura.",
+    "subtitle": "Tres modalidades transparentes diseñadas para proteger tu presupuesto y darte control total desde el primer día.",
+    "items": [
+      {
+        "id": "retainer",
+        "badge": "IT In-House & Soporte",
+        "title": "Cuota fija mensual + Bolsa de horas",
+        "description": "Previsibilidad presupuestaria absoluta. Mantenemos tu infraestructura monitorizada, parcheada y segura de forma preventiva, y empleas tu bolsa de horas con flexibilidad en soporte, mejoras evolutivas o nuevas automatizaciones.",
+        "highlights": [
+          "Coste mensual fijo sin facturas sorpresa",
+          "Monitorización preventiva para evitar paradas críticas",
+          "Bolsa de horas flexible para soporte y evolución continua"
+        ]
+      },
+      {
+        "id": "three-phase",
+        "badge": "Software, Cloud & IA",
+        "title": "Proyectos colaborativos en 3 fases",
+        "description": "Nunca imponemos una única arquitectura rígida. Trabajamos contigo paso a paso para elegir la opción que mejor equilibra coste, velocidad y escala.",
+        "highlights": [
+          "Fase 1 · Consultoría inicial conjunta para entender tu negocio y presupuesto",
+          "Fase 2 · Presentación de 2 a 3 alternativas técnicas escalonadas con pros, contras y ROI",
+          "Fase 3 · Puesta en producción mano a mano con entregas iterativas y tu equipo capacitado"
+        ]
+      },
+      {
+        "id": "iot-watchdog",
+        "badge": "IoT & Espacios Inteligentes",
+        "title": "Instalación abierta CapEx + Suscripción Watchdog/OTA",
+        "description": "Eres dueño real de tu hardware desde el primer día, sin licencias privativas que te secuestren, respaldado por mantenimiento proactivo remoto.",
+        "highlights": [
+          "CapEx inicial sobre hardware abierto y Hub Edge local en tu propiedad",
+          "Watchdog remoto con autodiagnóstico y detección temprana de fallos",
+          "Actualizaciones OTA seguras y copias de seguridad remotas sin desplazamientos in situ"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "04 · Contacto Directo",
+    "title": "Sentémonos al mismo lado de la mesa",
+    "subtitle": "Cuéntanos qué quieres optimizar, construir o desbloquear. Te responderemos directamente con criterio técnico claro y opciones adaptadas a tu presupuesto.",
+    "emailLabel": "Correo directo",
+    "email": "info@kinvia.es",
+    "phoneLabel": "Teléfono directo",
+    "phone": "+34 644 21 93 52",
+    "phoneHref": "tel:+34644219352",
+    "locationLabel": "Ubicación",
+    "location": "Orihuela Costa, Alicante, España · Operación cercana en Levante y remota internacional",
+    "form": {
+      "nameLabel": "Tu nombre",
+      "namePlaceholder": "Ej. María García",
+      "emailLabel": "Tu correo electrónico",
+      "emailPlaceholder": "nombre@tuempresa.com",
+      "messageLabel": "¿En qué podemos ayudarte?",
+      "messagePlaceholder": "Cuéntanos brevemente tu reto actual, proyecto o necesidad de soporte...",
+      "privacyPrefix": "He leído y acepto la",
+      "privacyLinkText": "Política de Privacidad",
+      "privacyHref": "/es/privacidad",
+      "submit": "Enviar mensaje",
+      "submitting": "Enviando...",
+      "successTitle": "Mensaje recibido correctamente",
+      "successMessage": "Gracias por escribirnos. Enrique revisará tu mensaje y te responderá directamente a la mayor brevedad.",
+      "errorMessage": "No hemos podido enviar el formulario automáticamente. Por favor, escríbenos directamente a info@kinvia.es o llámanos al +34 644 21 93 52."
+    }
+  },
+  "a11y": {
+    "buttonLabel": "Opciones de accesibilidad y tema",
+    "panelTitle": "Accesibilidad y visualización",
+    "themeLabel": "Tema de color",
+    "themeDark": "Oscuro",
+    "themeLight": "Claro",
+    "contrastLabel": "Alto contraste",
+    "textSizeLabel": "Tamaño de texto",
+    "sizeNormal": "Normal",
+    "sizeLarge": "Grande",
+    "sizeLarger": "Extra grande",
+    "reduceMotionLabel": "Reducir animaciones",
+    "shortcutsButton": "Ver atajos de teclado (?)",
+    "shortcutsTitle": "Atajos de teclado",
+    "shortcutsHelpHint": "Pulsa ? en cualquier momento fuera de un campo de texto para abrir esta ayuda.",
+    "closeLabel": "Cerrar panel",
+    "shortcuts": [
+      { "key": "Tab", "description": "Navegar por enlaces interactivos y enlace de salto inicial" },
+      { "key": "?", "description": "Abrir o cerrar la ayuda de atajos de teclado" },
+      { "key": "1", "description": "Ir a Inicio (Hero)" },
+      { "key": "2", "description": "Ir a Divisiones (Cloud & Software / IoT)" },
+      { "key": "3", "description": "Ir a Catálogo de Servicios" },
+      { "key": "4", "description": "Ir a Modelo Comercial" },
+      { "key": "5", "description": "Ir a Contacto y Formulario" },
+      { "key": "Escape", "description": "Cerrar el panel de accesibilidad o ventana activa" }
+    ]
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "privacyLink": "Política de Privacidad",
+    "privacyHref": "/es/privacidad",
+    "tagline": "Socio Tecnológico Integral · Orihuela Costa, Alicante"
+  },
+  "privacy": {
+    "title": "Política de Privacidad (Resumen Informativo)",
+    "updated": "Última actualización: Octubre 2026",
+    "intro": "En Kinvia aplicamos Privacidad por Diseño y por Defecto. Recogemos únicamente la información imprescindible para responder a tu consulta comercial o técnica.",
+    "controllerTitle": "1. Responsable del contacto",
+    "controllerText": "Kinvia (Enrique) · Ubicación principal: Orihuela Costa, Alicante, España · Correo electrónico: info@kinvia.es · Teléfono: +34 644 21 93 52.",
+    "purposeTitle": "2. Finalidad del tratamiento",
+    "purposeText": "Atender y responder las solicitudes de información, consultas técnicas o propuestas comerciales que nos envíes a través del formulario de contacto o por correo electrónico/teléfono directo.",
+    "dataTitle": "3. Datos recogidos y conservación",
+    "dataText": "Recogemos exclusivamente los campos del formulario de contacto: nombre, dirección de correo electrónico y el mensaje que nos escribas. No utilizamos cookies publicitarias ni Google Analytics en esta versión del sitio web. Tus datos nunca se venden, ceden a terceros con fines comerciales ni se envían a modelos públicos de IA.",
+    "rightsTitle": "4. Ejercicio de derechos (RGPD)",
+    "rightsText": "Puedes solicitar en cualquier momento el acceso, rectificación, supresión, limitación u oposición al tratamiento de tus datos escribiendo directamente a info@kinvia.es.",
+    "legalGapNote": "Nota sobre identificación mercantil completa: Los datos registrales y el NIF/CIF societario más el domicilio fiscal definitivo se incorporarán en el aviso legal completo una vez concluido el trámite administrativo correspondiente.",
+    "backHome": "← Volver al inicio"
+  }
+}
+

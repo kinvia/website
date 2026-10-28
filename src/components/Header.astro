@@ -1,0 +1,154 @@
+---
+import { type Locale, getDictionary, getAlternatePath } from '../i18n';
+
+export interface Props {
+  locale: Locale;
+  currentPath: string;
+}
+
+const { locale, currentPath } = Astro.props;
+const dict = getDictionary(locale);
+const otherLocale: Locale = locale === 'es' ? 'en' : 'es';
+const altPath = getAlternatePath(otherLocale, currentPath);
+const homePrefix = `/${locale}/`;
+---
+
+<header class="site-header" role="banner">
+  <div class="container header-inner">
+    <a href={homePrefix} class="brand-link" aria-label="Kinvia">
+      <img
+        src="/images/logo-w.webp"
+        alt="Kinvia"
+        width="136"
+        height="45"
+        class="brand-logo brand-logo-dark"
+      />
+      <img
+        src="/images/logo.webp"
+        alt="Kinvia"
+        width="136"
+        height="53"
+        class="brand-logo brand-logo-light"
+      />
+    </a>
+
+    <nav class="primary-nav" aria-label={locale === 'es' ? 'Navegación principal' : 'Primary navigation'}>
+      <ul class="nav-list">
+        <li><a href={`${homePrefix}#axes`}>{dict.nav.axes}</a></li>
+        <li><a href={`${homePrefix}#services`}>{dict.nav.services}</a></li>
+        <li><a href={`${homePrefix}#model`}>{dict.nav.model}</a></li>
+        <li><a href={`${homePrefix}#contact`} class="nav-cta">{dict.nav.contact}</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a
+        href={altPath}
+        class="lang-switch"
+        aria-label={dict.nav.langSwitchLabel}
+        hreflang={otherLocale}
+      >
+        {dict.nav.langCode}
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 4.5rem;
+    gap: 1.25rem;
+  }
+
+  .brand-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .brand-logo {
+    height: 2.25rem;
+    width: auto;
+    display: block;
+  }
+
+  .brand-logo-light {
+    display: none;
+  }
+
+  :global([data-theme="light"]) .brand-logo-dark {
+    display: none;
+  }
+
+  :global([data-theme="light"]) .brand-logo-light {
+    display: block;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .nav-list a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .nav-list a:hover {
+    color: var(--accent-tech-strong);
+  }
+
+  .nav-list .nav-cta {
+    color: var(--accent-tech-strong);
+    font-weight: 700;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .lang-switch:hover {
+    border-color: var(--accent-tech-strong);
+    color: var(--accent-tech-strong);
+  }
+
+  @media (max-width: 720px) {
+    .nav-list {
+      gap: 0.85rem;
+      font-size: 0.85rem;
+    }
+  }
+</style>
+

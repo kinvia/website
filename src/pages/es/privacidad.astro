@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getDictionary } from '../../i18n';
+
+const locale = 'es';
+const dict = getDictionary(locale);
+const p = dict.privacy;
+---
+
+<BaseLayout locale={locale} title={`${p.title} · Kinvia`} currentPath="/es/privacidad">
+  <section class="section-shell privacy-section">
+    <div class="container privacy-container">
+      <a href="/es/" class="back-link">{p.backHome}</a>
+      <h1>{p.title}</h1>
+      <p class="privacy-updated">{p.updated}</p>
+      <p class="privacy-lead">{p.intro}</p>
+
+      <div class="privacy-block">
+        <h2>{p.controllerTitle}</h2>
+        <p>{p.controllerText}</p>
+      </div>
+
+      <div class="privacy-block">
+        <h2>{p.purposeTitle}</h2>
+        <p>{p.purposeText}</p>
+      </div>
+
+      <div class="privacy-block">
+        <h2>{p.dataTitle}</h2>
+        <p>{p.dataText}</p>
+      </div>
+
+      <div class="privacy-block">
+        <h2>{p.rightsTitle}</h2>
+        <p>{p.rightsText}</p>
+      </div>
+
+      <aside class="privacy-note" aria-label="Nota legal">
+        <p>{p.legalGapNote}</p>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .privacy-container {
+    max-width: 760px;
+  }
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  .privacy-updated {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    margin: 0.5rem 0 1.5rem;
+  }
+  .privacy-lead {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+  }
+  .privacy-block {
+    margin-bottom: 2rem;
+  }
+  .privacy-block h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  .privacy-block p {
+    color: var(--text-secondary);
+  }
+  .privacy-note {
+    margin-top: 2.5rem;
+    padding: 1.25rem;
+    background-color: var(--bg-elevated);
+    border-left: 3px solid var(--accent-tech);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+  }
+</style>
+

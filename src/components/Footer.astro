@@ -1,0 +1,99 @@
+---
+import { type Locale, getDictionary, getAlternatePath } from '../i18n';
+
+export interface Props {
+  locale: Locale;
+  currentPath: string;
+}
+
+const { locale, currentPath } = Astro.props;
+const dict = getDictionary(locale);
+const otherLocale: Locale = locale === 'es' ? 'en' : 'es';
+const altPath = getAlternatePath(otherLocale, currentPath);
+const homePrefix = `/${locale}/`;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <p class="footer-title">Kinvia</p>
+      <p class="footer-tagline">{dict.footer.tagline}</p>
+      <p class="footer-contact-links">
+        <a href={`mailto:${dict.contact.email}`}>{dict.contact.email}</a>
+        <span aria-hidden="true"> · </span>
+        <a href={dict.contact.phoneHref}>{dict.contact.phone}</a>
+      </p>
+    </div>
+
+    <nav class="footer-nav" aria-label={locale === 'es' ? 'Enlaces del pie de página' : 'Footer navigation'}>
+      <a href={`${homePrefix}#hero`}>{dict.nav.hero}</a>
+      <a href={`${homePrefix}#axes`}>{dict.nav.axes}</a>
+      <a href={`${homePrefix}#services`}>{dict.nav.services}</a>
+      <a href={`${homePrefix}#model`}>{dict.nav.model}</a>
+      <a href={`${homePrefix}#contact`}>{dict.nav.contact}</a>
+      <a href={dict.footer.privacyHref}>{dict.footer.privacyLink}</a>
+      <a href={altPath} hreflang={otherLocale}>{dict.nav.langCode}</a>
+    </nav>
+
+    <div class="footer-copy">
+      <p>© {currentYear} Kinvia. {dict.footer.rights}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--bg-elevated);
+    border-top: 1px solid var(--border-subtle);
+    padding: 3.5rem 0 2.5rem;
+    margin-top: auto;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .footer-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .footer-tagline {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-contact-links {
+    font-size: 0.95rem;
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+
+  .footer-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.92rem;
+  }
+
+  .footer-nav a:hover {
+    color: var(--accent-tech-strong);
+  }
+
+  .footer-copy {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+  }
+</style>
+
