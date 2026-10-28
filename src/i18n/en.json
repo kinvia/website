@@ -11,7 +11,14 @@
     "model": "Model",
     "contact": "Contact",
     "langSwitchLabel": "Switch language to Spanish",
-    "langCode": "ES"
+    "langCode": "ES",
+    "anchors": {
+      "hero": "hero",
+      "axes": "axes",
+      "services": "services",
+      "model": "model",
+      "contact": "contact"
+    }
   },
   "hero": {
     "eyebrow": "Kinvia · Tech Partner",

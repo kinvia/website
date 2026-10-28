@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { t, getDictionary, getAlternatePath } from '../src/i18n';
+import { t, getDictionary, getAlternatePath, translateHash } from '../src/i18n';
 
 describe('i18n helper and Kinvia copy rules', () => {
   it('returns exact Hero claim and positioning in Spanish and English', () => {
@@ -33,5 +33,33 @@ describe('i18n helper and Kinvia copy rules', () => {
     expect(getAlternatePath('en', '/es/privacidad')).toBe('/en/privacy');
     expect(getAlternatePath('es', '/en/privacy')).toBe('/es/privacidad');
   });
-});
 
+  it('defines localized nav.anchors and translates hashes bidirectionally between ES and EN', () => {
+    const esAnchors = getDictionary('es').nav.anchors;
+    const enAnchors = getDictionary('en').nav.anchors;
+    expect(esAnchors).toEqual({
+      hero: 'inicio',
+      axes: 'divisiones',
+      services: 'servicios',
+      model: 'modelos',
+      contact: 'contacto',
+    });
+    expect(enAnchors).toEqual({
+      hero: 'hero',
+      axes: 'axes',
+      services: 'services',
+      model: 'model',
+      contact: 'contact',
+    });
+
+    expect(translateHash('es', '#contact')).toBe('#contacto');
+    expect(translateHash('es', '#model')).toBe('#modelos');
+    expect(translateHash('en', '#divisiones')).toBe('#axes');
+    expect(translateHash('en', 'servicios')).toBe('#services');
+    expect(translateHash('es', '#unknown')).toBe('');
+
+    expect(getAlternatePath('es', '/en/', '#contact')).toBe('/es/#contacto');
+    expect(getAlternatePath('en', '/es/', '#modelos')).toBe('/en/#model');
+    expect(getAlternatePath('en', '/es/privacidad', '#contacto')).toBe('/en/privacy');
+  });
+});

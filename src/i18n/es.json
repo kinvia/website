@@ -11,7 +11,14 @@
     "model": "Modelo",
     "contact": "Contacto",
     "langSwitchLabel": "Cambiar idioma a inglés",
-    "langCode": "EN"
+    "langCode": "EN",
+    "anchors": {
+      "hero": "inicio",
+      "axes": "divisiones",
+      "services": "servicios",
+      "model": "modelos",
+      "contact": "contacto"
+    }
   },
   "hero": {
     "eyebrow": "Kinvia · Socio Tecnológico",

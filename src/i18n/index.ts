@@ -3,6 +3,7 @@ import en from './en.json';
 
 export type Locale = 'es' | 'en';
 export type Dictionary = typeof es;
+export type SectionKey = keyof typeof es.nav.anchors;
 
 const dictionaries: Record<Locale, Dictionary> = {
   es,
@@ -44,20 +45,45 @@ export function t(
   return key;
 }
 
-const routePairs: Array<[string, string]> = [
-  ['/es/', '/en/'],
-  ['/es', '/en'],
-  ['/es/privacidad', '/en/privacy'],
-  ['/es/privacidad/', '/en/privacy/'],
-];
+const SECTION_KEYS: SectionKey[] = ['hero', 'axes', 'services', 'model', 'contact'];
 
-export function getAlternatePath(targetLocale: Locale, pathname: string): string {
-  const normalized = pathname || '/';
-  for (const [esPath, enPath] of routePairs) {
-    if (normalized === esPath || normalized === enPath) {
-      return targetLocale === 'es' ? esPath.replace(/\/privacidad\/$/, '/privacidad') : enPath.replace(/\/privacy\/$/, '/privacy');
+export function translateHash(targetLocale: Locale, hash: string): string {
+  const clean = (hash || '').replace(/^#/, '').trim().toLowerCase();
+  if (!clean) return '';
+
+  for (const key of SECTION_KEYS) {
+    const esAnchor = dictionaries.es.nav.anchors[key].toLowerCase();
+    const enAnchor = dictionaries.en.nav.anchors[key].toLowerCase();
+    if (clean === esAnchor || clean === enAnchor || clean === key) {
+      return `#${dictionaries[targetLocale].nav.anchors[key]}`;
     }
   }
-  return targetLocale === 'es' ? '/es/' : '/en/';
+
+  return '';
 }
 
+const routePairs: Array<[string, string, boolean]> = [
+  ['/es/', '/en/', true],
+  ['/es', '/en', true],
+  ['/es/privacidad', '/en/privacy', false],
+  ['/es/privacidad/', '/en/privacy/', false],
+];
+
+export function getAlternatePath(targetLocale: Locale, pathname: string, hash?: string): string {
+  const normalized = pathname || '/';
+  const translatedHash = hash ? translateHash(targetLocale, hash) : '';
+
+  for (const [esPath, enPath, isLanding] of routePairs) {
+    if (normalized === esPath || normalized === enPath) {
+      const base =
+        targetLocale === 'es'
+          ? esPath.replace(/\/privacidad\/$/, '/privacidad')
+          : enPath.replace(/\/privacy\/$/, '/privacy');
+      const normalizedBase = isLanding ? (targetLocale === 'es' ? '/es/' : '/en/') : base;
+      return isLanding && translatedHash ? `${normalizedBase}${translatedHash}` : normalizedBase;
+    }
+  }
+
+  const fallbackBase = targetLocale === 'es' ? '/es/' : '/en/';
+  return translatedHash ? `${fallbackBase}${translatedHash}` : fallbackBase;
+}
