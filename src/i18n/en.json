@@ -1,0 +1,198 @@
+{
+  "meta": {
+    "title": "Kinvia — Comprehensive Tech Partner: Cloud, Software & IoT",
+    "description": "Profitability & Optimization. Integration & Proximity. Custom software engineering, Cloud Native architecture, In-House IT, and autonomous Smart Spaces focused on your ROI."
+  },
+  "nav": {
+    "skipLink": "Skip to main content",
+    "hero": "Home",
+    "axes": "Divisions",
+    "services": "Services",
+    "model": "Model",
+    "contact": "Contact",
+    "langSwitchLabel": "Switch language to Spanish",
+    "langCode": "ES"
+  },
+  "hero": {
+    "eyebrow": "Kinvia · Tech Partner",
+    "claim": "«Profitability & Optimization. Integration & Proximity.»",
+    "subtitle": "Comprehensive Tech Partner: Software Engineering, Cloud Architecture & IT Outsourcing.",
+    "lead": "We are not distant vendors—we sit on your side of the table as your own engineering department. Technology that multiplies your performance, not your costs.",
+    "cta": "Let's talk"
+  },
+  "axes": {
+    "eyebrow": "01 · From Cloud to the Physical World",
+    "title": "Two business units driven by the same engineering rigor",
+    "subtitle": "We translate 20+ years of building mission-critical systems into measurable business impact, with 100% vendor-agnostic honesty.",
+    "cloud": {
+      "badge": "Digital & Corporate Division",
+      "title": "Cloud & Software",
+      "tagline": "High-performance engineering boutique. The brain of a tech giant with the agility and proximity of a local partner.",
+      "description": "From running your entire IT operations (In-House IT) with enterprise-grade reliability tailored to a predictable monthly fee, to building custom software, Cloud Native platforms, and sovereign AI without traditional consultancy bloat.",
+      "outcomes": [
+        "Enterprise-grade peace of mind, immutable backups, and proactive cybersecurity for mid-market companies.",
+        "Scalable Linux and container architectures with zero vendor lock-in.",
+        "Measurable cloud and licensing cost reductions through rigorous FinOps audits."
+      ]
+    },
+    "iot": {
+      "badge": "Physical & Edge Division",
+      "title": "IoT & Smart Spaces",
+      "tagline": "Invisible technology, real independence, total peace of mind.",
+      "description": "We transform luxury residences, real estate developments, and agricultural operations (AgTech) through cognitive automation and 100% local Edge Computing on open hardware. Your property learns routines, anticipates weather, and stays 100% operational even if internet connectivity drops.",
+      "outcomes": [
+        "100% local processing (offline-first) with zero mandatory third-party clouds or closed proprietary buses.",
+        "Privacy by design using non-invasive mmWave radar presence sensing—never intrusive indoor cameras.",
+        "Preventive remote maintenance via autonomous Watchdog telemetry and secure OTA updates."
+      ]
+    }
+  },
+  "services": {
+    "eyebrow": "02 · Core Services",
+    "title": "Engineering tailored to your problem, not our catalog",
+    "subtitle": "Every technical decision is backed by its concrete economic and operational return on your bottom line.",
+    "items": [
+      {
+        "id": "it-in-house",
+        "title": "In-House IT (External Systems Department)",
+        "summary": "Your engineering team off your payroll but inside your business: Linux servers, networks, immutable backups, preventive security, and local office automation with direct support."
+      },
+      {
+        "id": "custom-software",
+        "title": "Custom Software Development",
+        "summary": "Modern web applications, SaaS platforms, low-latency APIs, business process automation (BPM), and ERP/CRM integrations built with clean, lock-in-free code."
+      },
+      {
+        "id": "ai-cloud",
+        "title": "Applied AI & Cloud Architecture",
+        "summary": "Practical AI agents, corporate RAG, and document workflows with strict data sovereignty, paired with resilient Linux and container infrastructures."
+      },
+      {
+        "id": "finops",
+        "title": "Resource Optimization & Tech ROI (FinOps)",
+        "summary": "Cloud bill and software license audits to eliminate waste, right-size workloads, optimize databases, and migrate to high-ROI Open Source alternatives."
+      },
+      {
+        "id": "iot-agtech",
+        "title": "IoT, Cognitive Home Automation & AgTech",
+        "summary": "Luxury homes, residential developments, and smart farms with predictive energy and irrigation management on local Edge hubs, long-range telemetry, and offline resilience."
+      }
+    ]
+  },
+  "model": {
+    "eyebrow": "03 · Commercial & Delivery Model",
+    "title": "Zero black boxes. Zero billing surprises.",
+    "subtitle": "Three transparent engagement models designed to protect your budget and give you full ownership from day one.",
+    "items": [
+      {
+        "id": "retainer",
+        "badge": "In-House IT & Continuous Support",
+        "title": "Fixed Monthly Retainer + Hour Bank",
+        "description": "Complete budget predictability. We keep your infrastructure monitored, patched, and secure proactively, while your dedicated hour bank covers reactive support, evolutionary improvements, and ongoing automation.",
+        "highlights": [
+          "Predictable fixed monthly fee with zero surprise invoices",
+          "Continuous preventive monitoring to stop outages before they happen",
+          "Flexible hour bank for support, consulting, and continuous improvements"
+        ]
+      },
+      {
+        "id": "three-phase",
+        "badge": "Software, Cloud & AI",
+        "title": "Collaborative 3-Phase Projects",
+        "description": "We never push a single rigid solution. We work side-by-side with you to choose the architecture that best fits your budget and growth stage.",
+        "highlights": [
+          "Phase 1 · Joint Discovery to map real bottlenecks and budget constraints",
+          "Phase 2 · 2–3 tiered technical options detailing trade-offs, OpEx, and timelines",
+          "Phase 3 · Hand-in-hand production rollout with early deliveries and team enablement"
+        ]
+      },
+      {
+        "id": "iot-watchdog",
+        "badge": "IoT & Smart Spaces",
+        "title": "Open CapEx Installation + Watchdog/OTA Subscription",
+        "description": "You truly own your open hardware from day one without proprietary lock-in, backed by proactive remote maintenance.",
+        "highlights": [
+          "Initial CapEx deployment on open hardware and a local Linux Edge Hub",
+          "Remote Watchdog self-healing diagnostics and early sensor/network alerting",
+          "Encrypted remote backups and secure OTA updates without disruptive on-site visits"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "04 · Direct Contact",
+    "title": "Let's sit on the same side of the table",
+    "subtitle": "Tell us what you want to optimize, build, or unblock. You'll get a direct answer with clear technical criteria and budget-aligned options.",
+    "emailLabel": "Direct email",
+    "email": "info@kinvia.es",
+    "phoneLabel": "Direct phone",
+    "phone": "+34 644 21 93 52",
+    "phoneHref": "tel:+34644219352",
+    "locationLabel": "Location",
+    "location": "Orihuela Costa, Alicante, Spain · Close regional presence & international remote delivery",
+    "form": {
+      "nameLabel": "Your name",
+      "namePlaceholder": "e.g. Alex Morgan",
+      "emailLabel": "Your email address",
+      "emailPlaceholder": "name@company.com",
+      "messageLabel": "How can we help?",
+      "messagePlaceholder": "Briefly share your current challenge, project goals, or support needs...",
+      "privacyPrefix": "I have read and accept the",
+      "privacyLinkText": "Privacy Policy",
+      "privacyHref": "/en/privacy",
+      "submit": "Send message",
+      "submitting": "Sending...",
+      "successTitle": "Message received",
+      "successMessage": "Thank you for reaching out. Enrique will review your message and reply directly as soon as possible.",
+      "errorMessage": "We couldn't submit the form automatically. Please email us directly at info@kinvia.es or call +34 644 21 93 52."
+    }
+  },
+  "a11y": {
+    "buttonLabel": "Accessibility and theme options",
+    "panelTitle": "Accessibility & Display",
+    "themeLabel": "Color theme",
+    "themeDark": "Dark",
+    "themeLight": "Light",
+    "contrastLabel": "High contrast",
+    "textSizeLabel": "Text size",
+    "sizeNormal": "Normal",
+    "sizeLarge": "Large",
+    "sizeLarger": "Extra large",
+    "reduceMotionLabel": "Reduce motion",
+    "shortcutsButton": "Keyboard shortcuts (?)",
+    "shortcutsTitle": "Keyboard Shortcuts",
+    "shortcutsHelpHint": "Press ? anytime outside a text input to toggle this help dialog.",
+    "closeLabel": "Close panel",
+    "shortcuts": [
+      { "key": "Tab", "description": "Move focus across interactive elements and skip link" },
+      { "key": "?", "description": "Toggle keyboard shortcuts help dialog" },
+      { "key": "1", "description": "Jump to Hero (Home)" },
+      { "key": "2", "description": "Jump to Divisions (Cloud & Software / IoT)" },
+      { "key": "3", "description": "Jump to Core Services" },
+      { "key": "4", "description": "Jump to Commercial Model" },
+      { "key": "5", "description": "Jump to Contact & Form" },
+      { "key": "Escape", "description": "Close open panel or dialog" }
+    ]
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "privacyLink": "Privacy Policy",
+    "privacyHref": "/en/privacy",
+    "tagline": "Comprehensive Tech Partner · Orihuela Costa, Alicante"
+  },
+  "privacy": {
+    "title": "Privacy Policy (Brief Notice)",
+    "updated": "Last updated: October 2026",
+    "intro": "At Kinvia we apply Privacy by Design and by Default. We only collect the minimum information required to answer your enquiry.",
+    "controllerTitle": "1. Data Controller Contact",
+    "controllerText": "Kinvia (Enrique) · Primary location: Orihuela Costa, Alicante, Spain · Email: info@kinvia.es · Phone: +34 644 21 93 52.",
+    "purposeTitle": "2. Purpose of Processing",
+    "purposeText": "To respond to technical enquiries, commercial requests, or support questions submitted via the contact form, direct email, or phone.",
+    "dataTitle": "3. Data Collected & Retention",
+    "dataText": "We only collect the fields submitted in the contact form: name, email address, and your message. We do not use advertising cookies or Google Analytics on this MVP site. Your personal data is never sold, shared with third parties for marketing, or sent to public AI models.",
+    "rightsTitle": "4. Your GDPR Rights",
+    "rightsText": "You may request access, rectification, erasure, restriction, or objection regarding your personal data at any time by emailing info@kinvia.es.",
+    "legalGapNote": "Corporate registration note: Full company tax ID (CIF/NIF) and registered fiscal address details will be added to the complete legal notice once administrative registration is finalized.",
+    "backHome": "← Back to home"
+  }
+}
