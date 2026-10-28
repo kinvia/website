@@ -1,0 +1,95 @@
+---
+import '../styles/global.css';
+import { type Locale, getDictionary, getAlternatePath } from '../i18n';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+  locale: Locale;
+  title?: string;
+  description?: string;
+  currentPath: string;
+}
+
+const { locale, title, description, currentPath } = Astro.props;
+const dict = getDictionary(locale);
+const pageTitle = title ?? dict.meta.title;
+const pageDescription = description ?? dict.meta.description;
+
+const esPath = getAlternatePath('es', currentPath);
+const enPath = getAlternatePath('en', currentPath);
+const siteOrigin = Astro.site ? Astro.site.origin : 'https://kinvia.es';
+---
+
+<!doctype html>
+<html lang={locale} data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+
+    <link rel="alternate" hreflang="es" href={`${siteOrigin}${esPath}`} />
+    <link rel="alternate" hreflang="en" href={`${siteOrigin}${enPath}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteOrigin}/es/`} />
+    <link rel="canonical" href={`${siteOrigin}${currentPath}`} />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <script is:inline>
+      (function () {
+        var STORAGE_KEY = 'kinvia-a11y-prefs';
+        var prefersLight = false;
+        try {
+          prefersLight =
+            typeof window.matchMedia === 'function' &&
+            window.matchMedia('(prefers-color-scheme: light)').matches;
+        } catch (e) {}
+
+        var theme = prefersLight ? 'light' : 'dark';
+        var highContrast = false;
+        var textSize = 'normal';
+        var reduceMotion = false;
+
+        try {
+          var raw = window.localStorage ? window.localStorage.getItem(STORAGE_KEY) : null;
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (parsed && typeof parsed === 'object') {
+              if (parsed.theme === 'light' || parsed.theme === 'dark') theme = parsed.theme;
+              if (typeof parsed.highContrast === 'boolean') highContrast = parsed.highContrast;
+              if (
+                parsed.textSize === 'normal' ||
+                parsed.textSize === 'large' ||
+                parsed.textSize === 'larger'
+              ) {
+                textSize = parsed.textSize;
+              }
+              if (typeof parsed.reduceMotion === 'boolean') reduceMotion = parsed.reduceMotion;
+            }
+          }
+        } catch (e) {}
+
+        var root = document.documentElement;
+        root.setAttribute('data-theme', theme);
+        if (highContrast) root.setAttribute('data-contrast', 'high');
+        if (textSize === 'large' || textSize === 'larger') {
+          root.setAttribute('data-text-size', textSize);
+        }
+        if (reduceMotion) root.setAttribute('data-reduce-motion', 'true');
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">{dict.nav.skipLink}</a>
+    <Header locale={locale} currentPath={currentPath} />
+    <main id="main-content" tabindex="-1">
+      <slot />
+    </main>
+    <Footer locale={locale} currentPath={currentPath} />
+  </body>
+</html>
