@@ -45,3 +45,4 @@ Currently, section IDs (`#hero`, `#axes`, `#services`, `#model`, `#contact`) are
 
 - Exact data attribute name on `.lang-switch` (`data-base-href={altPath}`) so the inline script can cleanly append `#<translatedAnchor>` without accumulating hashes.
 - Updating existing test assertions that hardcode `#hero` or `#contact` on `/es/` to expect `#inicio` and `#contacto` in Spanish and `#hero` and `#contact` in English.
+

@@ -64,16 +64,56 @@ describe('A11yPanel and keyboard shortcuts', () => {
     expect(scrollSpy).not.toHaveBeenCalled();
     expect(screen.queryByRole('dialog')).toBeNull();
 
-    // Pressing 3 on document body jumps to #services
+    // Pressing 3 on document body jumps to #services and updates URL hash
     input.blur();
     document.documentElement.dataset.reduceMotion = 'true';
     fireEvent.keyDown(document, { key: '3' });
     expect(scrollSpy).toHaveBeenCalledWith({ behavior: 'auto', block: 'start' });
+    expect(window.location.hash).toBe('#services');
 
     // Pressing ? opens shortcuts dialog, Escape closes it
     fireEvent.keyDown(document, { key: '?' });
     expect(screen.getByRole('dialog')).not.toBeNull();
     fireEvent.keyDown(document, { key: 'Escape' });
+    expect(screen.queryByRole('dialog')).toBeNull();
+  });
+
+  it('updates URL hash to localized anchor both on keyboard shortcut and on clicking modal shortcut button', () => {
+    document.body.innerHTML = `
+      <section id="inicio" data-section="hero" tabindex="-1"></section>
+      <section id="divisiones" data-section="axes" tabindex="-1"></section>
+      <section id="servicios" data-section="services" tabindex="-1"></section>
+      <section id="modelos" data-section="model" tabindex="-1"></section>
+      <section id="contacto" data-section="contact" tabindex="-1"></section>
+    `;
+
+    const serviciosEl = document.getElementById('servicios')!;
+    const scrollSpy = vi.fn();
+    serviciosEl.scrollIntoView = scrollSpy;
+
+    const copy = getDictionary('es').a11y;
+    render(<A11yPanel copy={copy} />);
+
+    // Press 3 -> updates to #servicios
+    fireEvent.keyDown(document, { key: '3' });
+    expect(scrollSpy).toHaveBeenCalled();
+    expect(window.location.hash).toBe('#servicios');
+
+    // Open shortcuts modal by pressing ?
+    fireEvent.keyDown(document, { key: '?' });
+    const modal = screen.getByRole('dialog');
+    expect(modal).not.toBeNull();
+
+    // Click on "Contacto" shortcut button inside the modal
+    const contactoEl = document.getElementById('contacto')!;
+    const contactoSpy = vi.fn();
+    contactoEl.scrollIntoView = contactoSpy;
+
+    const contactoBtn = screen.getByRole('button', { name: /contacto/i });
+    fireEvent.click(contactoBtn);
+
+    expect(contactoSpy).toHaveBeenCalled();
+    expect(window.location.hash).toBe('#contacto');
     expect(screen.queryByRole('dialog')).toBeNull();
   });
 

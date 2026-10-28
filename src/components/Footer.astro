@@ -27,13 +27,21 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <nav class="footer-nav" aria-label={locale === 'es' ? 'Enlaces del pie de página' : 'Footer navigation'}>
-      <a href={`${homePrefix}#hero`}>{dict.nav.hero}</a>
-      <a href={`${homePrefix}#axes`}>{dict.nav.axes}</a>
-      <a href={`${homePrefix}#services`}>{dict.nav.services}</a>
-      <a href={`${homePrefix}#model`}>{dict.nav.model}</a>
-      <a href={`${homePrefix}#contact`}>{dict.nav.contact}</a>
+      <a href={`${homePrefix}#${dict.nav.anchors.hero}`}>{dict.nav.hero}</a>
+      <a href={`${homePrefix}#${dict.nav.anchors.axes}`}>{dict.nav.axes}</a>
+      <a href={`${homePrefix}#${dict.nav.anchors.services}`}>{dict.nav.services}</a>
+      <a href={`${homePrefix}#${dict.nav.anchors.model}`}>{dict.nav.model}</a>
+      <a href={`${homePrefix}#${dict.nav.anchors.contact}`}>{dict.nav.contact}</a>
       <a href={dict.footer.privacyHref}>{dict.footer.privacyLink}</a>
-      <a href={altPath} hreflang={otherLocale}>{dict.nav.langCode}</a>
+      <a
+        href={altPath}
+        hreflang={otherLocale}
+        data-lang-switch
+        data-base-href={altPath}
+        data-target-locale={otherLocale}
+      >
+        {dict.nav.langCode}
+      </a>
     </nav>
 
     <div class="footer-copy">

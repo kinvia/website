@@ -7,7 +7,7 @@ import * as cheerio from 'cheerio';
 const root = path.resolve(__dirname, '..');
 
 describe('Astro static build verification checklist', () => {
-  it('builds static HTML for /es/, /en/, /es/privacidad, and /en/privacy meeting all spec checks', () => {
+  it('builds static HTML for /es/, /en/, /es/privacidad, and /en/privacy meeting all spec checks and localized anchors', () => {
     execSync('npm run build', { cwd: root, stdio: 'pipe' });
 
     const esHtml = fs.readFileSync(path.join(root, 'dist/es/index.html'), 'utf-8');
@@ -19,7 +19,11 @@ describe('Astro static build verification checklist', () => {
     expect($es('link[rel="alternate"][hreflang="es"]').attr('href')).toContain('/es/');
     expect($es('link[rel="alternate"][hreflang="en"]').attr('href')).toContain('/en/');
     expect($es('link[rel="alternate"][hreflang="x-default"]').attr('href')).toContain('/es/');
-    expect($es('#hero h1').text()).toContain('Rentabilidad y Optimización. Integración y cercanía.');
+    expect($es('#inicio h1').text()).toContain('Rentabilidad y Optimización. Integración y cercanía.');
+    expect($es('#divisiones').length).toBe(1);
+    expect($es('#servicios').length).toBe(1);
+    expect($es('#modelos').length).toBe(1);
+    expect($es('#contacto').length).toBe(1);
     expect($es('form[name="contact"][data-netlify="true"]').length).toBe(1);
     expect($es('a[href="/es/privacidad"]').length).toBeGreaterThan(0);
     expect(esHtml).toContain('info@kinvia.es');
@@ -27,6 +31,11 @@ describe('Astro static build verification checklist', () => {
     expect(esHtml).toContain(String(new Date().getFullYear()));
 
     const $en = cheerio.load(enHtml);
+    expect($en('#hero').length).toBe(1);
+    expect($en('#axes').length).toBe(1);
+    expect($en('#services').length).toBe(1);
+    expect($en('#model').length).toBe(1);
+    expect($en('#contact').length).toBe(1);
     expect($en('form[name="contact"][data-netlify="true"]').length).toBe(1);
     expect($en('a[href="/en/privacy"]').length).toBeGreaterThan(0);
 
@@ -34,4 +43,3 @@ describe('Astro static build verification checklist', () => {
     expect(enPrivHtml).toContain('Orihuela Costa');
   }, 30000);
 });
-

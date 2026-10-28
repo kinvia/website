@@ -155,3 +155,4 @@ Expected: PASS (all 9 test files passing, including `astro build` verification o
 git add src/components/ tests/
 git commit -m "feat(nav): localize section anchors per locale and sync hash on language switch"
 ```
+

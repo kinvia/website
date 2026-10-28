@@ -34,11 +34,11 @@ const homePrefix = `/${locale}/`;
 
     <nav class="primary-nav" aria-label={locale === 'es' ? 'Navegación principal' : 'Primary navigation'}>
       <ul class="nav-list">
-        <li><a href={`${homePrefix}#hero`}>{dict.nav.hero}</a></li>
-        <li><a href={`${homePrefix}#axes`}>{dict.nav.axes}</a></li>
-        <li><a href={`${homePrefix}#services`}>{dict.nav.services}</a></li>
-        <li><a href={`${homePrefix}#model`}>{dict.nav.model}</a></li>
-        <li><a href={`${homePrefix}#contact`}>{dict.nav.contact}</a></li>
+        <li><a href={`${homePrefix}#${dict.nav.anchors.hero}`}>{dict.nav.hero}</a></li>
+        <li><a href={`${homePrefix}#${dict.nav.anchors.axes}`}>{dict.nav.axes}</a></li>
+        <li><a href={`${homePrefix}#${dict.nav.anchors.services}`}>{dict.nav.services}</a></li>
+        <li><a href={`${homePrefix}#${dict.nav.anchors.model}`}>{dict.nav.model}</a></li>
+        <li><a href={`${homePrefix}#${dict.nav.anchors.contact}`}>{dict.nav.contact}</a></li>
       </ul>
     </nav>
 
@@ -48,6 +48,9 @@ const homePrefix = `/${locale}/`;
         class="lang-switch"
         aria-label={dict.nav.langSwitchLabel}
         hreflang={otherLocale}
+        data-lang-switch
+        data-base-href={altPath}
+        data-target-locale={otherLocale}
       >
         {dict.nav.langCode}
       </a>
@@ -59,14 +62,77 @@ const homePrefix = `/${locale}/`;
   (function () {
     if (typeof window === 'undefined') return;
 
+    var HASH_MAP = {
+      es: {
+        inicio: 'inicio',
+        divisiones: 'divisiones',
+        servicios: 'servicios',
+        modelos: 'modelos',
+        contacto: 'contacto',
+        hero: 'inicio',
+        axes: 'divisiones',
+        services: 'servicios',
+        model: 'modelos',
+        contact: 'contacto',
+      },
+      en: {
+        inicio: 'hero',
+        divisiones: 'axes',
+        servicios: 'services',
+        modelos: 'model',
+        contacto: 'contact',
+        hero: 'hero',
+        axes: 'axes',
+        services: 'services',
+        model: 'model',
+        contact: 'contact',
+      },
+    };
+
+    function syncLangSwitchers(rawAnchor) {
+      var clean = (rawAnchor || '').replace(/^#/, '');
+      if (!clean) return;
+      var switchers = document.querySelectorAll('[data-lang-switch]');
+      switchers.forEach(function (sw) {
+        var baseHref = sw.getAttribute('data-base-href') || sw.getAttribute('href') || '/';
+        var cleanBase = baseHref.split('#')[0];
+        var targetLocale = sw.getAttribute('data-target-locale') || 'es';
+        var map = HASH_MAP[targetLocale] || HASH_MAP.es;
+        var translated = map[clean];
+        if (translated) {
+          sw.setAttribute('href', cleanBase + '#' + translated);
+        }
+      });
+    }
+
     function initScrollSpy() {
       var links = document.querySelectorAll('.nav-list a[href*="#"]');
-      var sectionIds = ['hero', 'axes', 'services', 'model', 'contact'];
-      var sections = sectionIds
-        .map(function (id) {
-          return document.getElementById(id);
-        })
-        .filter(Boolean);
+      var sectionNodes = document.querySelectorAll('main section[id], section[data-section]');
+      var sections = Array.prototype.slice.call(sectionNodes);
+
+      if (!sections.length) {
+        var fallbackIds = [
+          'inicio',
+          'divisiones',
+          'servicios',
+          'modelos',
+          'contacto',
+          'hero',
+          'axes',
+          'services',
+          'model',
+          'contact',
+        ];
+        sections = fallbackIds
+          .map(function (id) {
+            return document.getElementById(id);
+          })
+          .filter(Boolean);
+      }
+
+      if (window.location.hash) {
+        syncLangSwitchers(window.location.hash);
+      }
 
       if (!links.length || !sections.length) return;
 
@@ -82,6 +148,7 @@ const homePrefix = `/${locale}/`;
             link.removeAttribute('aria-current');
           }
         });
+        syncLangSwitchers(id);
       }
 
       function computeActiveSection() {
@@ -124,7 +191,14 @@ const homePrefix = `/${locale}/`;
 
       window.addEventListener('scroll', computeActiveSection, { passive: true });
       window.addEventListener('resize', computeActiveSection, { passive: true });
-      window.addEventListener('hashchange', computeActiveSection);
+      window.addEventListener('hashchange', function () {
+        if (window.location.hash) {
+          var hashId = window.location.hash.replace(/^#/, '');
+          setActive(hashId);
+        } else {
+          computeActiveSection();
+        }
+      });
 
       links.forEach(function (link) {
         link.addEventListener('click', function () {
@@ -136,7 +210,11 @@ const homePrefix = `/${locale}/`;
         });
       });
 
-      computeActiveSection();
+      if (window.location.hash) {
+        setActive(window.location.hash.replace(/^#/, ''));
+      } else {
+        computeActiveSection();
+      }
     }
 
     if (document.readyState === 'loading') {

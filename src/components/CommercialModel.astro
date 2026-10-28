@@ -10,7 +10,7 @@ const dict = getDictionary(locale);
 const m = dict.model;
 ---
 
-<section id="model" class="section-shell model-section" tabindex="-1" aria-labelledby="model-heading">
+<section id={dict.nav.anchors.model} data-section="model" class="section-shell model-section" tabindex="-1" aria-labelledby="model-heading">
   <div class="container">
     <span class="section-eyebrow">{m.eyebrow}</span>
     <h2 id="model-heading" class="section-title">{m.title}</h2>

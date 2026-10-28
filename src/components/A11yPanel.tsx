@@ -14,6 +14,49 @@ const SECTION_MAP: Record<string, string> = {
   '5': 'contact',
 };
 
+export function navigateToSection(sectionKey: string): boolean {
+  const sectionId = SECTION_MAP[sectionKey];
+  if (!sectionId) return false;
+
+  const el =
+    (document.querySelector(`[data-section="${sectionId}"]`) as HTMLElement | null) ||
+    document.getElementById(sectionId);
+
+  if (!el) return false;
+
+  let osReduced = false;
+  try {
+    osReduced =
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  } catch {
+    // ignore
+  }
+  const reduced =
+    osReduced || document.documentElement.getAttribute('data-reduce-motion') === 'true';
+
+  if (typeof el.scrollIntoView === 'function') {
+    el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+  }
+  el.focus({ preventScroll: true });
+
+  const targetHash = `#${el.id}`;
+  if (window.location.hash !== targetHash) {
+    try {
+      window.history.pushState(null, '', targetHash);
+      const event =
+        typeof HashChangeEvent !== 'undefined'
+          ? new HashChangeEvent('hashchange')
+          : new Event('hashchange');
+      window.dispatchEvent(event);
+    } catch {
+      window.location.hash = targetHash;
+    }
+  }
+
+  return true;
+}
+
 function isEditableElement(target: EventTarget | null): boolean {
   if (!target || !(target instanceof HTMLElement)) return false;
   const tag = target.tagName.toLowerCase();
@@ -97,27 +140,11 @@ export function A11yPanel({ copy }: A11yPanelProps) {
         return;
       }
 
-      const sectionId = SECTION_MAP[e.key];
-      if (sectionId) {
-        const el = document.getElementById(sectionId);
-        if (el) {
-          e.preventDefault();
-          let osReduced = false;
-          try {
-            osReduced =
-              typeof window.matchMedia === 'function' &&
-              window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-          } catch {
-            // ignore
-          }
-          const reduced =
-            osReduced || document.documentElement.getAttribute('data-reduce-motion') === 'true';
-
-          if (typeof el.scrollIntoView === 'function') {
-            el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
-          }
-          el.focus({ preventScroll: true });
-        }
+      if (SECTION_MAP[e.key]) {
+        e.preventDefault();
+        navigateToSection(e.key);
+        setShowShortcuts(false);
+        setOpen(false);
       }
     };
 
@@ -267,14 +294,43 @@ export function A11yPanel({ copy }: A11yPanelProps) {
           </div>
           <p className="a11y-hint">{copy.shortcutsHelpHint}</p>
           <dl className="a11y-shortcuts-list">
-            {copy.shortcuts.map((item) => (
-              <div key={item.key} className="a11y-shortcut-row">
-                <dt>
-                  <kbd>{item.key}</kbd>
-                </dt>
-                <dd>{item.description}</dd>
-              </div>
-            ))}
+            {copy.shortcuts.map((item) => {
+              const hasTarget = Boolean(SECTION_MAP[item.key]);
+              const onTrigger = hasTarget
+                ? () => {
+                    navigateToSection(item.key);
+                    setShowShortcuts(false);
+                  }
+                : undefined;
+
+              return (
+                <div
+                  key={item.key}
+                  className={`a11y-shortcut-row ${hasTarget ? 'is-clickable' : ''}`}
+                  onClick={onTrigger}
+                >
+                  <dt>
+                    <kbd>{item.key}</kbd>
+                  </dt>
+                  <dd>
+                    {hasTarget ? (
+                      <button
+                        type="button"
+                        className="a11y-shortcut-btn"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (onTrigger) onTrigger();
+                        }}
+                      >
+                        {item.description}
+                      </button>
+                    ) : (
+                      item.description
+                    )}
+                  </dd>
+                </div>
+              );
+            })}
           </dl>
         </div>
       )}

@@ -11,7 +11,7 @@ const dict = getDictionary(locale);
 const c = dict.contact;
 ---
 
-<section id="contact" class="section-shell contact-section" tabindex="-1" aria-labelledby="contact-heading">
+<section id={dict.nav.anchors.contact} data-section="contact" class="section-shell contact-section" tabindex="-1" aria-labelledby="contact-heading">
   <div class="container contact-grid">
     <div class="contact-info">
       <span class="section-eyebrow">{c.eyebrow}</span>

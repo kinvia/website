@@ -10,7 +10,7 @@ const dict = getDictionary(locale);
 const h = dict.hero;
 ---
 
-<section id="hero" class="hero-plane" tabindex="-1" aria-labelledby="hero-heading">
+<section id={dict.nav.anchors.hero} data-section="hero" class="hero-plane" tabindex="-1" aria-labelledby="hero-heading">
   <div class="container">
     <div class="hero-inner">
       <div class="hero-brand-mark">
@@ -32,7 +32,7 @@ const h = dict.hero;
       <p class="hero-lead">{h.lead}</p>
 
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">{h.cta}</a>
+        <a href={`#${dict.nav.anchors.contact}`} class="btn-primary">{h.cta}</a>
       </div>
     </div>
   </div>

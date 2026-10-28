@@ -10,7 +10,7 @@ const dict = getDictionary(locale);
 const s = dict.services;
 ---
 
-<section id="services" class="section-shell services-section" tabindex="-1" aria-labelledby="services-heading">
+<section id={dict.nav.anchors.services} data-section="services" class="section-shell services-section" tabindex="-1" aria-labelledby="services-heading">
   <div class="container">
     <span class="section-eyebrow">{s.eyebrow}</span>
     <h2 id="services-heading" class="section-title">{s.title}</h2>

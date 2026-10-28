@@ -343,3 +343,39 @@ html[data-reduce-motion="true"] *::after {
   padding: 0.15rem 0.45rem;
   color: var(--accent-tech-strong);
 }
+
+.a11y-shortcut-row.is-clickable {
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  padding: 0.2rem 0.35rem;
+  margin: -0.2rem -0.35rem;
+  transition: background-color var(--transition-fast);
+}
+
+.a11y-shortcut-row.is-clickable:hover {
+  background-color: var(--bg-surface);
+}
+
+.a11y-shortcut-row.is-clickable:hover kbd {
+  border-color: var(--accent-tech-strong);
+}
+
+.a11y-shortcut-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+.a11y-shortcut-btn:hover {
+  color: var(--accent-tech-strong);
+  text-decoration-style: solid;
+}

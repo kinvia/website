@@ -16,11 +16,12 @@ describe('Landing Storytelling Sections', () => {
     }
   });
 
-  it('ensures Hero.astro has a single LCP candidate with fetchpriority="high" and no cards or stats overlays', () => {
+  it('ensures Hero.astro has localized id, data-section="hero", single LCP candidate with fetchpriority="high", and localized contact CTA', () => {
     const heroSource = fs.readFileSync(path.join(root, 'src/components/Hero.astro'), 'utf-8');
-    expect(heroSource).toContain('id="hero"');
+    expect(heroSource).toContain('id={dict.nav.anchors.hero}');
+    expect(heroSource).toContain('data-section="hero"');
     expect(heroSource).toContain('fetchpriority="high"');
-    expect(heroSource).toContain('href="#contact"');
+    expect(heroSource).toContain('href={`#${dict.nav.anchors.contact}`}');
     expect(heroSource).not.toMatch(/class="[^"]*\b(card|stat-badge|overlay-card)\b/i);
   });
 
@@ -38,4 +39,3 @@ describe('Landing Storytelling Sections', () => {
     }
   });
 });
-

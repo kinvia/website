@@ -28,7 +28,7 @@ export function ContactForm({ locale, copy, initialSuccess = false }: ContactFor
     }
   }, []);
 
-  const actionUrl = locale === 'es' ? '/es/?enviado=1#contact' : '/en/?sent=1#contact';
+  const actionUrl = locale === 'es' ? '/es/?enviado=1#contacto' : '/en/?sent=1#contact';
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

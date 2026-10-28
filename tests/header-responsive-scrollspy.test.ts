@@ -17,21 +17,22 @@ describe('Header Responsive and Scrollspy', () => {
     expect(headerSource).toContain('.nav-list a.is-active');
   });
 
-  it('activates the matching nav link when header script runs before main sections are parsed and user scrolls', () => {
+  it('activates the matching nav link and updates language switcher href with translated hash when user scrolls or has URL hash', () => {
     const scriptMatch = headerSource.match(/<script is:inline>([\s\S]*?)<\/script>/);
     expect(scriptMatch).not.toBeNull();
     const inlineScript = scriptMatch![1];
 
-    // Simulate browser parsing <header> BEFORE <main> exists
+    // Simulate browser parsing <header> BEFORE <main> exists on /es/
     document.body.innerHTML = `
       <header class="site-header">
         <ul class="nav-list">
-          <li><a href="/es/#hero">Inicio</a></li>
-          <li><a href="/es/#axes">Divisiones</a></li>
-          <li><a href="/es/#services">Servicios</a></li>
-          <li><a href="/es/#model">Modelo</a></li>
-          <li><a href="/es/#contact">Contacto</a></li>
+          <li><a href="/es/#inicio">Inicio</a></li>
+          <li><a href="/es/#divisiones">Divisiones</a></li>
+          <li><a href="/es/#servicios">Servicios</a></li>
+          <li><a href="/es/#modelos">Modelo</a></li>
+          <li><a href="/es/#contacto">Contacto</a></li>
         </ul>
+        <a href="/en/" class="lang-switch" data-lang-switch data-base-href="/en/" data-target-locale="en">EN</a>
       </header>
     `;
 
@@ -40,29 +41,27 @@ describe('Header Responsive and Scrollspy', () => {
       get: () => 'loading',
     });
 
-    // Execute inline script while readyState is 'loading' and <main> is not yet in DOM
     window.eval(inlineScript);
 
-    // Now browser finishes parsing <main> sections and fires DOMContentLoaded
     document.body.insertAdjacentHTML(
       'beforeend',
       `
       <main>
-        <section id="hero"></section>
-        <section id="axes"></section>
-        <section id="services"></section>
-        <section id="model"></section>
-        <section id="contact"></section>
+        <section id="inicio" data-section="hero"></section>
+        <section id="divisiones" data-section="axes"></section>
+        <section id="servicios" data-section="services"></section>
+        <section id="modelos" data-section="model"></section>
+        <section id="contacto" data-section="contact"></section>
       </main>
     `
     );
 
     const rects: Record<string, number> = {
-      hero: -900,
-      axes: -400,
-      services: 80,
-      model: 700,
-      contact: 1400,
+      inicio: -900,
+      divisiones: -400,
+      servicios: 80,
+      modelos: 700,
+      contacto: 1400,
     };
 
     for (const [id, top] of Object.entries(rects)) {
@@ -91,10 +90,18 @@ describe('Header Responsive and Scrollspy', () => {
     document.dispatchEvent(new Event('DOMContentLoaded'));
     window.dispatchEvent(new Event('scroll'));
 
-    const servicesLink = document.querySelector('.nav-list a[href="/es/#services"]');
-    const heroLink = document.querySelector('.nav-list a[href="/es/#hero"]');
+    const servicesLink = document.querySelector('.nav-list a[href="/es/#servicios"]');
+    const heroLink = document.querySelector('.nav-list a[href="/es/#inicio"]');
+    const langSwitch = document.querySelector('[data-lang-switch]');
     expect(servicesLink?.classList.contains('is-active')).toBe(true);
     expect(servicesLink?.getAttribute('aria-current')).toBe('location');
     expect(heroLink?.classList.contains('is-active')).toBe(false);
+    expect(langSwitch?.getAttribute('href')).toBe('/en/#services');
+
+    // Clicking #contacto link updates active state and langSwitch to /en/#contact
+    const contactLink = document.querySelector('.nav-list a[href="/es/#contacto"]') as HTMLElement;
+    contactLink.click();
+    expect(contactLink.classList.contains('is-active')).toBe(true);
+    expect(langSwitch?.getAttribute('href')).toBe('/en/#contact');
   });
 });
