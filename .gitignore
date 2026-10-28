@@ -1,2 +1,6 @@
 # Local Netlify folder
 .netlify
+.worktrees/
+node_modules/
+dist/
+.astro/
