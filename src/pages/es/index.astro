@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import TwoAxes from '../../components/TwoAxes.astro';
+import Services from '../../components/Services.astro';
+import CommercialModel from '../../components/CommercialModel.astro';
+
+const locale = 'es';
+---
+
+<BaseLayout locale={locale} currentPath="/es/">
+  <Hero locale={locale} />
+  <TwoAxes locale={locale} />
+  <Services locale={locale} />
+  <CommercialModel locale={locale} />
+</BaseLayout>

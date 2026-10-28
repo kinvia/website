@@ -1,0 +1,76 @@
+---
+import { type Locale, getDictionary } from '../i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = getDictionary(locale);
+const s = dict.services;
+---
+
+<section id="services" class="section-shell services-section" tabindex="-1" aria-labelledby="services-heading">
+  <div class="container">
+    <span class="section-eyebrow">{s.eyebrow}</span>
+    <h2 id="services-heading" class="section-title">{s.title}</h2>
+    <p class="section-subtitle">{s.subtitle}</p>
+
+    <dl class="services-list">
+      {s.items.map((item, idx) => (
+        <div class="service-row">
+          <dt class="service-term">
+            <span class="service-index" aria-hidden="true">0{idx + 1}</span>
+            <span>{item.title}</span>
+          </dt>
+          <dd class="service-desc">{item.summary}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<style>
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .service-row {
+    display: grid;
+    grid-template-columns: minmax(240px, 1fr) 2fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+    align-items: baseline;
+  }
+
+  .service-term {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+  }
+
+  .service-index {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent-tech-strong);
+  }
+
+  .service-desc {
+    color: var(--text-secondary);
+    font-size: 1.02rem;
+  }
+
+  @media (max-width: 768px) {
+    .service-row {
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+    }
+  }
+</style>

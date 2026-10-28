@@ -1,0 +1,108 @@
+---
+import { type Locale, getDictionary } from '../i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = getDictionary(locale);
+const a = dict.axes;
+---
+
+<section id="axes" class="section-shell axes-section" tabindex="-1" aria-labelledby="axes-heading">
+  <div class="container">
+    <span class="section-eyebrow">{a.eyebrow}</span>
+    <h2 id="axes-heading" class="section-title">{a.title}</h2>
+    <p class="section-subtitle">{a.subtitle}</p>
+
+    <div class="axes-grid">
+      <article class="axis-column">
+        <span class="axis-badge">{a.cloud.badge}</span>
+        <h3 class="axis-title">{a.cloud.title}</h3>
+        <p class="axis-tagline">{a.cloud.tagline}</p>
+        <p class="axis-description">{a.cloud.description}</p>
+        <ul class="axis-outcomes">
+          {a.cloud.outcomes.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </article>
+
+      <article class="axis-column">
+        <span class="axis-badge">{a.iot.badge}</span>
+        <h3 class="axis-title">{a.iot.title}</h3>
+        <p class="axis-tagline">{a.iot.tagline}</p>
+        <p class="axis-description">{a.iot.description}</p>
+        <ul class="axis-outcomes">
+          {a.iot.outcomes.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .axes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 3rem;
+    padding-top: 1rem;
+  }
+
+  .axis-column {
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--accent-tech);
+  }
+
+  .axis-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-tech-strong);
+    margin-bottom: 0.5rem;
+  }
+
+  .axis-title {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .axis-tagline {
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+  }
+
+  .axis-description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .axis-outcomes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .axis-outcomes li {
+    position: relative;
+    padding-left: 1.35rem;
+    color: var(--text-secondary);
+    font-size: 0.96rem;
+  }
+
+  .axis-outcomes li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-tech-strong);
+    font-weight: 700;
+  }
+</style>

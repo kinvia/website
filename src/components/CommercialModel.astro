@@ -1,0 +1,90 @@
+---
+import { type Locale, getDictionary } from '../i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = getDictionary(locale);
+const m = dict.model;
+---
+
+<section id="model" class="section-shell model-section" tabindex="-1" aria-labelledby="model-heading">
+  <div class="container">
+    <span class="section-eyebrow">{m.eyebrow}</span>
+    <h2 id="model-heading" class="section-title">{m.title}</h2>
+    <p class="section-subtitle">{m.subtitle}</p>
+
+    <div class="model-columns">
+      {m.items.map((item) => (
+        <article class="model-item">
+          <span class="model-badge">{item.badge}</span>
+          <h3 class="model-title">{item.title}</h3>
+          <p class="model-description">{item.description}</p>
+          <ul class="model-highlights">
+            {item.highlights.map((pt) => (
+              <li>{pt}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .model-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .model-item {
+    padding: 1.75rem 0 0;
+    border-top: 2px solid var(--border-strong);
+  }
+
+  .model-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-tech-strong);
+    margin-bottom: 0.6rem;
+  }
+
+  .model-title {
+    font-size: 1.35rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .model-description {
+    color: var(--text-secondary);
+    font-size: 0.98rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .model-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .model-highlights li {
+    position: relative;
+    padding-left: 1.25rem;
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+  }
+
+  .model-highlights li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-tech-strong);
+    font-weight: 700;
+  }
+</style>
