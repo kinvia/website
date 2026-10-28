@@ -76,4 +76,24 @@ describe('A11yPanel and keyboard shortcuts', () => {
     fireEvent.keyDown(document, { key: 'Escape' });
     expect(screen.queryByRole('dialog')).toBeNull();
   });
+
+  it('does not throw when window.localStorage getter throws SecurityError', () => {
+    const copy = getDictionary('es').a11y;
+    const originalDescriptor = Object.getOwnPropertyDescriptor(window, 'localStorage');
+    Object.defineProperty(window, 'localStorage', {
+      configurable: true,
+      get() {
+        throw new Error('SecurityError: localStorage disabled');
+      },
+    });
+
+    try {
+      expect(() => render(<A11yPanel copy={copy} />)).not.toThrow();
+    } finally {
+      if (originalDescriptor) {
+        Object.defineProperty(window, 'localStorage', originalDescriptor);
+      }
+    }
+  });
 });
+

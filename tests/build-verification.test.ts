@@ -34,3 +34,4 @@ describe('Astro static build verification checklist', () => {
     expect(enPrivHtml).toContain('Orihuela Costa');
   }, 30000);
 });
+

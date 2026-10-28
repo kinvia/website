@@ -49,3 +49,4 @@ describe('Theme and A11y boot resilience', () => {
     expect(document.documentElement.getAttribute('data-reduce-motion')).toBe('true');
   });
 });
+

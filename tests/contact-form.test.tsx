@@ -47,3 +47,4 @@ describe('Netlify ContactForm island', () => {
     fetchSpy.mockRestore();
   });
 });
+

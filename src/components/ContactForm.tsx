@@ -172,3 +172,4 @@ export function ContactForm({ locale, copy, initialSuccess = false }: ContactFor
     </div>
   );
 }
+

@@ -34,3 +34,4 @@ describe('i18n helper and Kinvia copy rules', () => {
     expect(getAlternatePath('es', '/en/privacy')).toBe('/es/privacidad');
   });
 });
+

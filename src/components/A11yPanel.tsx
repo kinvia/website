@@ -41,11 +41,13 @@ export function A11yPanel({ copy }: A11yPanelProps) {
     } catch {
       // ignore
     }
-    const loaded = applyStoredPreferences(
-      document,
-      typeof window !== 'undefined' ? window.localStorage : null,
-      prefersLight
-    );
+    let storage: Storage | null = null;
+    try {
+      storage = typeof window !== 'undefined' ? window.localStorage : null;
+    } catch {
+      storage = null;
+    }
+    const loaded = applyStoredPreferences(document, storage, prefersLight);
     setPrefs(loaded);
   }, []);
 
@@ -279,3 +281,4 @@ export function A11yPanel({ copy }: A11yPanelProps) {
     </aside>
   );
 }
+

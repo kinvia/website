@@ -60,3 +60,4 @@ export function getAlternatePath(targetLocale: Locale, pathname: string): string
   }
   return targetLocale === 'es' ? '/es/' : '/en/';
 }
+
