@@ -57,45 +57,93 @@ const homePrefix = `/${locale}/`;
 
 <script is:inline>
   (function () {
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
-    var links = document.querySelectorAll('.nav-list a[href*="#"]');
-    var sectionIds = ['hero', 'axes', 'services', 'model', 'contact'];
-    var sections = sectionIds
-      .map(function (id) {
-        return document.getElementById(id);
-      })
-      .filter(Boolean);
+    if (typeof window === 'undefined') return;
 
-    function setActive(id) {
-      links.forEach(function (link) {
-        var href = link.getAttribute('href') || '';
-        var match = href.indexOf('#' + id) !== -1;
-        if (match) {
-          link.classList.add('is-active');
-          link.setAttribute('aria-current', 'location');
-        } else {
-          link.classList.remove('is-active');
-          link.removeAttribute('aria-current');
-        }
-      });
-    }
+    function initScrollSpy() {
+      var links = document.querySelectorAll('.nav-list a[href*="#"]');
+      var sectionIds = ['hero', 'axes', 'services', 'model', 'contact'];
+      var sections = sectionIds
+        .map(function (id) {
+          return document.getElementById(id);
+        })
+        .filter(Boolean);
 
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
+      if (!links.length || !sections.length) return;
+
+      function setActive(id) {
+        links.forEach(function (link) {
+          var href = link.getAttribute('href') || '';
+          var match = href.indexOf('#' + id) !== -1;
+          if (match) {
+            link.classList.add('is-active');
+            link.setAttribute('aria-current', 'location');
+          } else {
+            link.classList.remove('is-active');
+            link.removeAttribute('aria-current');
           }
         });
-      },
-      {
-        rootMargin: '-20% 0px -70% 0px',
       }
-    );
 
-    sections.forEach(function (sec) {
-      observer.observe(sec);
-    });
+      function computeActiveSection() {
+        var viewportHeight = window.innerHeight || document.documentElement.clientHeight || 800;
+        var scrollBottom = (window.scrollY || window.pageYOffset || 0) + viewportHeight;
+        var docHeight = document.documentElement.scrollHeight || 0;
+
+        if (docHeight > 0 && scrollBottom >= docHeight - 40) {
+          setActive(sections[sections.length - 1].id);
+          return;
+        }
+
+        var threshold = viewportHeight * 0.35;
+        var activeId = sections[0].id;
+
+        for (var i = 0; i < sections.length; i++) {
+          var rect = sections[i].getBoundingClientRect();
+          if (rect.top <= threshold) {
+            activeId = sections[i].id;
+          }
+        }
+
+        setActive(activeId);
+      }
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(
+          function () {
+            computeActiveSection();
+          },
+          {
+            rootMargin: '-15% 0px -55% 0px',
+            threshold: [0, 0.25, 0.5, 1],
+          }
+        );
+        sections.forEach(function (sec) {
+          observer.observe(sec);
+        });
+      }
+
+      window.addEventListener('scroll', computeActiveSection, { passive: true });
+      window.addEventListener('resize', computeActiveSection, { passive: true });
+      window.addEventListener('hashchange', computeActiveSection);
+
+      links.forEach(function (link) {
+        link.addEventListener('click', function () {
+          var href = link.getAttribute('href') || '';
+          var hashIdx = href.indexOf('#');
+          if (hashIdx !== -1) {
+            setActive(href.slice(hashIdx + 1));
+          }
+        });
+      });
+
+      computeActiveSection();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initScrollSpy);
+    } else {
+      initScrollSpy();
+    }
   })();
 </script>
 
@@ -165,9 +213,11 @@ const homePrefix = `/${locale}/`;
     color: var(--accent-tech-strong);
   }
 
-  .nav-list a.is-active {
+  .nav-list a.is-active,
+  .nav-list a[aria-current="location"] {
     color: var(--accent-tech-strong);
-    border-bottom-color: var(--accent-tech);
+    font-weight: 700;
+    border-bottom-color: var(--accent-tech-strong);
   }
 
   .header-actions {

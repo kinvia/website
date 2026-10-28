@@ -80,3 +80,4 @@ During manual testing of the new Kinvia website redesign on mobile viewports, th
   - Mobile viewport (< 768px): zero horizontal scroll, clean logo + language switcher.
   - Desktop viewport: scrollspy activates links smoothly as sections cross viewport; Contact is not permanently bold.
   - Hero margins align identically with TwoAxes, Services, Model, and Contact.
+

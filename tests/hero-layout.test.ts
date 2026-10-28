@@ -16,3 +16,4 @@ describe('Hero Layout Alignment', () => {
     expect(heroSource).not.toContain('margin: 0 auto 0 0');
   });
 });
+

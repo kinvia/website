@@ -211,3 +211,4 @@ Expected: PASS (all 8 test files passing, including full build verification)
 git add src/components/Hero.astro tests/hero-layout.test.ts
 git commit -m "fix(hero): unify container centering and layout alignment"
 ```
+
