@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { describe, it, expect } from 'vitest';
 import { t, getDictionary, getAlternatePath, translateHash } from '../src/i18n';
 
@@ -61,5 +63,53 @@ describe('i18n helper and Kinvia copy rules', () => {
     expect(getAlternatePath('es', '/en/', '#contact')).toBe('/es/#contacto');
     expect(getAlternatePath('en', '/es/', '#modelos')).toBe('/en/#model');
     expect(getAlternatePath('en', '/es/privacidad', '#contacto')).toBe('/en/privacy');
+  });
+
+  it('defines 3 Cloud cases and 2 IoT cases with 3 optimized WebP images (< 250KB) each in ES and EN', () => {
+    const es = getDictionary('es');
+    const en = getDictionary('en');
+
+    expect(es.axes.cloud.cases.map((c) => c.id)).toEqual([
+      'sercore',
+      'ramos-calabria',
+      'capsa-ucam',
+    ]);
+    expect(en.axes.cloud.cases.map((c) => c.id)).toEqual([
+      'sercore',
+      'ramos-calabria',
+      'capsa-ucam',
+    ]);
+
+    expect(es.axes.iot.cases.map((c) => c.id)).toEqual([
+      'villa-gran-alacant',
+      'villa-punta-prima',
+    ]);
+    expect(en.axes.iot.cases.map((c) => c.id)).toEqual([
+      'villa-gran-alacant',
+      'villa-punta-prima',
+    ]);
+
+    const allCases = [
+      ...es.axes.cloud.cases,
+      ...es.axes.iot.cases,
+      ...en.axes.cloud.cases,
+      ...en.axes.iot.cases,
+    ];
+    for (const c of allCases) {
+      expect(c.images).toHaveLength(3);
+      expect(c.challenge.length).toBeGreaterThan(20);
+      expect(c.solution.length).toBeGreaterThan(20);
+      expect(c.impact.length).toBeGreaterThan(15);
+      expect(c.highlights.length).toBeGreaterThanOrEqual(3);
+
+      for (const img of c.images) {
+        expect(img.src).toMatch(/^\/images\/cases\/[a-z0-9-]+-[123]\.webp$/);
+        const filePath = path.resolve(process.cwd(), 'public', img.src.replace(/^\//, ''));
+        expect(fs.existsSync(filePath)).toBe(true);
+        const stat = fs.statSync(filePath);
+        expect(stat.size).toBeGreaterThan(5000);
+        expect(stat.size).toBeLessThan(250 * 1024);
+      }
+    }
   });
 });

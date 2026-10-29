@@ -4,6 +4,9 @@ import en from './en.json';
 export type Locale = 'es' | 'en';
 export type Dictionary = typeof es;
 export type SectionKey = keyof typeof es.nav.anchors;
+export type SuccessCaseImage = { src: string; label: string; alt: string };
+export type SuccessCaseItem = Dictionary['axes']['cloud']['cases'][number];
+export type SuccessCasesLabels = Dictionary['axes']['casesLabels'];
 
 const dictionaries: Record<Locale, Dictionary> = {
   es,

@@ -31,6 +31,17 @@
     "eyebrow": "01 · Del Cloud al Mundo Físico",
     "title": "Dos unidades de negocio, un mismo rigor de ingeniería",
     "subtitle": "Traducimos más de 20 años construyendo sistemas críticos en resultados medibles para tu cuenta de resultados, sin ataduras a ninguna marca.",
+    "casesLabels": {
+      "sectionHeading": "Casos de Éxito en Producción",
+      "challengeLabel": "El Reto",
+      "solutionLabel": "La Solución Kinvia",
+      "impactLabel": "Hito Clave",
+      "prevCase": "Caso anterior",
+      "nextCase": "Siguiente caso",
+      "prevImage": "Pantalla anterior",
+      "nextImage": "Siguiente pantalla",
+      "caseCounter": "Caso"
+    },
     "cloud": {
       "badge": "División Digital & Corporativa",
       "title": "Cloud & Software",
@@ -40,6 +51,101 @@
         "Tranquilidad, seguridad y copias de seguridad inmutables para mediana empresa.",
         "Arquitecturas escalables sobre Linux y contenedores sin bloqueos de proveedor (cero vendor lock-in).",
         "Reducción directa de tu factura Cloud y licencias mediante auditoría FinOps."
+      ],
+      "cases": [
+        {
+          "id": "sercore",
+          "client": "Sercore",
+          "sector": "Reformas y Gestión de Siniestros",
+          "title": "Modernización Crítica de Negocio sin Fricción",
+          "challenge": "El corazón operativo de la empresa dependía de un sistema legacy en MS-DOS de los años 80 que limitaba su crecimiento y ponía en riesgo el negocio sin poder parar ni un solo día la facturación.",
+          "solution": "Diseño y migración integral hacia una plataforma web moderna multiservicio en contenedores Docker, AngularJS y canalizaciones CI/CD automatizadas.",
+          "impact": "Cero incidencias reportadas desde el día del lanzamiento hasta la actualidad",
+          "highlights": [
+            "Gestión integral de cartera de clientes y aseguradoras",
+            "Asignación y seguimiento de partes de trabajo en tiempo real",
+            "Control completo de albaranes, facturación y operativa central"
+          ],
+          "images": [
+            {
+              "src": "/images/cases/sercore-1.webp",
+              "label": "Cartera de Siniestros",
+              "alt": "Sercore - Panel de Cartera de Proyectos y Siniestros"
+            },
+            {
+              "src": "/images/cases/sercore-2.webp",
+              "label": "Kanban y Mapa Operativo",
+              "alt": "Sercore - Tablero Kanban y Mapa Operativo"
+            },
+            {
+              "src": "/images/cases/sercore-3.webp",
+              "label": "Operarios y GPS en Vivo",
+              "alt": "Sercore - Mapa de Operarios y Partes en Tiempo Real"
+            }
+          ]
+        },
+        {
+          "id": "ramos-calabria",
+          "client": "Ramos Calabria Abogados",
+          "sector": "Sector Legal y Firma Jurídica",
+          "title": "Departamento IT In-House y Digitalización Legal",
+          "challenge": "Herramientas dispersas, lentitud al localizar y abrir expedientes pesados, y sobrecarga de incidencias informáticas en lugar de dedicar el tiempo a la abogacía.",
+          "solution": "Modelo combinado de externalización IT integral (servidores, redes y soporte) y desarrollo de software a medida en arquitectura .NET conectada a servidor central.",
+          "impact": "Externalización total del departamento técnico y experiencia ultrarrápida estilo Linear",
+          "highlights": [
+            "Previsualización instantánea de documentos y expedientes sin tiempos de carga",
+            "Control estricto de plazos procesales, vistas y agenda compartida",
+            "Módulo integrado de facturación y control económico del despacho"
+          ],
+          "images": [
+            {
+              "src": "/images/cases/rc-1.webp",
+              "label": "Expediente Digital",
+              "alt": "Ramos Calabria - Expediente Jurídico Digital y Visor Instantáneo"
+            },
+            {
+              "src": "/images/cases/rc-2.webp",
+              "label": "Plazos y Calendario",
+              "alt": "Ramos Calabria - Calendario y Control de Plazos Judiciales"
+            },
+            {
+              "src": "/images/cases/rc-3.webp",
+              "label": "Panel Ejecutivo",
+              "alt": "Ramos Calabria - Dashboard de Métricas y Facturación"
+            }
+          ]
+        },
+        {
+          "id": "capsa-ucam",
+          "client": "CAPSA / UCAM",
+          "sector": "Salud, Investigación y Nutrición Clínica",
+          "title": "Datos Complejos, Modelado 3D y Algorítmica Clínica",
+          "challenge": "Trasladar modelos matemáticos complejos de antropometría y fisiología humana a una herramienta web interactiva validada científicamente.",
+          "solution": "Aplicación web de alta precisión con motor de cálculo avanzado, modelado 3D corporal e integración directa con la base nutricional oficial del USDA.",
+          "impact": "Abstracción de algorítmica clínica de élite y datos internacionales en navegador",
+          "highlights": [
+            "Modelo anatómico 3D interactivo en navegador para registro de pliegues",
+            "Cruce biométrico en tiempo real con catálogo de alimentos USDA",
+            "Generación algorítmica de planes nutricionales 100% personalizados"
+          ],
+          "images": [
+            {
+              "src": "/images/cases/capsa-1.webp",
+              "label": "Modelo 3D y Biometría",
+              "alt": "CAPSA UCAM - Modelo Anatómico 3D y Registro Biométrico"
+            },
+            {
+              "src": "/images/cases/capsa-2.webp",
+              "label": "Evaluación Fisiológica",
+              "alt": "CAPSA UCAM - Evaluación Fisiológica y Analítica Clínica"
+            },
+            {
+              "src": "/images/cases/capsa-3.webp",
+              "label": "Plan Nutricional USDA",
+              "alt": "CAPSA UCAM - Planificador Nutricional Diario con Datos USDA"
+            }
+          ]
+        }
       ]
     },
     "iot": {
@@ -51,6 +157,70 @@
         "Procesamiento 100% local (offline-first) sin nubes obligatorias ni sistemas cerrados.",
         "Privacidad espacial por diseño mediante radares mmWave, sin cámaras intrusivas en interiores.",
         "Mantenimiento preventivo remoto con Watchdog autónomo y actualizaciones OTA sin visitas invasivas."
+      ],
+      "cases": [
+        {
+          "id": "villa-gran-alacant",
+          "client": "Villa Gran Alacant",
+          "sector": "Domótica de Lujo y Eficiencia Solar",
+          "title": "Lujo y Eficiencia Energética en Villa Contemporánea",
+          "challenge": "Aunar máxima eficiencia energética y confort de alto standing en obra nueva sin ataduras a ecosistemas cerrados ni interfaces complejas.",
+          "solution": "Ecosistema 100% local en Home Assistant con hardware propio ESP32, orquestado desde Hub Edge y pantallas murales empotradas con interfaz dedicada.",
+          "impact": "Vivienda verdaderamente autónoma con máxima cobertura solar y control biométrico",
+          "highlights": [
+            "Hardware propio ESP32 para control de acceso biométrico por huella",
+            "Gestión solar algorítmica por posición del sol y orientación de persianas",
+            "Retrofit no invasivo de electrodomésticos convencionales y piscina inteligente"
+          ],
+          "images": [
+            {
+              "src": "/images/cases/iot-gran-alacant-1.webp",
+              "label": "Flujo Energético Solar",
+              "alt": "Villa Gran Alacant - Flujo Energético y Carga de Vehículo Eléctrico"
+            },
+            {
+              "src": "/images/cases/iot-gran-alacant-2.webp",
+              "label": "Piscina y Climatización",
+              "alt": "Villa Gran Alacant - Automatización de Piscina y Confort Térmico"
+            },
+            {
+              "src": "/images/cases/iot-gran-alacant-3.webp",
+              "label": "Iluminación y Persianas",
+              "alt": "Villa Gran Alacant - Iluminación Ambiental y Seguimiento Solar"
+            }
+          ]
+        },
+        {
+          "id": "villa-punta-prima",
+          "client": "Villa Punta Prima",
+          "sector": "Retrofit Tecnológico y Finca Tradicional",
+          "title": "Tecnología Invisible, Seguridad y Riego 16 Zonas",
+          "challenge": "Modernizar una finca mediterránea de 1.000 m² con 40 años de antigüedad sin alterar su estética clásica ni hacer rozas invasivas.",
+          "solution": "Arquitectura de 'Tecnología Invisible' con micromódulos ocultos tras llaves originales, seguridad perimetral Zero Touch y centralita de riego dedicada para 16 electroválvulas con estación meteorológica local.",
+          "impact": "Retrofit tecnológico sin impacto visual y optimización hídrica crítica",
+          "highlights": [
+            "Llegada vehicular Zero Touch por geofencing local y desarmado por huella",
+            "Central de riego inteligente para 16 electroválvulas con telemetría meteorológica",
+            "Detección perimetral proactiva exterior sin falsas alarmas por vegetación"
+          ],
+          "images": [
+            {
+              "src": "/images/cases/iot-punta-prima-1.webp",
+              "label": "Mapa 3D y Riego 16 Zonas",
+              "alt": "Villa Punta Prima - Mapa Perimetral 3D y Central de Riego Inteligente"
+            },
+            {
+              "src": "/images/cases/iot-punta-prima-2.webp",
+              "label": "Seguridad Perimetral",
+              "alt": "Villa Punta Prima - Cámaras en Directo y Sensores de Seguridad"
+            },
+            {
+              "src": "/images/cases/iot-punta-prima-3.webp",
+              "label": "Llegada Zero Touch",
+              "alt": "Villa Punta Prima - Automatización de Llegada Vehicular y Huella Dactilar"
+            }
+          ]
+        }
       ]
     }
   },

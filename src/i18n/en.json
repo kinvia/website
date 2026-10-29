@@ -31,6 +31,17 @@
     "eyebrow": "01 · From Cloud to the Physical World",
     "title": "Two business units driven by the same engineering rigor",
     "subtitle": "We translate 20+ years of building mission-critical systems into measurable business impact, with 100% vendor-agnostic honesty.",
+    "casesLabels": {
+      "sectionHeading": "Real-World Production Case Studies",
+      "challengeLabel": "The Challenge",
+      "solutionLabel": "The Kinvia Solution",
+      "impactLabel": "Key Milestone",
+      "prevCase": "Previous case",
+      "nextCase": "Next case",
+      "prevImage": "Previous screen",
+      "nextImage": "Next screen",
+      "caseCounter": "Case"
+    },
     "cloud": {
       "badge": "Digital & Corporate Division",
       "title": "Cloud & Software",
@@ -40,6 +51,101 @@
         "Enterprise-grade peace of mind, immutable backups, and proactive cybersecurity for mid-market companies.",
         "Scalable Linux and container architectures with zero vendor lock-in.",
         "Measurable cloud and licensing cost reductions through rigorous FinOps audits."
+      ],
+      "cases": [
+        {
+          "id": "sercore",
+          "client": "Sercore",
+          "sector": "Renovations & Insurance Claims",
+          "title": "Frictionless Mission-Critical Modernization",
+          "challenge": "The company's core operations relied on a legacy 1980s MS-DOS system that throttled growth and created immense operational risk, with zero tolerance for billing downtime.",
+          "solution": "Complete migration to a modern multi-service web platform built on Docker containers, AngularJS, and automated CI/CD pipelines.",
+          "impact": "Zero reported production incidents from launch day to the present",
+          "highlights": [
+            "End-to-end client and insurance carrier portfolio management",
+            "Real-time field worker work order dispatch and tracking",
+            "Full delivery slip, billing, and central office operations control"
+          ],
+          "images": [
+            {
+              "src": "/images/cases/sercore-1.webp",
+              "label": "Claims Portfolio",
+              "alt": "Sercore - Project Portfolio and Claims Management Dashboard"
+            },
+            {
+              "src": "/images/cases/sercore-2.webp",
+              "label": "Kanban & Operations",
+              "alt": "Sercore - Task Assignment Kanban Board and Operations Map"
+            },
+            {
+              "src": "/images/cases/sercore-3.webp",
+              "label": "Field GPS Tracking",
+              "alt": "Sercore - Real-Time Field Worker and Claims GPS Map"
+            }
+          ]
+        },
+        {
+          "id": "ramos-calabria",
+          "client": "Ramos Calabria Law",
+          "sector": "Legal Firm & Juridical Services",
+          "title": "In-House IT Department & Legal Digitalization",
+          "challenge": "Fragmented tools, slow document lookups, and recurring day-to-day IT friction pulling lawyers away from practicing law.",
+          "solution": "Comprehensive In-House IT outsourcing (servers, networking, support) combined with a high-performance custom .NET management platform.",
+          "impact": "Complete technical outsourcing and ultra-fast Linear-style user experience",
+          "highlights": [
+            "Instant zero-lag document preview and case file navigation",
+            "Rigorous court deadline, hearing schedule, and shared calendar tracking",
+            "Integrated law firm billing and economic health monitoring"
+          ],
+          "images": [
+            {
+              "src": "/images/cases/rc-1.webp",
+              "label": "Digital Dossier",
+              "alt": "Ramos Calabria - Digital Legal Dossier and Instant Preview"
+            },
+            {
+              "src": "/images/cases/rc-2.webp",
+              "label": "Deadlines & Schedule",
+              "alt": "Ramos Calabria - Court Deadlines and Schedule Management"
+            },
+            {
+              "src": "/images/cases/rc-3.webp",
+              "label": "Executive Dashboard",
+              "alt": "Ramos Calabria - Executive Dashboard and Hours Billed"
+            }
+          ]
+        },
+        {
+          "id": "capsa-ucam",
+          "client": "CAPSA / UCAM",
+          "sector": "Clinical Health, Research & Nutrition",
+          "title": "Complex Data, 3D Modeling & Clinical Algorithms",
+          "challenge": "Translating complex anthropometric and physiological math models into an interactive, scientifically validated web application.",
+          "solution": "High-precision web application with advanced biomechanical algorithms, 3D anatomical body rendering, and real-time USDA nutritional database integration.",
+          "impact": "Elite clinical algorithm abstraction and international data orchestration in-browser",
+          "highlights": [
+            "Interactive browser 3D anatomical body model for skinfold logging",
+            "Real-time biometric cross-referencing with official USDA food database",
+            "100% personalized, scientifically validated dietary plan generation"
+          ],
+          "images": [
+            {
+              "src": "/images/cases/capsa-1.webp",
+              "label": "3D Body Model",
+              "alt": "CAPSA UCAM - 3D Anatomical Body Model and Biometric Input"
+            },
+            {
+              "src": "/images/cases/capsa-2.webp",
+              "label": "Clinical Assessment",
+              "alt": "CAPSA UCAM - Physiological Assessment and Lab Validation"
+            },
+            {
+              "src": "/images/cases/capsa-3.webp",
+              "label": "USDA Diet Engine",
+              "alt": "CAPSA UCAM - Daily Nutrition Timeline and USDA Food Integration"
+            }
+          ]
+        }
       ]
     },
     "iot": {
@@ -51,6 +157,70 @@
         "100% local processing (offline-first) with zero mandatory third-party clouds or closed proprietary buses.",
         "Privacy by design using non-invasive mmWave radar presence sensing—never intrusive indoor cameras.",
         "Preventive remote maintenance via autonomous Watchdog telemetry and secure OTA updates."
+      ],
+      "cases": [
+        {
+          "id": "villa-gran-alacant",
+          "client": "Villa Gran Alacant",
+          "sector": "Luxury Smart Home & Solar Efficiency",
+          "title": "Luxury & Energy Efficiency in Modern Contemporary Villa",
+          "challenge": "Combining peak energy efficiency and luxury residential comfort in new construction without closed proprietary lock-in.",
+          "solution": "100% local Home Assistant ecosystem with custom ESP32 biometric hardware, local Edge Hub, and custom in-wall tablet touchscreens.",
+          "impact": "Truly autonomous home with maximized solar self-consumption and biometric control",
+          "highlights": [
+            "Custom ESP32 microcontrollers for integrated fingerprint biometric access",
+            "Sun-tracking bioclimatic algorithm matching solar yield to blind tilt and climate",
+            "Non-invasive retrofit of standard appliances and automated pool chemistry"
+          ],
+          "images": [
+            {
+              "src": "/images/cases/iot-gran-alacant-1.webp",
+              "label": "Solar Energy Flow",
+              "alt": "Villa Gran Alacant - Real-Time Solar Energy Flow and EV Charging"
+            },
+            {
+              "src": "/images/cases/iot-gran-alacant-2.webp",
+              "label": "Pool & Spa Climate",
+              "alt": "Villa Gran Alacant - Pool and Spa Automation and Water Chemistry"
+            },
+            {
+              "src": "/images/cases/iot-gran-alacant-3.webp",
+              "label": "Lighting & Blinds",
+              "alt": "Villa Gran Alacant - Ambient Lighting and Sun Trajectory Blind Tracking"
+            }
+          ]
+        },
+        {
+          "id": "villa-punta-prima",
+          "client": "Villa Punta Prima",
+          "sector": "Heritage Retrofit & Traditional Estate",
+          "title": "Invisible Technology, Perimeter Security & 16-Zone Irrigation",
+          "challenge": "Modernizing a 40-year-old 1,000 m² Mediterranean estate without altering classic heritage aesthetics or running invasive cabling.",
+          "solution": "'Invisible Technology' retrofit hidden behind original period switches, Zero-Touch vehicle arrival security, and custom 16-zone irrigation with local weather station.",
+          "impact": "Zero visual intrusion retrofit with critical water conservation",
+          "highlights": [
+            "Zero-Touch vehicle arrival via local Bluetooth geofencing and fingerprint entry",
+            "Custom 16-valve smart irrigation engine powered by on-site weather telemetry",
+            "Proactive perimeter sensing engineered to eliminate false alarms from trees"
+          ],
+          "images": [
+            {
+              "src": "/images/cases/iot-punta-prima-1.webp",
+              "label": "3D Map & Irrigation",
+              "alt": "Villa Punta Prima - 3D Property Map and 16-Zone Smart Irrigation Control"
+            },
+            {
+              "src": "/images/cases/iot-punta-prima-2.webp",
+              "label": "Perimeter Security",
+              "alt": "Villa Punta Prima - Live Security Cameras and Perimeter Sensor Status"
+            },
+            {
+              "src": "/images/cases/iot-punta-prima-3.webp",
+              "label": "Zero-Touch Arrival",
+              "alt": "Villa Punta Prima - Zero-Touch Vehicle Arrival and Gate Automation"
+            }
+          ]
+        }
       ]
     }
   },
