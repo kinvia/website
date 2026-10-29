@@ -552,6 +552,10 @@ html[data-reduce-motion="true"] *::after {
   cursor: pointer;
 }
 
+.case-card:not(.is-active) .case-media {
+  pointer-events: none;
+}
+
 /* Card Media Stage & Screenshot Gallery */
 
 .case-media {
@@ -812,10 +816,10 @@ html[data-reduce-motion="true"] *::after {
   }
 }
 
-:global([data-reduce-motion="true"]) .cases-track,
-:global([data-reduce-motion="true"]) .case-card,
-:global([data-reduce-motion="true"]) .case-screenshot-slide,
-:global([data-reduce-motion="true"]) .case-pill {
+[data-reduce-motion="true"] .cases-track,
+[data-reduce-motion="true"] .case-card,
+[data-reduce-motion="true"] .case-screenshot-slide,
+[data-reduce-motion="true"] .case-pill {
   transition: none !important;
 }
 

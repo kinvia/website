@@ -24,6 +24,9 @@ describe('SuccessCasesCarousel component', () => {
     expect(cards).toHaveLength(3);
     expect(cards[0].classList.contains('is-active')).toBe(true);
     expect(cards[1].classList.contains('is-peek')).toBe(true);
+    expect(cards[0].hasAttribute('inert')).toBe(false);
+    expect(cards[1].hasAttribute('inert')).toBe(true);
+    expect(cards[2].hasAttribute('inert')).toBe(true);
 
     expect(screen.getByText('Sercore')).not.toBeNull();
     expect(screen.getByText('Ramos Calabria Abogados')).not.toBeNull();

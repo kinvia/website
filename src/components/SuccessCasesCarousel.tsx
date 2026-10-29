@@ -52,6 +52,7 @@ export function SuccessCasesCarousel({ division, cases, labels }: SuccessCasesCa
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.target !== e.currentTarget) return;
     if (e.key === 'ArrowRight') {
       e.preventDefault();
       goToNextCase();
@@ -97,14 +98,13 @@ export function SuccessCasesCarousel({ division, cases, labels }: SuccessCasesCa
         </div>
       </div>
 
-      <div className="cases-pills" role="tablist">
+      <div className="cases-pills" role="tablist" aria-label={labels.sectionHeading}>
         {cases.map((c, idx) => (
           <button
             key={c.id}
             type="button"
             role="tab"
             aria-selected={idx === activeCase}
-            aria-pressed={idx === activeCase}
             className={`case-pill ${idx === activeCase ? 'is-active' : ''}`}
             onClick={() => goToCase(idx)}
           >
@@ -123,8 +123,12 @@ export function SuccessCasesCarousel({ division, cases, labels }: SuccessCasesCa
           {cases.map((c, idx) => {
             const currentImgIdx = activeImages[c.id] || 0;
             const isCurrent = idx === activeCase;
-            const isPeek = idx === (activeCase + 1) % count && count > 1;
-            const isPrev = idx === (activeCase - 1 + count) % count && count > 1;
+            const isPeek =
+              count > 2 ? idx === (activeCase + 1) % count : activeCase === 0 && idx === 1;
+            const isPrev =
+              count > 2
+                ? idx === (activeCase - 1 + count) % count
+                : activeCase === 1 && idx === 0;
 
             let cardClass = 'case-card';
             if (isCurrent) cardClass += ' is-active';
@@ -137,6 +141,7 @@ export function SuccessCasesCarousel({ division, cases, labels }: SuccessCasesCa
                 className={cardClass}
                 onClick={() => !isCurrent && goToCase(idx)}
                 aria-hidden={!isCurrent}
+                inert={!isCurrent ? true : undefined}
               >
                 <div className="case-media">
                   <div className="case-media-stage" data-active-image={currentImgIdx}>
@@ -232,3 +237,4 @@ export function SuccessCasesCarousel({ division, cases, labels }: SuccessCasesCa
     </div>
   );
 }
+
