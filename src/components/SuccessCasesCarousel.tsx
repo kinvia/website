@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import type { SuccessCaseItem, SuccessCasesLabels } from '../i18n';
 
 export interface SuccessCasesCarouselProps {
@@ -10,48 +10,166 @@ export interface SuccessCasesCarouselProps {
 export function SuccessCasesCarousel({ division, cases, labels }: SuccessCasesCarouselProps) {
   const [activeCase, setActiveCase] = useState(0);
   const [activeImages, setActiveImages] = useState<Record<string, number>>({});
+  const [isInteracting, setIsInteracting] = useState(false);
+  const [lightbox, setLightbox] = useState<{ open: boolean; imageIdx: number }>({
+    open: false,
+    imageIdx: 0,
+  });
 
   const count = cases.length;
+  const currentCase = cases[activeCase];
+  const activeImageIdx = activeImages[currentCase?.id] || 0;
 
-  const goToNextCase = () => {
+  const goToNextCase = useCallback(() => {
     setActiveCase((prev) => (prev + 1) % count);
-  };
+  }, [count]);
 
-  const goToPrevCase = () => {
+  const goToPrevCase = useCallback(() => {
     setActiveCase((prev) => (prev - 1 + count) % count);
+  }, [count]);
+
+  const goToCase = useCallback(
+    (idx: number) => {
+      if (idx >= 0 && idx < count) {
+        setActiveCase(idx);
+      }
+    },
+    [count]
+  );
+
+  const goToNextImage = useCallback(
+    (caseId: string, imgCount: number, e?: React.MouseEvent) => {
+      if (e) e.stopPropagation();
+      setActiveImages((prev) => ({
+        ...prev,
+        [caseId]: ((prev[caseId] || 0) + 1) % imgCount,
+      }));
+    },
+    []
+  );
+
+  const goToPrevImage = useCallback(
+    (caseId: string, imgCount: number, e?: React.MouseEvent) => {
+      if (e) e.stopPropagation();
+      setActiveImages((prev) => ({
+        ...prev,
+        [caseId]: ((prev[caseId] || 0) - 1 + imgCount) % imgCount,
+      }));
+    },
+    []
+  );
+
+  const goToImage = useCallback(
+    (caseId: string, imgIdx: number, e?: React.MouseEvent) => {
+      if (e) e.stopPropagation();
+      setActiveImages((prev) => ({
+        ...prev,
+        [caseId]: imgIdx,
+      }));
+    },
+    []
+  );
+
+  // Lightbox handlers
+  const openLightbox = (imgIdx: number) => {
+    setLightbox({ open: true, imageIdx: imgIdx });
   };
 
-  const goToCase = (idx: number) => {
-    if (idx >= 0 && idx < count) {
-      setActiveCase(idx);
+  const closeLightbox = useCallback(() => {
+    setLightbox((prev) => ({ ...prev, open: false }));
+  }, []);
+
+  const goToNextLightboxImage = useCallback(() => {
+    if (!currentCase) return;
+    const nextIdx = (lightbox.imageIdx + 1) % currentCase.images.length;
+    setLightbox((prev) => ({ ...prev, imageIdx: nextIdx }));
+    // Synchronize card active image
+    setActiveImages((prev) => ({ ...prev, [currentCase.id]: nextIdx }));
+  }, [currentCase, lightbox.imageIdx]);
+
+  const goToPrevLightboxImage = useCallback(() => {
+    if (!currentCase) return;
+    const prevIdx =
+      (lightbox.imageIdx - 1 + currentCase.images.length) % currentCase.images.length;
+    setLightbox((prev) => ({ ...prev, imageIdx: prevIdx }));
+    // Synchronize card active image
+    setActiveImages((prev) => ({ ...prev, [currentCase.id]: prevIdx }));
+  }, [currentCase, lightbox.imageIdx]);
+
+  // Handle global keyboard for Lightbox
+  useEffect(() => {
+    if (!lightbox.open) return;
+
+    const prevOverflow = typeof document !== 'undefined' ? document.body.style.overflow : '';
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = 'hidden';
     }
-  };
 
-  const goToNextImage = (caseId: string, imgCount: number, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setActiveImages((prev) => ({
-      ...prev,
-      [caseId]: ((prev[caseId] || 0) + 1) % imgCount,
-    }));
-  };
+    const handleLightboxKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeLightbox();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        goToNextLightboxImage();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        goToPrevLightboxImage();
+      }
+    };
 
-  const goToPrevImage = (caseId: string, imgCount: number, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setActiveImages((prev) => ({
-      ...prev,
-      [caseId]: ((prev[caseId] || 0) - 1 + imgCount) % imgCount,
-    }));
-  };
+    window.addEventListener('keydown', handleLightboxKeyDown);
+    return () => {
+      if (typeof document !== 'undefined') {
+        document.body.style.overflow = prevOverflow;
+      }
+      window.removeEventListener('keydown', handleLightboxKeyDown);
+    };
+  }, [lightbox.open, closeLightbox, goToNextLightboxImage, goToPrevLightboxImage]);
 
-  const goToImage = (caseId: string, imgIdx: number, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setActiveImages((prev) => ({
-      ...prev,
-      [caseId]: imgIdx,
-    }));
-  };
+  // Auto-rotation timer: cycles screenshot every 5s; when finishing a case's screenshots, advances case
+  useEffect(() => {
+    if (isInteracting || lightbox.open) return;
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+    // Check prefers-reduced-motion
+    if (typeof window !== 'undefined') {
+      const motionQuery =
+        typeof window.matchMedia === 'function'
+          ? window.matchMedia('(prefers-reduced-motion: reduce)')
+          : null;
+      const isReducedByAttr =
+        typeof document !== 'undefined' &&
+        (document.documentElement.getAttribute('data-reduce-motion') === 'true' ||
+          document.body.getAttribute('data-reduce-motion') === 'true');
+      if (motionQuery?.matches || isReducedByAttr) {
+        return;
+      }
+    }
+
+    const timer = setInterval(() => {
+      const activeCaseData = cases[activeCase];
+      if (!activeCaseData) return;
+      const curImg = activeImages[activeCaseData.id] || 0;
+      const numImages = activeCaseData.images.length;
+
+      if (curImg < numImages - 1) {
+        setActiveImages((prev) => ({
+          ...prev,
+          [activeCaseData.id]: curImg + 1,
+        }));
+      } else {
+        setActiveImages((prev) => ({
+          ...prev,
+          [activeCaseData.id]: 0,
+        }));
+        setActiveCase((prev) => (prev + 1) % cases.length);
+      }
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [activeCase, activeImages, isInteracting, lightbox.open, cases]);
+
+  const handleContainerKeyDown = (e: React.KeyboardEvent) => {
     if (e.target !== e.currentTarget) return;
     if (e.key === 'ArrowRight') {
       e.preventDefault();
@@ -66,7 +184,17 @@ export function SuccessCasesCarousel({ division, cases, labels }: SuccessCasesCa
     <div
       className={`cases-carousel cases-carousel-${division}`}
       tabIndex={0}
-      onKeyDown={handleKeyDown}
+      onKeyDown={handleContainerKeyDown}
+      onMouseEnter={() => setIsInteracting(true)}
+      onMouseLeave={() => setIsInteracting(false)}
+      onFocusCapture={() => setIsInteracting(true)}
+      onBlurCapture={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+          setIsInteracting(false);
+        }
+      }}
+      onTouchStart={() => setIsInteracting(true)}
+      onTouchEnd={() => setIsInteracting(false)}
       role="region"
       aria-roledescription="carousel"
       aria-label={labels.sectionHeading}
@@ -96,22 +224,6 @@ export function SuccessCasesCarousel({ division, cases, labels }: SuccessCasesCa
             ›
           </button>
         </div>
-      </div>
-
-      <div className="cases-pills" role="tablist" aria-label={labels.sectionHeading}>
-        {cases.map((c, idx) => (
-          <button
-            key={c.id}
-            type="button"
-            role="tab"
-            aria-selected={idx === activeCase}
-            className={`case-pill ${idx === activeCase ? 'is-active' : ''}`}
-            onClick={() => goToCase(idx)}
-          >
-            <span className="pill-index">0{idx + 1}</span>
-            <span className="pill-client">{c.client}</span>
-          </button>
-        ))}
       </div>
 
       <div className="cases-track-viewport">
@@ -144,7 +256,20 @@ export function SuccessCasesCarousel({ division, cases, labels }: SuccessCasesCa
                 inert={!isCurrent ? true : undefined}
               >
                 <div className="case-media">
-                  <div className="case-media-stage" data-active-image={currentImgIdx}>
+                  <div
+                    className="case-media-stage"
+                    data-active-image={currentImgIdx}
+                    role="button"
+                    tabIndex={isCurrent ? 0 : -1}
+                    aria-label={labels.enlargeImage || 'Ampliar imagen'}
+                    onClick={() => isCurrent && openLightbox(currentImgIdx)}
+                    onKeyDown={(e) => {
+                      if (isCurrent && (e.key === 'Enter' || e.key === ' ')) {
+                        e.preventDefault();
+                        openLightbox(currentImgIdx);
+                      }
+                    }}
+                  >
                     {c.images.map((img, imgIdx) => (
                       <div
                         key={img.src}
@@ -162,6 +287,25 @@ export function SuccessCasesCarousel({ division, cases, labels }: SuccessCasesCa
                         />
                       </div>
                     ))}
+
+                    <div className="case-zoom-hint" aria-hidden="true">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        <line x1="11" y1="8" x2="11" y2="14" />
+                        <line x1="8" y1="11" x2="14" y2="11" />
+                      </svg>
+                    </div>
+
                     <button
                       type="button"
                       className="img-nav-btn img-nav-prev"
@@ -178,27 +322,33 @@ export function SuccessCasesCarousel({ division, cases, labels }: SuccessCasesCa
                     >
                       ›
                     </button>
-                  </div>
 
-                  <div className="case-media-tabs" role="tablist">
-                    {c.images.map((img, imgIdx) => (
-                      <button
-                        key={img.src}
-                        type="button"
-                        role="tab"
-                        aria-selected={imgIdx === currentImgIdx}
-                        className={`media-tab-btn ${imgIdx === currentImgIdx ? 'is-active' : ''}`}
-                        onClick={(e) => goToImage(c.id, imgIdx, e)}
-                      >
-                        <span className="media-tab-idx">0{imgIdx + 1}</span>
-                        <span className="media-tab-label">{img.label}</span>
-                      </button>
-                    ))}
+                    <div
+                      className="case-media-dots"
+                      role="tablist"
+                      aria-label="Pantallas"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {c.images.map((img, imgIdx) => (
+                        <button
+                          key={img.src}
+                          type="button"
+                          role="tab"
+                          aria-selected={imgIdx === currentImgIdx}
+                          aria-label={`${imgIdx + 1} / ${c.images.length}`}
+                          className={`case-dot ${imgIdx === currentImgIdx ? 'is-active' : ''}`}
+                          onClick={(e) => goToImage(c.id, imgIdx, e)}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
 
                 <div className="case-body">
-                  <div className="case-sector-badge">{c.sector}</div>
+                  <div className="case-meta-header">
+                    <span className="case-client-name">{c.client}</span>
+                    <span className="case-sector-badge">{c.sector}</span>
+                  </div>
                   <h4 className="case-title">{c.title}</h4>
 
                   <div className="case-narrative">
@@ -234,7 +384,59 @@ export function SuccessCasesCarousel({ division, cases, labels }: SuccessCasesCa
           })}
         </div>
       </div>
+
+      {lightbox.open && currentCase && (
+        <div
+          className="case-lightbox-backdrop"
+          role="dialog"
+          aria-modal="true"
+          aria-label={labels.enlargeImage || 'Vista ampliada'}
+          onClick={closeLightbox}
+        >
+          <div className="case-lightbox-dialog" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="case-lightbox-close"
+              aria-label={labels.closeLightbox || 'Cerrar ampliación'}
+              onClick={closeLightbox}
+            >
+              ✕
+            </button>
+
+            <div className="case-lightbox-stage">
+              <img
+                src={currentCase.images[lightbox.imageIdx]?.src}
+                alt={currentCase.images[lightbox.imageIdx]?.alt}
+                className="case-lightbox-img"
+              />
+
+              <button
+                type="button"
+                className="case-lightbox-nav case-lightbox-prev"
+                aria-label={labels.prevImage}
+                onClick={goToPrevLightboxImage}
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                className="case-lightbox-nav case-lightbox-next"
+                aria-label={labels.nextImage}
+                onClick={goToNextLightboxImage}
+              >
+                ›
+              </button>
+            </div>
+
+            <div className="case-lightbox-caption">
+              <span className="case-lightbox-client">{currentCase.client}</span>
+              <span className="case-lightbox-counter">
+                0{lightbox.imageIdx + 1} / 0{currentCase.images.length}
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
-

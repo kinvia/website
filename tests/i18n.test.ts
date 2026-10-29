@@ -81,11 +81,11 @@ describe('i18n helper and Kinvia copy rules', () => {
     ]);
 
     expect(es.axes.iot.cases.map((c) => c.id)).toEqual([
-      'villa-gran-alacant',
+      'chalet-gran-alacant',
       'villa-punta-prima',
     ]);
     expect(en.axes.iot.cases.map((c) => c.id)).toEqual([
-      'villa-gran-alacant',
+      'chalet-gran-alacant',
       'villa-punta-prima',
     ]);
 

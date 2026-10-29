@@ -40,7 +40,9 @@
       "nextCase": "Next case",
       "prevImage": "Previous screen",
       "nextImage": "Next screen",
-      "caseCounter": "Case"
+      "caseCounter": "Case",
+      "closeLightbox": "Close enlarged view",
+      "enlargeImage": "Enlarge image"
     },
     "cloud": {
       "badge": "Digital & Corporate Division",
@@ -160,10 +162,10 @@
       ],
       "cases": [
         {
-          "id": "villa-gran-alacant",
-          "client": "Villa Gran Alacant",
+          "id": "chalet-gran-alacant",
+          "client": "Chalet Gran Alacant",
           "sector": "Luxury Smart Home & Solar Efficiency",
-          "title": "Luxury & Energy Efficiency in Modern Contemporary Villa",
+          "title": "Luxury & Energy Efficiency in Modern Contemporary Chalet",
           "challenge": "Combining peak energy efficiency and luxury residential comfort in new construction without closed proprietary lock-in.",
           "solution": "100% local Home Assistant ecosystem with custom ESP32 biometric hardware, local Edge Hub, and custom in-wall tablet touchscreens.",
           "impact": "Truly autonomous home with maximized solar self-consumption and biometric control",
@@ -176,17 +178,17 @@
             {
               "src": "/images/cases/iot-gran-alacant-1.webp",
               "label": "Solar Energy Flow",
-              "alt": "Villa Gran Alacant - Real-Time Solar Energy Flow and EV Charging"
+              "alt": "Chalet Gran Alacant - Real-Time Solar Energy Flow and EV Charging"
             },
             {
               "src": "/images/cases/iot-gran-alacant-2.webp",
               "label": "Pool & Spa Climate",
-              "alt": "Villa Gran Alacant - Pool and Spa Automation and Water Chemistry"
+              "alt": "Chalet Gran Alacant - Pool and Spa Automation and Water Chemistry"
             },
             {
               "src": "/images/cases/iot-gran-alacant-3.webp",
               "label": "Lighting & Blinds",
-              "alt": "Villa Gran Alacant - Ambient Lighting and Sun Trajectory Blind Tracking"
+              "alt": "Chalet Gran Alacant - Ambient Lighting and Sun Trajectory Blind Tracking"
             }
           ]
         },

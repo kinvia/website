@@ -40,7 +40,9 @@
       "nextCase": "Siguiente caso",
       "prevImage": "Pantalla anterior",
       "nextImage": "Siguiente pantalla",
-      "caseCounter": "Caso"
+      "caseCounter": "Caso",
+      "closeLightbox": "Cerrar ampliación",
+      "enlargeImage": "Ampliar imagen"
     },
     "cloud": {
       "badge": "División Digital & Corporativa",
@@ -160,10 +162,10 @@
       ],
       "cases": [
         {
-          "id": "villa-gran-alacant",
-          "client": "Villa Gran Alacant",
+          "id": "chalet-gran-alacant",
+          "client": "Chalet Gran Alacant",
           "sector": "Domótica de Lujo y Eficiencia Solar",
-          "title": "Lujo y Eficiencia Energética en Villa Contemporánea",
+          "title": "Lujo y Eficiencia Energética en Chalet Contemporáneo",
           "challenge": "Aunar máxima eficiencia energética y confort de alto standing en obra nueva sin ataduras a ecosistemas cerrados ni interfaces complejas.",
           "solution": "Ecosistema 100% local en Home Assistant con hardware propio ESP32, orquestado desde Hub Edge y pantallas murales empotradas con interfaz dedicada.",
           "impact": "Vivienda verdaderamente autónoma con máxima cobertura solar y control biométrico",
@@ -176,17 +178,17 @@
             {
               "src": "/images/cases/iot-gran-alacant-1.webp",
               "label": "Flujo Energético Solar",
-              "alt": "Villa Gran Alacant - Flujo Energético y Carga de Vehículo Eléctrico"
+              "alt": "Chalet Gran Alacant - Flujo Energético y Carga de Vehículo Eléctrico"
             },
             {
               "src": "/images/cases/iot-gran-alacant-2.webp",
               "label": "Piscina y Climatización",
-              "alt": "Villa Gran Alacant - Automatización de Piscina y Confort Térmico"
+              "alt": "Chalet Gran Alacant - Automatización de Piscina y Confort Térmico"
             },
             {
               "src": "/images/cases/iot-gran-alacant-3.webp",
               "label": "Iluminación y Persianas",
-              "alt": "Villa Gran Alacant - Iluminación Ambiental y Seguimiento Solar"
+              "alt": "Chalet Gran Alacant - Iluminación Ambiental y Seguimiento Solar"
             }
           ]
         },
