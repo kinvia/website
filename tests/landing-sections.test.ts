@@ -38,4 +38,12 @@ describe('Landing Storytelling Sections', () => {
       expect(modelIdx).toBeGreaterThan(servicesIdx);
     }
   });
+
+  it('embeds SuccessCasesCarousel in both columns of TwoAxes.astro with min-width: 0 for clean grid tracks', () => {
+    const twoAxesSource = fs.readFileSync(path.join(root, 'src/components/TwoAxes.astro'), 'utf-8');
+    expect(twoAxesSource).toContain('SuccessCasesCarousel');
+    expect(twoAxesSource).toContain('division="cloud"');
+    expect(twoAxesSource).toContain('division="iot"');
+    expect(twoAxesSource).toContain('min-width: 0');
+  });
 });

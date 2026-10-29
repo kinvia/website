@@ -187,3 +187,4 @@ Expected: PASS (all 10 test files passing, including static build verification)
 git add src/components/SuccessCasesCarousel.tsx src/components/TwoAxes.astro src/styles/global.css tests/
 git commit -m "feat(cases): embed animated division case-study carousels in TwoAxes"
 ```
+

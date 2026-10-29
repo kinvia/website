@@ -1,5 +1,6 @@
 ---
 import { type Locale, getDictionary } from '../i18n';
+import { SuccessCasesCarousel } from './SuccessCasesCarousel';
 
 export interface Props {
   locale: Locale;
@@ -27,6 +28,15 @@ const a = dict.axes;
             <li>{item}</li>
           ))}
         </ul>
+
+        <div class="axis-cases-slot">
+          <SuccessCasesCarousel
+            client:visible
+            division="cloud"
+            cases={a.cloud.cases}
+            labels={a.casesLabels}
+          />
+        </div>
       </article>
 
       <article class="axis-column">
@@ -39,6 +49,15 @@ const a = dict.axes;
             <li>{item}</li>
           ))}
         </ul>
+
+        <div class="axis-cases-slot">
+          <SuccessCasesCarousel
+            client:visible
+            division="iot"
+            cases={a.iot.cases}
+            labels={a.casesLabels}
+          />
+        </div>
       </article>
     </div>
   </div>
@@ -53,8 +72,17 @@ const a = dict.axes;
   }
 
   .axis-column {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
     padding-top: 1.5rem;
     border-top: 2px solid var(--accent-tech);
+  }
+
+  .axis-cases-slot {
+    margin-top: 2.25rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--border-subtle);
   }
 
   .axis-badge {

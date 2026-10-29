@@ -30,6 +30,15 @@ describe('Astro static build verification checklist', () => {
     expect(esHtml).toContain('+34 644 21 93 52');
     expect(esHtml).toContain(String(new Date().getFullYear()));
 
+    // Verify all 5 case studies exist in built HTML for /es/
+    expect(esHtml).toContain('Sercore');
+    expect(esHtml).toContain('Ramos Calabria');
+    expect(esHtml).toContain('CAPSA / UCAM');
+    expect(esHtml).toContain('Villa Gran Alacant');
+    expect(esHtml).toContain('Villa Punta Prima');
+    expect(esHtml).toContain('/images/cases/sercore-1.webp');
+    expect(esHtml).toContain('/images/cases/iot-gran-alacant-1.webp');
+
     const $en = cheerio.load(enHtml);
     expect($en('#hero').length).toBe(1);
     expect($en('#axes').length).toBe(1);
@@ -38,6 +47,9 @@ describe('Astro static build verification checklist', () => {
     expect($en('#contact').length).toBe(1);
     expect($en('form[name="contact"][data-netlify="true"]').length).toBe(1);
     expect($en('a[href="/en/privacy"]').length).toBeGreaterThan(0);
+    expect(enHtml).toContain('Sercore');
+    expect(enHtml).toContain('Villa Gran Alacant');
+    expect(enHtml).toContain('/images/cases/rc-1.webp');
 
     expect(esPrivHtml).toContain('Orihuela Costa');
     expect(enPrivHtml).toContain('Orihuela Costa');
